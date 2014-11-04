@@ -6,9 +6,20 @@
 		contentCreationComplete="contentCreationCompleted(event)"
 		>
 	<s:layout>
-		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" verticalAlign="middle" horizontalAlign="center" />
+		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" horizontalAlign="center" />
 	</s:layout>
-
+	
+	<fx:Style>
+		.myHeadingStyle { 
+			fontSize: 24;
+			fontWeight: bold;
+		}
+		
+		.questionContentStyle { 
+			fontSize: 20;
+		}
+	</fx:Style>
+	
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
@@ -67,7 +78,7 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 
-	<s:VGroup height="100%" minHeight="400" minWidth="500">
+	<s:VGroup height="100%" minHeight="400" minWidth="500" horizontalAlign="center">
 		<s:Spacer height="15" />
 		<s:Group width="100%" >
 			<!-- <s:Rect x="0" y="0" 
@@ -85,21 +96,23 @@
 				</s:fill>
 				
 			</s:Rect> -->
-			<s:Label id="questionNumber" text="Question #{currentQuestion+1}" paddingTop="10" horizontalCenter="0"   />	
+			<s:Label id="questionNumber" text="Question #{currentQuestion+1}" paddingTop="10" horizontalCenter="0" styleName="myHeadingStyle"  />	
 		</s:Group>
 		
 		<mx:Spacer height="15%"/>
-		<s:Label id="questionContent" text="{questionContentStr}" width="85%" />
+		<s:Label id="questionContent" text="{questionContentStr}" width="80%" styleName="questionContentStyle" />
 		<mx:Spacer height="15%"/>
 		<s:TextArea id="answer" />
 		<mx:Spacer height="15%"/>
-		<s:HGroup paddingBottom="15" width="100%">
+		
+	</s:VGroup>
+	<s:VGroup verticalAlign="bottom" paddingBottom="40" width="500">
+		<s:HGroup paddingBottom="15" width="100%" verticalAlign="bottom">
 			<s:Button label="&lt; Previous" id="previousButton" click="previousButton_clickHandler(event)" />
 			<mx:Spacer width="100%"/>
 			<s:Button label="Next >" id="nextButton" click="nextButton_clickHandler(event)" />	
 		</s:HGroup>
 		<s:Button label="&lt; Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
-		
 	</s:VGroup>
 
 </s:View>
