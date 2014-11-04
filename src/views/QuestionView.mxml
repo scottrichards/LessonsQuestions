@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx" 
 		title="Lesson #{data.lessonName}"
-		contentCreationComplete="contentCreationCompleted(event)">
+		contentCreationComplete="contentCreationCompleted(event)"
+		>
 	<s:layout>
-		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" verticalAlign="middle"  />
+		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" verticalAlign="middle" horizontalAlign="center" />
 	</s:layout>
 
 	<fx:Script>
@@ -14,21 +16,49 @@
 			[Bindable]
 			public var currentQuestion:Number;
 			
+			[Bindable]
+			public var questionContentStr:String;
+			
 			
 			protected function contentCreationCompleted(event:FlexEvent):void
 			{
 				currentQuestion = 0;
 				trace("lessonName: " + data.lessonName);
+				updateQuestionInfo();
+				if (currentQuestion == 0) {
+					previousButton.enabled = false;
+				}
 			}
 			
 			protected function nextButton_clickHandler(event:MouseEvent):void
 			{
 				currentQuestion++;
+				previousButton.enabled = true;
+				if (currentQuestion + 1 >= data.questions.length()) {
+					nextButton.enabled = false;
+				}
+				updateQuestionInfo();
 			}
 			
 			protected function previousButton_clickHandler(event:MouseEvent):void
 			{
 				currentQuestion--;
+				nextButton.enabled = true;
+				if (currentQuestion == 0) {
+					previousButton.enabled = false;
+				}
+				updateQuestionInfo();
+			}
+			
+			protected function lessonsButton_clickHandler(event:MouseEvent):void
+			{
+				navigator.popView();
+			}
+			
+			protected function updateQuestionInfo():void 
+			{
+				var question:XML = data.questions[currentQuestion];
+				questionContentStr = question.questionContent;
 			}
 			
 		]]>
@@ -36,10 +66,40 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:Label id="questionNumber" text="Question #{currentQuestion+1}" />
-	
-	<s:Label id="questionContent" text="What is greater 12 or 24? {this.data}"  />
-	<s:TextArea id="answer" />
-	<s:Button label="&lt; Previous" id="previousButton" click="previousButton_clickHandler(event)" />
-	<s:Button label="Next >" id="nextButton" click="nextButton_clickHandler(event)" />
+
+	<s:VGroup height="100%" minHeight="400" minWidth="500">
+		<s:Spacer height="15" />
+		<s:Group width="100%" >
+			<!-- <s:Rect x="0" y="0" 
+					radiusX="4" radiusY="4" 
+					height="100%" width="100%">
+				<s:stroke>
+					<s:LinearGradientStroke weight="1" scaleMode="normal"/>
+				</s:stroke>
+				<s:fill>
+					<s:LinearGradient>
+						<s:entries>
+							<mx:GradientEntry color="0x999999"/>
+						</s:entries>
+					</s:LinearGradient>
+				</s:fill>
+				
+			</s:Rect> -->
+			<s:Label id="questionNumber" text="Question #{currentQuestion+1}" paddingTop="10" horizontalCenter="0"   />	
+		</s:Group>
+		
+		<mx:Spacer height="15%"/>
+		<s:Label id="questionContent" text="{questionContentStr}" width="85%" />
+		<mx:Spacer height="15%"/>
+		<s:TextArea id="answer" />
+		<mx:Spacer height="15%"/>
+		<s:HGroup paddingBottom="15" width="100%">
+			<s:Button label="&lt; Previous" id="previousButton" click="previousButton_clickHandler(event)" />
+			<mx:Spacer width="100%"/>
+			<s:Button label="Next >" id="nextButton" click="nextButton_clickHandler(event)" />	
+		</s:HGroup>
+		<s:Button label="&lt; Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
+		
+	</s:VGroup>
+
 </s:View>

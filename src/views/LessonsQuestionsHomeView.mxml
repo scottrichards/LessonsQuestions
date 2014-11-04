@@ -27,6 +27,9 @@
 				var lessonXML:XML = parentApplication.lessonsXML.lesson[item.data];
 				var lessonObject:Object = new Object();
 				lessonObject.lessonName = String(lessonXML.lessonName);
+				var questionList:XMLList = lessonXML.question;
+				lessonObject.questions = questionList;
+				trace("# of questions: " + questionList.length());
 				trace("lessonName: " + lessonXML.lessonName);
 				navigator.pushView(views.QuestionView, lessonObject);
 			}
@@ -34,11 +37,11 @@
 		]]>
 	</fx:Script>
 	<s:layout>
-		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" verticalAlign="middle"  />
+		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" verticalAlign="middle" horizontalAlign="center"  />
 	</s:layout>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:List id="list" width="100%" height="100%" changing="list_changingHandler(event)"  dataProvider="{parentApplication.lessonsList}" />
-	<s:Button click="button1_clickHandler(event)" label="Go To Lesson" />
+	<s:Label text="Select a Lesson:" />
+	<s:List id="list" width="100" height="80%" changing="list_changingHandler(event)"  dataProvider="{parentApplication.lessonsList}" />
 </s:View>
