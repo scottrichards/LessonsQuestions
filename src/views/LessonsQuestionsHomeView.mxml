@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
-		title="HomeView"
+		title="Math Grade 2"
 		contentCreationComplete="contentCreationCompleted(event)"
 		>
 	
 	<fx:Script>
 		<![CDATA[
 			import spark.events.IndexChangeEvent;
-			protected function list_clickHandler(event:MouseEvent):void
-			{
-				// TODO Auto-generated method stub
-	//			navigator.pushView(views.QuestionView);
-			}
+		
 			
 			protected function button1_clickHandler(event:MouseEvent):void
 			{
@@ -28,8 +24,8 @@
 			{
 				var item:* = list.dataProvider.getItemAt(event.newIndex);
 				trace("selected item data: " + item.label + " index: " + item.data);
-				var lessonXML:XMLList = parentApplication.lessonsXML.Root.lesson[item.data];
-				trace(lessonXML.lessonName);
+				var lessonXML:XML = parentApplication.lessonsXML.lesson[item.data];
+				trace("lessonName: " + lessonXML.lessonName);
 				navigator.pushView(views.QuestionView);
 			}
 			
@@ -41,6 +37,6 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:List id="list" width="100%" height="100%" click="list_clickHandler(event)" changing="list_changingHandler(event)"  dataProvider="{parentApplication.lessonsList}" />
+	<s:List id="list" width="100%" height="100%" changing="list_changingHandler(event)"  dataProvider="{parentApplication.lessonsList}" />
 	<s:Button click="button1_clickHandler(event)" label="Go To Lesson" />
 </s:View>

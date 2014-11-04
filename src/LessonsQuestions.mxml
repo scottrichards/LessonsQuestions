@@ -28,27 +28,21 @@
 			{
 				//			myData = event.result.Root.page;
 				lessonsXML = event.result as XML;
-				trace("lessonsXML.page[1].pageName: " + lessonsXML.page[1].pageName); // Output: burger 
 				traversePages(lessonsXML);
 				CursorManager.removeBusyCursor();
 			}
 			
-			protected  function traversePages(lessonsXML:XML):void {
-				trace("lessonsXML.page[1].pageName: " + lessonsXML.page[1].pageName); // Output: burger 
+			protected  function traversePages(lessonsXML:XML):void { 
 				lessonsList = new ArrayList();
-				for each (var page:XML in lessonsXML.page) 
-				{ 
-					var lessonList:XMLList = page.lesson; 
-					var i:Number = 0;
-					for each (var lesson:XML in lessonList) 
-					{ 
-						if (lesson.lessonName) {
+				var i:Number = 0;
+				for each (var lesson:XML in lessonsXML.lesson) 
+				{ 			
+					if (lesson.lessonName) {
 //							trace("lessonName: " + lesson.lessonName);
-							var lessonObject:Object = new Object();
-							lessonObject.data = i++;
-							lessonObject.label = String(lesson.lessonName);
-							lessonsList.addItem(lessonObject);
-						}
+						var lessonObject:Object = new Object();
+						lessonObject.data = i++;
+						lessonObject.label = String(lesson.lessonName);
+						lessonsList.addItem(lessonObject);
 					}
 				} 
 			}
