@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="QuestionView">
+	<s:layout>
+		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" verticalAlign="middle"  />
+	</s:layout>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Label id="questionNumber" text="Question #1" />
+	
+	<s:Label id="questionContent" text="What is greater 12 or 24? {this.data}"  />
+	<s:TextArea id="answer" />
+</s:View>
