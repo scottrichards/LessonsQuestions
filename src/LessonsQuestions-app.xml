@@ -37,7 +37,7 @@
 	<!-- <description></description> -->
 
 	<!-- Copyright information. Optional -->
-	<!-- <copyright></copyright> -->
+	<copyright>Copyright (c) 2014 Fat Red Couch, All Rights Reserved</copyright> 
 
 	<!-- Publisher ID. Used if you're updating an application created prior to 1.5.3 -->
 	<!-- <publisherID></publisherID> -->
@@ -89,11 +89,11 @@
 
         <!-- The aspect ratio of the app ("portrait" or "landscape" or "any"). Optional. Mobile only. Default is the natural orientation of the device -->
 
-        <!-- <aspectRatio></aspectRatio> -->
+        <aspectRatio>landscape</aspectRatio>
 
         <!-- Whether the app will begin auto-orienting on launch. Optional. Mobile only. Default false -->
 
-        <!-- <autoOrients></autoOrients> -->
+        <autoOrients>false</autoOrients>
 
         <!-- Whether the app launches in full screen. Optional. Mobile only. Default false -->
 

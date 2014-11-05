@@ -100,11 +100,13 @@
 		</s:Group>
 		
 		<mx:Spacer height="15%"/>
-		<s:Label id="questionContent" text="{questionContentStr}" width="80%" styleName="questionContentStyle" />
+		<s:HGroup width="90%">
+			<s:Label id="questionContent" text="{questionContentStr}" width="50%" styleName="questionContentStyle" />
+			<s:Image id="questionImage" source="" width="50%" />
+		</s:HGroup>
+
 		<mx:Spacer height="15%"/>
 		<s:TextArea id="answer" />
-		<mx:Spacer height="15%"/>
-		
 	</s:VGroup>
 	<s:VGroup verticalAlign="bottom" paddingBottom="40" width="500">
 		<s:HGroup paddingBottom="15" width="100%" verticalAlign="bottom">
