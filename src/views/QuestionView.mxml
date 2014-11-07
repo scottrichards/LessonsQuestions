@@ -25,7 +25,7 @@
 		<![CDATA[
 			import mx.events.FlexEvent;
 			
-			import components.BIPButton;
+			import components.NumericKeypad;
 			
 			public var correctAnswerId : String;
 			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3");
@@ -114,8 +114,8 @@
 				if (question.@questionType== "keyboardEntry") {
 					answerTextArea.visible = false;
 					answerTextArea.includeInLayout = false;
-//					var numericKeypard = new NumericKeypad();
-	//				answerTextArea.addElement();
+					var numericKeypard : NumericKeypad = new NumericKeypad();
+					answerSection.addElement(numericKeypard);
 				} else {
 					answerTextArea.visible = true;
 					answerTextArea.includeInLayout = true;
@@ -164,8 +164,8 @@
 							multipleChoiceSection.visible = true;
 						}
 					} else {
-						answerTextArea.visible = true;
-						answerTextArea.includeInLayout = true;
+//						answerTextArea.visible = true;
+//						answerTextArea.includeInLayout = true;
 						multipleChoiceSection.includeInLayout = false;
 						multipleChoiceSection.visible = false;
 					}
@@ -225,7 +225,6 @@
 		<mx:Spacer height="10%"/>
 		<s:HGroup id="answerSection" width="100%" gap="40" horizontalAlign="center">
 			<s:TextArea id="answerTextArea" />	
-			<components:NumericKeypad />
 		</s:HGroup>
 		<s:HGroup id="multipleChoiceSection" width="100%" gap="40" horizontalAlign="center" includeInLayout="false">
 		</s:HGroup>
