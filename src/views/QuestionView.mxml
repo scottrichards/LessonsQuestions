@@ -2,8 +2,9 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		xmlns:mx="library://ns.adobe.com/flex/mx" 
+		xmlns:BIP="components" 
 		title="Lesson #{data.lessonName}"
-		contentCreationComplete="contentCreationCompleted(event)"
+		contentCreationComplete="contentCreationCompleted(event)" xmlns:components="components.*"
 		>
 	<s:layout>
 		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" horizontalAlign="center" />
@@ -24,7 +25,11 @@
 		<![CDATA[
 			import mx.events.FlexEvent;
 			
+			import components.BIPButton;
+			
 			public var correctAnswerId : String;
+			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3");
+			
 			
 			[Bindable]
 			public var currentQuestion:Number;
@@ -75,17 +80,53 @@
 			{
 				trace("Yea you got it right!");	
 				nextButton_clickHandler(event);
+				playCorrectSound();
 			}
+			
+			protected function playCorrectSound():void{
+				playSound("sounds/cityrocker__thats-correct.mp3"); 
+			}
+			
+			
+			protected function playWrongSound():void{
+				var length:uint = wrongAnswerSounds.length;
+				var randomUint:uint = uint(Math.random() * length);
+				var randomSound:String = "sounds/" + wrongAnswerSounds[randomUint];
+				trace("Error Sound: " + randomSound);
+				playSound(randomSound); 
+			}
+			
+			protected function playSound(url:String):void{
+				var req:URLRequest = new URLRequest(url); 
+				var s:Sound = new Sound(req); 
+				s.play();
+			}
+			
+			
 			
 			protected function wrongSelection(event:MouseEvent):void
 			{
-				trace("Bummer you missed the question...");	
+				trace("Bummer you missed the question...");
+				playWrongSound();
+			}
+			
+			protected function updateQuestionType(question:XML):void{
+				if (question.@questionType== "keyboardEntry") {
+					answerTextArea.visible = false;
+					answerTextArea.includeInLayout = false;
+//					var numericKeypard = new NumericKeypad();
+	//				answerTextArea.addElement();
+				} else {
+					answerTextArea.visible = true;
+					answerTextArea.includeInLayout = true;
+				}
 			}
 			
 			protected function updateQuestionInfo():void 
 			{
 				var question:XML = data.questions[currentQuestion];
 				if (question) {
+					updateQuestionType(question);
 					questionContentStr = question.questionContent;
 					var imageUrlStr : String = String(question.imageInfo);
 					var answers: XMLList = question.answers.answer;
@@ -94,10 +135,12 @@
 						questionImage.percentWidth=50;
 						questionContent.percentWidth=50;
 						loadImage(question.imageInfo);
+						questionImage.maxHeight=300;
 					} else {	// make the text take up all of the space
 						questionImage.percentWidth=0;
 						questionContent.percentWidth=100;
 						questionImage.width=0;
+						questionImage.maxHeight=0;
 						questionImage.visible = false;
 					} 
 					if (answers.length() > 0) {
@@ -175,25 +218,27 @@
 		</s:Group>
 		
 		<mx:Spacer height="15%"/>
-		<s:HGroup width="100%">
+		<s:HGroup width="100%" horizontalAlign="center">
 			<s:Label id="questionContent" text="{questionContentStr}" width="100%" styleName="questionContentStyle" paddingRight="10" />
 			<s:BitmapImage  id="questionImage" source="" fillMode="scale" scaleMode="stretch" maxWidth="400" maxHeight="300"  />
 		</s:HGroup>
 		<mx:Spacer height="10%"/>
 		<s:HGroup id="answerSection" width="100%" gap="40" horizontalAlign="center">
-			<s:TextArea id="answerTextArea" />			
+			<s:TextArea id="answerTextArea" />	
+			<components:NumericKeypad />
 		</s:HGroup>
 		<s:HGroup id="multipleChoiceSection" width="100%" gap="40" horizontalAlign="center" includeInLayout="false">
 		</s:HGroup>
+		<mx:Spacer height="10%"/>
 	</s:VGroup>
 	<s:VGroup verticalAlign="bottom" paddingBottom="40" width="500">
 		<s:HGroup paddingBottom="15" width="100%" verticalAlign="bottom">
 			<s:Button label="Previous" id="previousButton" click="previousButton_clickHandler(event)" icon="@Embed('icons/Previous.png')" />
 			<mx:Spacer width="100%"/>
-			<s:Button label="Next >" id="nextButton" click="nextButton_clickHandler(event)" icon="@Embed('icons/Next.png')"  />	
-			<s:BitmapImage source="@Embed('icons/Previous.png')" />
+			<s:Button label="Next" id="nextButton" click="nextButton_clickHandler(event)" icon="@Embed('icons/Next.png')"  />	
 		</s:HGroup>
 		<s:Button label="&lt; Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
+		
 	</s:VGroup>
 
 </s:View>
