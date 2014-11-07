@@ -24,11 +24,16 @@
 		<![CDATA[
 			import mx.events.FlexEvent;
 			
+			public var correctAnswerId : String;
+			
 			[Bindable]
 			public var currentQuestion:Number;
 			
 			[Bindable]
 			public var questionContentStr:String;
+			
+			[Bindable]
+			public var imageUrlContents:String;
 			
 			
 			protected function contentCreationCompleted(event:FlexEvent):void
@@ -66,10 +71,80 @@
 				navigator.popView();
 			}
 			
+			protected function rightSelection(event:MouseEvent):void
+			{
+				trace("Yea you got it right!");	
+				nextButton_clickHandler(event);
+			}
+			
+			protected function wrongSelection(event:MouseEvent):void
+			{
+				trace("Bummer you missed the question...");	
+			}
+			
 			protected function updateQuestionInfo():void 
 			{
 				var question:XML = data.questions[currentQuestion];
-				questionContentStr = question.questionContent;
+				if (question) {
+					questionContentStr = question.questionContent;
+					var imageUrlStr : String = String(question.imageInfo);
+					var answers: XMLList = question.answers.answer;
+					if (imageUrlStr.length > 0) {
+						questionImage.visible = true;
+						questionImage.percentWidth=50;
+						questionContent.percentWidth=50;
+						loadImage(question.imageInfo);
+					} else {	// make the text take up all of the space
+						questionImage.percentWidth=0;
+						questionContent.percentWidth=100;
+						questionImage.width=0;
+						questionImage.visible = false;
+					} 
+					if (answers.length() > 0) {
+						answerTextArea.visible = false;
+						answerTextArea.includeInLayout = false;
+						multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
+						for (var i : int; i < answers.length(); i++) {							
+							var answerXML : XML = answers[i];
+							var answerContents : String = answerXML[0];		// to get the contents out of the xml node reference first object
+							var myButton : Button = new Button();
+							myButton.label = answerContents;
+							var isCorrect : String = answerXML.@correct;
+							if (isCorrect == "true") {
+								myButton.addEventListener( 'click', rightSelection );
+							} else {
+								myButton.addEventListener( 'click', wrongSelection );
+							}
+							trace("answer: " + answerContents + " correct: " + isCorrect);
+							multipleChoiceSection.addElement(myButton);
+							multipleChoiceSection.includeInLayout=true;
+							multipleChoiceSection.visible = true;
+						}
+					} else {
+						answerTextArea.visible = true;
+						answerTextArea.includeInLayout = true;
+						multipleChoiceSection.includeInLayout = false;
+						multipleChoiceSection.visible = false;
+					}
+				}
+			}
+			
+			private function loadImage(filePath:String):void
+			{
+				var loader:Loader = new Loader();
+				loader.contentLoaderInfo.addEventListener(Event.COMPLETE,
+					handleLoadComplete);
+				/*				loader.load( new URLRequest(
+				'http://covers.oreilly.com/images/9780596529857/bkt.gif' ) ); */
+				
+				loader.load( new URLRequest(
+					filePath ) );
+			}
+			
+			private function handleLoadComplete( evt:Event ):void
+			{
+				var bmp:Bitmap = ( evt.target as LoaderInfo ).content as Bitmap;
+				questionImage.source = bmp;
 			}
 			
 		]]>
@@ -100,19 +175,23 @@
 		</s:Group>
 		
 		<mx:Spacer height="15%"/>
-		<s:HGroup width="90%">
-			<s:Label id="questionContent" text="{questionContentStr}" width="50%" styleName="questionContentStyle" />
-			<s:Image id="questionImage" source="" width="50%" />
+		<s:HGroup width="100%">
+			<s:Label id="questionContent" text="{questionContentStr}" width="100%" styleName="questionContentStyle" paddingRight="10" />
+			<s:BitmapImage  id="questionImage" source="" fillMode="scale" scaleMode="stretch" maxWidth="400" maxHeight="300"  />
 		</s:HGroup>
-
-		<mx:Spacer height="15%"/>
-		<s:TextArea id="answer" />
+		<mx:Spacer height="10%"/>
+		<s:HGroup id="answerSection" width="100%" gap="40" horizontalAlign="center">
+			<s:TextArea id="answerTextArea" />			
+		</s:HGroup>
+		<s:HGroup id="multipleChoiceSection" width="100%" gap="40" horizontalAlign="center" includeInLayout="false">
+		</s:HGroup>
 	</s:VGroup>
 	<s:VGroup verticalAlign="bottom" paddingBottom="40" width="500">
 		<s:HGroup paddingBottom="15" width="100%" verticalAlign="bottom">
-			<s:Button label="&lt; Previous" id="previousButton" click="previousButton_clickHandler(event)" />
+			<s:Button label="Previous" id="previousButton" click="previousButton_clickHandler(event)" icon="@Embed('icons/Previous.png')" />
 			<mx:Spacer width="100%"/>
-			<s:Button label="Next >" id="nextButton" click="nextButton_clickHandler(event)" />	
+			<s:Button label="Next >" id="nextButton" click="nextButton_clickHandler(event)" icon="@Embed('icons/Next.png')"  />	
+			<s:BitmapImage source="@Embed('icons/Previous.png')" />
 		</s:HGroup>
 		<s:Button label="&lt; Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
 	</s:VGroup>

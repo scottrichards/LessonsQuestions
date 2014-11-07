@@ -27,7 +27,7 @@
 				var lessonXML:XML = parentApplication.lessonsXML.lesson[item.data];
 				var lessonObject:Object = new Object();
 				lessonObject.lessonName = String(lessonXML.lessonName);
-				var questionList:XMLList = lessonXML.question;
+				var questionList:XMLList = lessonXML.questions.question;
 				lessonObject.questions = questionList;
 				trace("# of questions: " + questionList.length());
 				trace("lessonName: " + lessonXML.lessonName);
