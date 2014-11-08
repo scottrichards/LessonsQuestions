@@ -8,38 +8,44 @@
       <question questionType="keyboardEntry" numAnswers="1" answer1Type="Integer">
         <questionNumber>1</questionNumber>
         <questionContent>456 + 213 =  </questionContent>
+		<answer>669</answer>
       </question>
-      <question questionType="keyboardEntry" numAnswers="1" answer1Type="Time">
+      <question questionType="timeEntry" numAnswers="1">
         <questionNumber>2</questionNumber>
         <questionContent>What time is it </questionContent>
+		<answer>2:20</answer>
 		<imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/Clock%20220.ai.png" question="2" type="question">images/Clock220.ai.png</imageInfo>
       </question>
       <question questionType="keyboardEntry" numAnswers="1" answer1Type="Integer">
         <questionNumber>3</questionNumber>
         <questionContent>548 − 235 =  </questionContent>
+		<answer>669</answer>
       </question>
-      <question status="rewrite">
+      <question questionType="shapeName">
         <questionNumber>4</questionNumber>
-        <questionContent>Draw a shape with 5 sides and 5 angles.  </questionContent>
+        <questionContent>Name a shape with 5 sides and 5 angles.</questionContent>
+		<answer>pentagon</answer>
       </question>
-      <question status="rewrite">
+      <question status="symbol">
         <questionNumber>5</questionNumber>
-        <questionContent>Write the symbol that tells you to add. </questionContent>
+        <questionContent>Write the symbol that tells you to add.</questionContent>
+		<answer>+</answer>
       </question>
-      <question questionType="keyboardEntry" numAnswers="3" answer1Type="Integer">
+      <question questionType="ADDSTATE" numAnswers="3" answer1Type="Integer">
         <questionNumber>6</questionNumber>
         <questionContent>Count the objects in the array.  Write an addition sentence to show the sum.  +   %d   +  %d       =  %d          </questionContent>
 		<imageInfo type="question">images/3 x 4 ARRAY.ai.png</imageInfo>
       </question>
-      <question questionType="multipleChoice" numAnswers="1" answer1Type="Integer">
+      <question questionType="symbol">
         <questionNumber>7</questionNumber>
         <questionContent>434  443 </questionContent>
       </question>
-      <question questionType="keyboardEntry" numAnswers="1" answer1Type="Integer">
+      <question questionType="keyboardEntry">
         <questionNumber>8</questionNumber>
         <questionContent>14 + 12 + 15 =  </questionContent>
+		<answer>41</answer>
       </question>
-      <question questionType="keyboardEntry" numAnswers="3" answer1Type="Integer">
+      <question questionType="???" numAnswers="3" answer1Type="Integer">
         <questionNumber>9</questionNumber>
         <questionContent>Count by tens.   50, 60,    %d  ,   %d      ,    %d     , 100 </questionContent>
       </question>
@@ -210,15 +216,16 @@
       </question>
       <question>
         <questionNumber>2</questionNumber>
-        <questionContent>Look at the picture.  Is the number of  trees even or odd ?  </questionContent>
+        <questionContent>Look at the picture.  Is the number of trees even or odd ?</questionContent>
       </question>
       <question>
         <questionNumber>3</questionNumber>
         <questionContent>554 + 223 = ? </questionContent>
       </question>
-      <question>
+      <question questionType="symbol">
         <questionNumber>4</questionNumber>
-        <questionContent>Write the symbol that tells you to subtract. </questionContent>
+        <questionContent>Write the symbol that tells you to subtract.</questionContent>
+		<answer>-</answer>
       </question>
       <question>
         <questionNumber>5</questionNumber>
@@ -230,11 +237,11 @@
       </question>
       <question>
         <questionNumber>7</questionNumber>
-        <questionContent>Draw 2 quadrilaterals. </questionContent>
+        <questionContent>Draw 2 quadrilaterals.</questionContent>
       </question>
       <question>
         <questionNumber>8</questionNumber>
-        <questionContent>Is 41 closer to 40 or 50?  </questionContent>
+        <questionContent>Is 41 closer to 40 or 50?</questionContent>
       </question>
       <question>
         <questionNumber>9</questionNumber>

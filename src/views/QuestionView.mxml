@@ -29,7 +29,7 @@
 			
 			public var correctAnswerId : String;
 			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3");
-			
+			public var currentQuestionXML:XML;
 			
 			[Bindable]
 			public var currentQuestion:Number;
@@ -53,6 +53,7 @@
 			
 			protected function nextButton_clickHandler(event:MouseEvent):void
 			{
+				checkAnswer();
 				currentQuestion++;
 				previousButton.enabled = true;
 				if (currentQuestion + 1 >= data.questions.length()) {
@@ -112,6 +113,7 @@
 			
 			protected function updateQuestionType(question:XML):void{
 				if (question.@questionType== "keyboardEntry") {
+					answerSection.removeAllElements();	// remove any items that had been previously added
 					answerTextArea.visible = false;
 					answerTextArea.includeInLayout = false;
 					var numericKeypard : NumericKeypad = new NumericKeypad();
@@ -124,17 +126,17 @@
 			
 			protected function updateQuestionInfo():void 
 			{
-				var question:XML = data.questions[currentQuestion];
-				if (question) {
-					updateQuestionType(question);
-					questionContentStr = question.questionContent;
-					var imageUrlStr : String = String(question.imageInfo);
-					var answers: XMLList = question.answers.answer;
+				currentQuestionXML = data.questions[currentQuestion];
+				if (currentQuestionXML) {
+					updateQuestionType(currentQuestionXML);
+					questionContentStr = currentQuestionXML.questionContent;
+					var imageUrlStr : String = String(currentQuestionXML.imageInfo);
+					var answers: XMLList = currentQuestionXML.answers.answer;
 					if (imageUrlStr.length > 0) {
 						questionImage.visible = true;
 						questionImage.percentWidth=50;
 						questionContent.percentWidth=50;
-						loadImage(question.imageInfo);
+						loadImage(currentQuestionXML.imageInfo);
 						questionImage.maxHeight=300;
 					} else {	// make the text take up all of the space
 						questionImage.percentWidth=0;
@@ -169,6 +171,16 @@
 						multipleChoiceSection.includeInLayout = false;
 						multipleChoiceSection.visible = false;
 					}
+				}
+			}
+			
+			private function checkAnswer():void
+			{
+				if (currentQuestionXML.@questionType== "keyboardEntry") {
+					var answerNode:XMLList = currentQuestionXML.answer;
+					var answerContents:String = answerNode[0];
+					trace("The correct answer is: " + answerContents);
+
 				}
 			}
 			
