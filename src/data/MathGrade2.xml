@@ -19,26 +19,33 @@
       <question questionType="keyboardEntry" numAnswers="1" answer1Type="Integer">
         <questionNumber>3</questionNumber>
         <questionContent>548 − 235 =  </questionContent>
-		<answer>669</answer>
+		<answer>313</answer>
       </question>
       <question questionType="shapeName">
         <questionNumber>4</questionNumber>
         <questionContent>Name a shape with 5 sides and 5 angles.</questionContent>
 		<answer>pentagon</answer>
       </question>
-      <question status="symbol">
+      <question status="symbolOperators">
         <questionNumber>5</questionNumber>
         <questionContent>Write the symbol that tells you to add.</questionContent>
 		<answer>+</answer>
       </question>
       <question questionType="ADDSTATE" numAnswers="3" answer1Type="Integer">
         <questionNumber>6</questionNumber>
-        <questionContent>Count the objects in the array.  Write an addition sentence to show the sum.  +   %d   +  %d       =  %d          </questionContent>
+        <questionContent>Count the objects in the array.  Write an addition sentence to show the sum.  %d +   %d   +  %d       =  %d          </questionContent>
 		<imageInfo type="question">images/3 x 4 ARRAY.ai.png</imageInfo>
+		<answers>
+			<answer>4</answer>
+			<answer>4</answer>
+			<answer>4</answer>
+			<answer>12</answer>
+		</answers>
       </question>
-      <question questionType="symbol">
+      <question questionType="symbolEquality">
         <questionNumber>7</questionNumber>
-        <questionContent>434  443 </questionContent>
+        <questionContent>434  443</questionContent>
+		<answer>&lt;</answer>
       </question>
       <question questionType="keyboardEntry">
         <questionNumber>8</questionNumber>
