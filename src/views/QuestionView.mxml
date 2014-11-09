@@ -29,6 +29,7 @@
 			import components.OperatorSymbols;
 			import components.EqualitySymbols;
 			import components.Time;
+			import components.ImperialMeasure;
 			
 			public var correctAnswerId : String;
 			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
@@ -38,6 +39,7 @@
 			public var operatorSymbols : OperatorSymbols;
 			public var equalitySymbols : EqualitySymbols;
 			public var timeInput : Time;
+			public var measurement : ImperialMeasure;
 			
 			[Bindable]
 			public var currentQuestion:Number;
@@ -139,7 +141,10 @@
 				}  else if (question.@questionType== "time") {
 					timeInput = new Time();
 					addToAnswer(timeInput);
-				} else {
+				}  else if (question.@questionType== "measurementImperial") {
+					measurement = new ImperialMeasure();
+					addToAnswer(measurement);
+				}  else {
 					numericKeypad = new NumericKeypad();
 					addToAnswer(numericKeypad);
 				}
@@ -211,6 +216,8 @@
 				} else if (currentQuestionXML.@questionType== "symbolEquality") {
 					userAnswer = this.equalitySymbols.getText();
 				} else if (currentQuestionXML.@questionType== "time") {
+					userAnswer = this.timeInput.getText();
+				} else if (currentQuestionXML.@questionType== "measurementImperial") {
 					userAnswer = this.timeInput.getText();
 				}
 				trace("The correct answer is: " + answerContents + " you entered: " + userAnswer);

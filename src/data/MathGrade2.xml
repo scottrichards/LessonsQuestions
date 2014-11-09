@@ -86,10 +86,11 @@
         <questionNumber>14</questionNumber>
         <questionContent>Ellen bought a pen for $1.50 and a tablet for $1.35.  How much money did Ellen spend on these supplies? </questionContent>
       </question>
-      <question questionType="keyboardEntry" numAnswers="1" answer1Type="Measurement">
+      <question questionType="measurementImperial">
         <questionNumber>15</questionNumber>
         <questionContent>How long is the pencil?</questionContent>
 		<imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/ruler.ai.png" question="15" type="question">images/ruler.ai.png</imageInfo>
+		<answer>5"</answer>
       </question>
 
       <imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/102%20Pencil.eps.png" question="15" type="question"></imageInfo>

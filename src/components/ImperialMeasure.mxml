@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 initialize="componentInitHandler(event)"
+		 >
+	<fx:Script>
+		<![CDATA[
+			protected var feetHasFocus : Boolean;
+			protected var inchesHasFocus : Boolean;
+			
+			protected function componentInitHandler(event:Event):void {
+				trace("initialize Numeric Keypad");
+				feet.addEventListener(FocusEvent.FOCUS_IN,setFocusFeet);
+				inches.addEventListener(FocusEvent.FOCUS_IN,setFocusInches);
+			}
+			
+			protected function keyPadClickHandler(event:MouseEvent):void
+			{
+				var inputCharacter : String = event.currentTarget.label;
+				var selectedTextInput : TextInput;
+				selectedTextInput = feetHasFocus ? feet : inches;
+				if (inputCharacter == "delete") {
+					var previousStr : String = selectedTextInput.text;
+					selectedTextInput.text = selectedTextInput.text.substr(0,previousStr.length-1);
+				} else 
+					selectedTextInput.text += inputCharacter;
+			}
+			
+			protected function setFocusFeet(event:FocusEvent):void
+			{
+				trace("hours has focus.");
+				feetHasFocus = true;
+				inchesHasFocus = false;
+			}
+			
+			protected function setFocusInches(event:FocusEvent):void
+			{
+				trace("minutes has focus.");
+				feetHasFocus = false;
+				inchesHasFocus = true;
+
+			}
+
+			public function getText():String
+			{
+				var lengthString:String = "";
+				if (feet.text.length) {
+					lengthString = feet.text + "'" ;
+				}
+				if (inches.text.length) {
+					lengthString += inches.text + '"';
+				}
+				return lengthString;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:HGroup>
+		<s:TextInput id="feet" width="60" />
+		<s:Label>'</s:Label>
+		<s:TextInput id="inches" width="60"/>
+		<s:Label>"</s:Label>
+	</s:HGroup>
+		
+	<s:HGroup>	
+		<s:Button label="1" click="keyPadClickHandler(event)"/>
+		<s:Button label="2" click="keyPadClickHandler(event)"/>
+		<s:Button label="3" click="keyPadClickHandler(event)"/>
+		<s:Button label="4" click="keyPadClickHandler(event)"/>
+		<s:Button label="5" click="keyPadClickHandler(event)"/>
+	</s:HGroup>
+	<s:HGroup>
+		<s:Button label="6" click="keyPadClickHandler(event)"/>
+		<s:Button label="7" click="keyPadClickHandler(event)"/>
+		<s:Button label="8" click="keyPadClickHandler(event)"/>
+		<s:Button label="9" click="keyPadClickHandler(event)"/>
+		<s:Button label="0" click="keyPadClickHandler(event)" />
+		<s:Button label="." click="keyPadClickHandler(event)"/>
+		<s:Button label="delete" click="keyPadClickHandler(event)" />
+	</s:HGroup>
+</s:VGroup>
