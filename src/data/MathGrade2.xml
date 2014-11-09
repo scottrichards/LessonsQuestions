@@ -10,9 +10,9 @@
         <questionContent>456 + 213 =  </questionContent>
 		<answer>669</answer>
       </question>
-      <question questionType="timeEntry" numAnswers="1">
+      <question questionType="time" numAnswers="1">
         <questionNumber>2</questionNumber>
-        <questionContent>What time is it </questionContent>
+        <questionContent>What time is it</questionContent>
 		<answer>2:20</answer>
 		<imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/Clock%20220.ai.png" question="2" type="question">images/Clock220.ai.png</imageInfo>
       </question>
@@ -26,9 +26,9 @@
         <questionContent>Name a shape with 5 sides and 5 angles.</questionContent>
 		<answer>pentagon</answer>
       </question>
-      <question status="symbolOperators">
+      <question questionType="symbolOperators">
         <questionNumber>5</questionNumber>
-        <questionContent>Write the symbol that tells you to add.</questionContent>
+        <questionContent>Select the symbol that tells you to add.</questionContent>
 		<answer>+</answer>
       </question>
       <question questionType="ADDSTATE" numAnswers="3" answer1Type="Integer">
@@ -44,7 +44,7 @@
       </question>
       <question questionType="symbolEquality">
         <questionNumber>7</questionNumber>
-        <questionContent>434  443</questionContent>
+        <questionContent>434 ( ) 443</questionContent>
 		<answer>&lt;</answer>
       </question>
       <question questionType="keyboardEntry">

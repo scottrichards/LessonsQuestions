@@ -5,19 +5,45 @@
 		 >
 	<fx:Script>
 		<![CDATA[
+			protected var hoursHasFocus : Boolean;
+			protected var minutesHasFocus : Boolean;
 			
 			protected function componentInitHandler(event:Event):void {
 				trace("initialize Numeric Keypad");
+				hours.addEventListener(FocusEvent.FOCUS_IN,setFocusHours);
+				minutes.addEventListener(FocusEvent.FOCUS_IN,setFocusMinutes);
 			}
 			
 			protected function keyPadClickHandler(event:MouseEvent):void
 			{
 				var inputCharacter : String = event.currentTarget.label;
+				var selectedTextInput : TextInput;
+				selectedTextInput = hoursHasFocus ? hours : minutes;
 				if (inputCharacter == "delete") {
-					var previousStr : String = textInputField.text;
-					textInputField.text = textInputField.text.substr(0,previousStr.length-1);
+					var previousStr : String = selectedTextInput.text;
+					selectedTextInput.text = selectedTextInput.text.substr(0,previousStr.length-1);
 				} else 
-					textInputField.text += inputCharacter;
+					selectedTextInput.text += inputCharacter;
+			}
+			
+			protected function setFocusHours(event:FocusEvent):void
+			{
+				trace("hours has focus.");
+				hoursHasFocus = true;
+				minutesHasFocus = false;
+			}
+			
+			protected function setFocusMinutes(event:FocusEvent):void
+			{
+				trace("minutes has focus.");
+				hoursHasFocus = false;
+				minutesHasFocus = true;
+
+			}
+
+			public function getText():String
+			{
+				return hours.text + ":" + minutes.text;
 			}
 			
 		]]>
@@ -25,9 +51,12 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:TextInput id="textInputField">
+	<s:HGroup>
+		<s:TextInput id="hours" width="60" />
+		<s:Label>:</s:Label>
+		<s:TextInput id="minutes" width="60"/>	
+	</s:HGroup>
 		
-	</s:TextInput>
 	<s:HGroup>	
 		<s:Button label="1" click="keyPadClickHandler(event)"/>
 		<s:Button label="2" click="keyPadClickHandler(event)"/>

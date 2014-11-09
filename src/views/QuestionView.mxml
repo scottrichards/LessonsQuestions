@@ -26,10 +26,18 @@
 			import mx.events.FlexEvent;
 			
 			import components.NumericKeypad;
+			import components.OperatorSymbols;
+			import components.EqualitySymbols;
+			import components.Time;
 			
 			public var correctAnswerId : String;
-			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3");
-			public var currentQuestionXML:XML;
+			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
+			public var currentQuestionXML : XML;
+			
+			public var numericKeypad : NumericKeypad;	// TO DO inherit from subclass for all answer types
+			public var operatorSymbols : OperatorSymbols;
+			public var equalitySymbols : EqualitySymbols;
+			public var timeInput : Time;
 			
 			[Bindable]
 			public var currentQuestion:Number;
@@ -53,13 +61,24 @@
 			
 			protected function nextButton_clickHandler(event:MouseEvent):void
 			{
-				checkAnswer();
+				if (checkAnswer()) {
+					goToNextQuestion();
+				}
+			}
+			
+			protected function passClickHandler(event:MouseEvent):void
+			{
+				goToNextQuestion();
+			}
+			
+			protected function goToNextQuestion():void
+			{
 				currentQuestion++;
 				previousButton.enabled = true;
 				if (currentQuestion + 1 >= data.questions.length()) {
 					nextButton.enabled = false;
 				}
-				updateQuestionInfo();
+				updateQuestionInfo();	
 			}
 			
 			protected function previousButton_clickHandler(event:MouseEvent):void
@@ -77,11 +96,16 @@
 				navigator.popView();
 			}
 			
-			protected function rightSelection(event:MouseEvent):void
+			protected function rightSelection():void
 			{
 				trace("Yea you got it right!");	
-				nextButton_clickHandler(event);
 				playCorrectSound();
+			}
+			
+			protected function wrongSelection():void
+			{
+				trace("Bummer you missed the question...");
+				playWrongSound();
 			}
 			
 			protected function playCorrectSound():void{
@@ -103,25 +127,28 @@
 				s.play();
 			}
 			
-			
-			
-			protected function wrongSelection(event:MouseEvent):void
+			protected function updateQuestionType(question:XML):void
 			{
-				trace("Bummer you missed the question...");
-				playWrongSound();
+				trace("questionType: " + question.@questionType);
+				if (question.@questionType== "symbolOperators") {
+					operatorSymbols = new OperatorSymbols();
+					addToAnswer(operatorSymbols);
+				} else if (question.@questionType== "symbolEquality") {
+					equalitySymbols = new EqualitySymbols();
+					addToAnswer(equalitySymbols);
+				}  else if (question.@questionType== "time") {
+					timeInput = new Time();
+					addToAnswer(timeInput);
+				} else {
+					numericKeypad = new NumericKeypad();
+					addToAnswer(numericKeypad);
+				}
 			}
 			
-			protected function updateQuestionType(question:XML):void{
-				if (question.@questionType== "keyboardEntry") {
-					answerSection.removeAllElements();	// remove any items that had been previously added
-					answerTextArea.visible = false;
-					answerTextArea.includeInLayout = false;
-					var numericKeypard : NumericKeypad = new NumericKeypad();
-					answerSection.addElement(numericKeypard);
-				} else {
-					answerTextArea.visible = true;
-					answerTextArea.includeInLayout = true;
-				}
+			protected function addToAnswer(answerToAdd:*):void
+			{
+				answerSection.removeAllElements();	// remove any items that had been previously added
+				answerSection.addElement(answerToAdd);
 			}
 			
 			protected function updateQuestionInfo():void 
@@ -146,8 +173,6 @@
 						questionImage.visible = false;
 					} 
 					if (answers.length() > 0) {
-						answerTextArea.visible = false;
-						answerTextArea.includeInLayout = false;
 						multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
 						for (var i : int; i < answers.length(); i++) {							
 							var answerXML : XML = answers[i];
@@ -166,21 +191,35 @@
 							multipleChoiceSection.visible = true;
 						}
 					} else {
-//						answerTextArea.visible = true;
-//						answerTextArea.includeInLayout = true;
 						multipleChoiceSection.includeInLayout = false;
 						multipleChoiceSection.visible = false;
 					}
 				}
 			}
 			
-			private function checkAnswer():void
+			private function checkAnswer():Boolean
 			{
+				var answerNode:XMLList;
+				var answerContents:String;
+				var userAnswer:String;
+				answerNode = currentQuestionXML.answer;
+				answerContents = answerNode[0];
 				if (currentQuestionXML.@questionType== "keyboardEntry") {
-					var answerNode:XMLList = currentQuestionXML.answer;
-					var answerContents:String = answerNode[0];
-					trace("The correct answer is: " + answerContents);
-
+					userAnswer = numericKeypad.textInputField.text;
+				} else if (currentQuestionXML.@questionType== "symbolOperators") {
+					userAnswer = this.operatorSymbols.getText();
+				} else if (currentQuestionXML.@questionType== "symbolEquality") {
+					userAnswer = this.equalitySymbols.getText();
+				} else if (currentQuestionXML.@questionType== "time") {
+					userAnswer = this.timeInput.getText();
+				}
+				trace("The correct answer is: " + answerContents + " you entered: " + userAnswer);
+				if (answerContents == userAnswer) {
+					rightSelection();
+					return true;
+				} else {
+					wrongSelection();
+					return false;
 				}
 			}
 			
@@ -235,8 +274,7 @@
 			<s:BitmapImage  id="questionImage" source="" fillMode="scale" scaleMode="stretch" maxWidth="400" maxHeight="300"  />
 		</s:HGroup>
 		<mx:Spacer height="10%"/>
-		<s:HGroup id="answerSection" width="100%" gap="40" horizontalAlign="center">
-			<s:TextArea id="answerTextArea" />	
+		<s:HGroup id="answerSection" width="100%" gap="40" horizontalAlign="center">	
 		</s:HGroup>
 		<s:HGroup id="multipleChoiceSection" width="100%" gap="40" horizontalAlign="center" includeInLayout="false">
 		</s:HGroup>
@@ -248,7 +286,12 @@
 			<mx:Spacer width="100%"/>
 			<s:Button label="Next" id="nextButton" click="nextButton_clickHandler(event)" icon="@Embed('icons/Next.png')"  />	
 		</s:HGroup>
-		<s:Button label="&lt; Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
+		<s:HGroup width="100%">
+			<s:Button label="&lt; Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
+			<mx:Spacer width="100%" />
+			<s:Button label="Pass >" click="passClickHandler(event)" />
+		</s:HGroup>
+	
 		
 	</s:VGroup>
 

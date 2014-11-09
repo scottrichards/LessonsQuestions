@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 horizontalAlign="center">
+	<fx:Style>
+		.labelStyle { 
+			fontSize: 30;
+			fontWeight: bold;
+		}
+		
+		.buttonStyle { 
+			fontSize: 22;
+		}
+		
+	</fx:Style>
+	
+	<fx:Script>
+		<![CDATA[
+			
+			protected function clickHandler(event:MouseEvent):void
+			{
+				var inputCharacter : String = event.currentTarget.label;
+				textLabel.text = inputCharacter;
+			}
+			
+			public function getText():String
+			{
+				return textLabel.text;
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Label id="textLabel" styleName="labelStyle" paddingBottom="10"  />
+	<s:HGroup gap="30" paddingTop="10">
+		<s:Button label="&lt;" click="clickHandler(event)" width="45"/>
+		<s:Button label=">" click="clickHandler(event)" width="45"/>
+		<s:Button label="=" click="clickHandler(event)" width="45"/>
+	</s:HGroup>
+</s:VGroup>
