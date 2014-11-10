@@ -17,36 +17,46 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import spark.components.Button;
 			protected const NUMBER_OF_ANSWERS:uint = 4;
 			public var distractors :Array = new Array("Cube", "Cone", "Cylinder", "Rectangle", "Square", "Pentagon", "Hexagon");
 			protected var selectedButtonLabel : String;
+			protected var answer : String;
+			protected var randomCorrectNumber : uint;
 			
 			protected function componentInitHandler(event:Event):void {
 				var distractorList : Dictionary = new Dictionary();
-				var numDisctactors : uint = 0;
+				var numDistractors : uint = 0;
 				do {
-					var randomInt:uint = uint(Math.random() * distractors.length);
-					var newDistractor:String = distractors[randomInt];
-					if (distractorList[newDistractor] == null) {
-						numDisctactors++;
-						distractorList[newDistractor] = newDistractor;
+					if (randomCorrectNumber == numDistractors) {
+						numDistractors++;
+						addButton("button" + numDistractors.toString(),answer);
+					} else {
+						var randomInt:uint = uint(Math.random() * distractors.length);
+						var newDistractor:String = distractors[randomInt];
+						if (newDistractor != answer && distractorList[newDistractor] == null) {
+							distractorList[newDistractor] = newDistractor;
+							numDistractors++;
+							addButton("button" + numDistractors.toString(),newDistractor);
+						}	
 					}
-//					distractorList.push(newDistractor);
-				} while (numDisctactors < NUMBER_OF_ANSWERS - 1);
-				var currentItem:uint;
-				for (var key:Object in distractorList) {
-					trace("key: " + key + " value: " + distractorList[key]);
-					switch (currentItem) {
-						case 0 : button1.label = distractorList[key];
-								break;
-						case 1 : button2.label = distractorList[key];
-							break;
-						case 2 : button3.label = distractorList[key];
-							break;
-					}
-					currentItem++;
-				}
-				
+				} while (numDistractors < NUMBER_OF_ANSWERS);				
+			}
+			
+			protected function addButton(id:String,label:String):void 
+			{
+				var button:Button = new Button();
+				button.id = id;
+				button.label = label;
+				button.addEventListener(MouseEvent.CLICK,clickHandler);
+				buttonGroup.addElement(button);
+			}
+			
+			public function setAnswer(answerStr:String):void 
+			{
+				this.answer = answerStr;
+				randomCorrectNumber = uint(Math.random() * NUMBER_OF_ANSWERS);
+				trace("correct answer #: " + randomCorrectNumber + " answer = " + answerStr);
 			}
 			
 			protected function clickHandler(event:MouseEvent):void
@@ -68,12 +78,6 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:Label id="textLabel" styleName="labelStyle" paddingBottom="10"  />
-	<s:HGroup gap="30" paddingTop="10">
-		<s:Button id="button1" label="" click="clickHandler(event)" />
-		<s:Button id="button2" label="" click="clickHandler(event)" />
-	</s:HGroup>
-	<s:HGroup gap="30" paddingTop="10">
-		<s:Button id="button3" label="" click="clickHandler(event)" />
-		<s:Button id="button4" label="" click="clickHandler(event)" />
+	<s:HGroup id="buttonGroup" gap="30" paddingTop="10">
 	</s:HGroup>
 </s:VGroup>
