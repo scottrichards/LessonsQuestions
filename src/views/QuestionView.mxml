@@ -31,6 +31,7 @@
 			import components.NumericKeypad;
 			import components.OperatorSymbols;
 			import components.Time;
+			import components.ShapeNames;
 			
 			public var correctAnswerId : String;
 			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
@@ -42,6 +43,7 @@
 			public var timeInput : Time;
 			public var measurement : ImperialMeasure;
 			public var currency : Currency;
+			public var shapeNames : ShapeNames;
 			
 			[Bindable]
 			public var currentQuestion:Number;
@@ -155,7 +157,10 @@
 				}  else if (question.@questionType== "currency") {
 					currency = new Currency();
 					addToAnswer(currency);
-				}  else {
+				}  else if (question.@questionType== "shapeNames") {
+					shapeNames = new ShapeNames();
+					addToAnswer(shapeNames);
+				} else {
 					numericKeypad = new NumericKeypad();
 					addToAnswer(numericKeypad);
 				}

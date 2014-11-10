@@ -17,11 +17,35 @@
 	
 	<fx:Script>
 		<![CDATA[
-			
+			protected const NUMBER_OF_ANSWERS:uint = 4;
 			public var distractors :Array = new Array("Cube", "Cone", "Cylinder", "Rectangle", "Square", "Pentagon", "Hexagon");
 			protected var selectedButtonLabel : String;
 			
 			protected function componentInitHandler(event:Event):void {
+				var distractorList : Dictionary = new Dictionary();
+				var numDisctactors : uint = 0;
+				do {
+					var randomInt:uint = uint(Math.random() * distractors.length);
+					var newDistractor:String = distractors[randomInt];
+					if (distractorList[newDistractor] == null) {
+						numDisctactors++;
+						distractorList[newDistractor] = newDistractor;
+					}
+//					distractorList.push(newDistractor);
+				} while (numDisctactors < NUMBER_OF_ANSWERS - 1);
+				var currentItem:uint;
+				for (var key:Object in distractorList) {
+					trace("key: " + key + " value: " + distractorList[key]);
+					switch (currentItem) {
+						case 0 : button1.label = distractorList[key];
+								break;
+						case 1 : button2.label = distractorList[key];
+							break;
+						case 2 : button3.label = distractorList[key];
+							break;
+					}
+					currentItem++;
+				}
 				
 			}
 			
