@@ -159,6 +159,9 @@
 					addToAnswer(currency);
 				}  else if (question.@questionType== "shapeNames") {
 					shapeNames = new ShapeNames();
+					var answerNode:XMLList = currentQuestionXML.answer;
+					var answerContents:String = answerNode[0];
+					shapeNames.setAnswer(answerContents);
 					addToAnswer(shapeNames);
 				} else {
 					numericKeypad = new NumericKeypad();
@@ -237,6 +240,8 @@
 					userAnswer = timeInput.getText();
 				} else if (currentQuestionXML.@questionType== "currency") {
 					userAnswer = currency.getText();
+				} else if (currentQuestionXML.@questionType== "shapeNames") {
+					userAnswer = shapeNames.getText();
 				}
 				trace("The correct answer is: " + answerContents + " you entered: " + userAnswer);
 				if (answerContents == userAnswer) {
