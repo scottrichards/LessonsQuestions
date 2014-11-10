@@ -82,9 +82,10 @@
         <questionNumber>13</questionNumber>
         <questionContent>Write the number using base-ten numerals.      15 tens </questionContent>
       </question>
-      <question questionType="keyboardEntry" numAnswers="1" answer1Type="Currency">
+      <question questionType="currency">
         <questionNumber>14</questionNumber>
         <questionContent>Ellen bought a pen for $1.50 and a tablet for $1.35.  How much money did Ellen spend on these supplies? </questionContent>
+		<answer>2.85</answer>
       </question>
       <question questionType="measurementImperial">
         <questionNumber>15</questionNumber>

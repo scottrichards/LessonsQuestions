@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 initialize="componentInitHandler(event)"
+		 creationComplete="creationCompleted(event)"
+		 >
+	<fx:Style>
+		.labelStyle { 
+			fontSize: 30;
+			fontWeight: bold;
+		}
+		
+		.buttonStyle { 
+			fontSize: 22;
+		}
+		
+	</fx:Style>
+	<fx:Script>
+		<![CDATA[
+			protected var dollarsHasFocus : Boolean;
+			protected var centsHasFocus : Boolean;
+			
+			protected function componentInitHandler(event:Event):void {
+				trace("initialize Numeric Keypad");
+				dollars.addEventListener(FocusEvent.FOCUS_IN,setFocusDollars);
+				dollars.addEventListener(KeyboardEvent.KEY_DOWN,dollarsKeyDownHandler);
+				dollars.addEventListener(KeyboardEvent.KEY_UP,dollarsKeyUpHandler);
+				cents.addEventListener(KeyboardEvent.KEY_DOWN,centsKeyDownHandler);
+				cents.addEventListener(FocusEvent.FOCUS_IN,setFocusCents);
+			}
+			
+			protected function creationCompleted(event:Event):void
+			{
+				dollars.setFocus();
+			}
+			
+			protected function keyPadClickHandler(event:MouseEvent):void
+			{
+				var inputCharacter : String = event.currentTarget.label;
+				var selectedTextInput : TextInput;
+				selectedTextInput = dollarsHasFocus ? dollars : cents;
+				if (inputCharacter == "delete") {
+					var previousStr : String = selectedTextInput.text;
+					selectedTextInput.text = selectedTextInput.text.substr(0,previousStr.length-1);
+				} else 
+					selectedTextInput.text += inputCharacter;
+			}
+			
+			protected function dollarsKeyDownHandler(event:KeyboardEvent):void 
+			{
+				trace("Dollars Key Down: " + String.fromCharCode(event.charCode) +         " (character code: " + event.charCode + ")"); 
+				if (String.fromCharCode(event.charCode) == '.') {
+					event.preventDefault();
+					event.stopImmediatePropagation();
+					event.stopPropagation();
+					cents.setFocus();
+				}
+			}
+			
+			protected function dollarsKeyUpHandler(event:KeyboardEvent):void 
+			{
+				trace("Key Up Event: " + String.fromCharCode(event.charCode) +         " (character code: " + event.charCode + ")"); 
+				if (String.fromCharCode(event.charCode) == '.') {
+					event.preventDefault();
+					event.stopImmediatePropagation();
+					event.stopPropagation();
+					cents.setFocus();
+				}
+			}
+			
+			protected function centsKeyDownHandler(event:KeyboardEvent):void 
+			{
+				trace("Key Pressed: " + String.fromCharCode(event.charCode) +         " (character code: " + event.charCode + ")"); 
+				if (String.fromCharCode(event.charCode) == '.') {
+					event.preventDefault();
+					event.stopImmediatePropagation();
+					event.stopPropagation();
+					cents.setFocus();
+				}
+			}
+			
+			protected function setFocusDollars(event:FocusEvent):void
+			{
+				trace("hours has focus.");
+				dollarsHasFocus = true;
+				centsHasFocus = false;
+			}
+			
+			protected function setFocusCents(event:FocusEvent):void
+			{
+				trace("minutes has focus.");
+				dollarsHasFocus = false;
+				centsHasFocus = true;
+
+			}
+
+			public function getText():String
+			{
+				return dollars.text + "." + cents.text;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:HGroup>
+		<s:Label styleName="labelStyle">$</s:Label>
+		<s:TextInput id="dollars" width="60" />
+		<s:Label styleName="labelStyle">.</s:Label>
+		<s:TextInput id="cents" width="60"/>	
+	</s:HGroup>
+		
+	<s:HGroup>	
+		<s:Button label="1" click="keyPadClickHandler(event)"/>
+		<s:Button label="2" click="keyPadClickHandler(event)"/>
+		<s:Button label="3" click="keyPadClickHandler(event)"/>
+		<s:Button label="4" click="keyPadClickHandler(event)"/>
+		<s:Button label="5" click="keyPadClickHandler(event)"/>
+	</s:HGroup>
+	<s:HGroup>
+		<s:Button label="6" click="keyPadClickHandler(event)"/>
+		<s:Button label="7" click="keyPadClickHandler(event)"/>
+		<s:Button label="8" click="keyPadClickHandler(event)"/>
+		<s:Button label="9" click="keyPadClickHandler(event)"/>
+		<s:Button label="0" click="keyPadClickHandler(event)" />
+		<s:Button label="." click="keyPadClickHandler(event)"/>
+		<s:Button label="delete" click="keyPadClickHandler(event)" />
+	</s:HGroup>
+</s:VGroup>

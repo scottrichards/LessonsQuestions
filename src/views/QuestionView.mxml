@@ -25,11 +25,12 @@
 		<![CDATA[
 			import mx.events.FlexEvent;
 			
+			import components.Currency;
+			import components.EqualitySymbols;
+			import components.ImperialMeasure;
 			import components.NumericKeypad;
 			import components.OperatorSymbols;
-			import components.EqualitySymbols;
 			import components.Time;
-			import components.ImperialMeasure;
 			
 			public var correctAnswerId : String;
 			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
@@ -40,6 +41,7 @@
 			public var equalitySymbols : EqualitySymbols;
 			public var timeInput : Time;
 			public var measurement : ImperialMeasure;
+			public var currency : Currency;
 			
 			[Bindable]
 			public var currentQuestion:Number;
@@ -75,20 +77,26 @@
 			
 			protected function goToNextQuestion():void
 			{
-				currentQuestion++;
-				previousButton.enabled = true;
-				if (currentQuestion + 1 >= data.questions.length()) {
-					nextButton.enabled = false;
-				}
-				updateQuestionInfo();	
+				goToQuestion(++currentQuestion);	
 			}
 			
 			protected function previousButton_clickHandler(event:MouseEvent):void
 			{
-				currentQuestion--;
-				nextButton.enabled = true;
+				goToQuestion(--currentQuestion);
+			}
+			
+			protected function goToQuestion(questionNumber:uint):void
+			{
+				currentQuestion = questionNumber;
 				if (currentQuestion == 0) {
 					previousButton.enabled = false;
+				} else {
+					previousButton.enabled = true;
+				}
+				if (currentQuestion + 1 >= data.questions.length()) {
+					nextButton.enabled = false;
+				} else {
+					nextButton.enabled = true;
 				}
 				updateQuestionInfo();
 			}
@@ -144,6 +152,9 @@
 				}  else if (question.@questionType== "measurementImperial") {
 					measurement = new ImperialMeasure();
 					addToAnswer(measurement);
+				}  else if (question.@questionType== "currency") {
+					currency = new Currency();
+					addToAnswer(currency);
 				}  else {
 					numericKeypad = new NumericKeypad();
 					addToAnswer(numericKeypad);
@@ -212,13 +223,15 @@
 				if (currentQuestionXML.@questionType== "keyboardEntry") {
 					userAnswer = numericKeypad.textInputField.text;
 				} else if (currentQuestionXML.@questionType== "symbolOperators") {
-					userAnswer = this.operatorSymbols.getText();
+					userAnswer = operatorSymbols.getText();
 				} else if (currentQuestionXML.@questionType== "symbolEquality") {
-					userAnswer = this.equalitySymbols.getText();
+					userAnswer = equalitySymbols.getText();
 				} else if (currentQuestionXML.@questionType== "time") {
-					userAnswer = this.timeInput.getText();
+					userAnswer = timeInput.getText();
 				} else if (currentQuestionXML.@questionType== "measurementImperial") {
-					userAnswer = this.timeInput.getText();
+					userAnswer = timeInput.getText();
+				} else if (currentQuestionXML.@questionType== "currency") {
+					userAnswer = currency.getText();
 				}
 				trace("The correct answer is: " + answerContents + " you entered: " + userAnswer);
 				if (answerContents == userAnswer) {
@@ -246,6 +259,12 @@
 			{
 				var bmp:Bitmap = ( evt.target as LoaderInfo ).content as Bitmap;
 				questionImage.source = bmp;
+			}
+			
+			protected function jumpToQuestionButton_clickHandler(event:MouseEvent):void
+			{
+				var questionToGoTo : String = jumpToQuestionTextInput.text;
+				goToQuestion(uint(questionToGoTo));
 			}
 			
 		]]>
@@ -296,6 +315,9 @@
 		<s:HGroup width="100%">
 			<s:Button label="&lt; Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
 			<mx:Spacer width="100%" />
+			<s:TextInput id="jumpToQuestionTextInput" width="40" />
+			<s:Button id="jumpToQuestionButton" label="Go" click="jumpToQuestionButton_clickHandler(event)" />
+			<mx:Spacer width="100%"/>
 			<s:Button label="Pass >" click="passClickHandler(event)" />
 		</s:HGroup>
 	
