@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   close="handleCloseEvent();">
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			
+			// Handle the close button and Cancel button.
+			private function handleCloseEvent():void {
+				PopUpManager.removePopUp(this);
+			}            
+			
+			// Handle the OK button.
+			private function handleOk():void {
+				// Check credentials (not shown) then remove pop up.
+				PopUpManager.removePopUp(this);
+			}
+			
+			public function setMessage(messageStr:String):void 
+			{
+				messageLabel.text = messageStr;
+			}
+		]]>
+	</fx:Script>
+	
+	<s:HGroup paddingLeft="20" paddingRight="20" paddingTop="20" paddingBottom="10" horizontalAlign="center">
+		<s:Label id="messageLabel" />
+	</s:HGroup>
+	<s:HGroup width="100%" horizontalAlign="center" paddingLeft="20" paddingRight="20" paddingTop="10" paddingBottom="20"> 
+		<s:Button label="OK"
+				  click="handleOk();" /> 
+	</s:HGroup> 
+</s:TitleWindow>
