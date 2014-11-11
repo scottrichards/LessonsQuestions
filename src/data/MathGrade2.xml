@@ -54,13 +54,13 @@
       </question>
       <question questionType="???" numAnswers="3" answer1Type="Integer">
         <questionNumber>9</questionNumber>
-        <questionContent>Count by tens.   50, 60,    %d  ,   %d      ,    %d     , 100 </questionContent>
+        <questionContent>Count by tens. 50, 60,<answer type="numeric">70</answer>, <answer type="numeric">80</answer>, <answer type="numeric">90</answer>, 100 </questionContent>
       </question>
-      <question questionType="multipleChoice" numAnswers="1" answer1Type="Integer">
+      <question questionType="multipleChoiceImage">
         <questionNumber>10</questionNumber>
         <questionContent>Circle the rectangle that has 10 square units. </questionContent>
       </question>
-      <question questionType="multipleChoice" numAnswers="2" answer1Type="Text">
+      <question questionType="multipleChoice">
         <questionNumber>11</questionNumber>
         <questionContent>Would Sari’s foot print be 18 meters long or 18 centimeters? </questionContent>
 		<answers>
@@ -80,7 +80,8 @@
       </question>
       <question questionType="keyboardEntry" numAnswers="1" answer1Type="Integer">
         <questionNumber>13</questionNumber>
-        <questionContent>Write the number using base-ten numerals.      15 tens </questionContent>
+        <questionContent>Write the number using base-ten numerals. 15 tens</questionContent>
+		<answer>150</answer>
       </question>
       <question questionType="currency">
         <questionNumber>14</questionNumber>
@@ -137,6 +138,8 @@
       <question>
         <questionNumber>1</questionNumber>
         <questionContent>What time is shown on the clock? </questionContent>
+		<imageInfo>images/Clock935.ai.png</imageInfo>
+		<answer></answer>
       </question>
       <question>
         <questionNumber>2</questionNumber>
@@ -144,7 +147,7 @@
       </question>
       <question>
         <questionNumber>3</questionNumber>
-        <questionContent>Of the 59 students in the second grade, 26 are in Room 2A.   How many students are in Room 2B? </questionContent>
+        <questionContent>Of the 59 students in the second grade, 26 are in Room 2A. How many students are in Room 2B? </questionContent>
       </question>
       <question>
         <questionNumber>4</questionNumber>

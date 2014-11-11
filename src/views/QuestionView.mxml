@@ -24,7 +24,8 @@
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
-			
+
+			import components.MyAlertPopUp;			
 			import components.Currency;
 			import components.EqualitySymbols;
 			import components.ImperialMeasure;
@@ -32,6 +33,8 @@
 			import components.OperatorSymbols;
 			import components.Time;
 			import components.ShapeNames;
+			import components.MultipleChoice;
+
 			
 			public var correctAnswerId : String;
 			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
@@ -44,6 +47,9 @@
 			public var measurement : ImperialMeasure;
 			public var currency : Currency;
 			public var shapeNames : ShapeNames;
+			public var multipleChoice : MultipleChoice;
+			public var alertPopUp:MyAlertPopUp = new MyAlertPopUp();
+
 			
 			[Bindable]
 			public var currentQuestion:Number;
@@ -89,23 +95,38 @@
 			
 			protected function goToQuestion(questionNumber:uint):void
 			{
-				currentQuestion = questionNumber;
-				if (currentQuestion == 0) {
-					previousButton.enabled = false;
+				if (questionNumber < data.questions.length()) {
+					currentQuestion = questionNumber;
+					if (currentQuestion == 0) {
+						previousButton.enabled = false;
+					} else {
+						previousButton.enabled = true;
+					}
+					if (currentQuestion + 1 >= data.questions.length()) {
+						nextButton.enabled = false;
+					} else {
+						nextButton.enabled = true;
+					}
+					updateQuestionInfo();
 				} else {
-					previousButton.enabled = true;
+					playSound("sounds/error1.mp3");
 				}
-				if (currentQuestion + 1 >= data.questions.length()) {
-					nextButton.enabled = false;
-				} else {
-					nextButton.enabled = true;
-				}
-				updateQuestionInfo();
 			}
 			
 			protected function lessonsButton_clickHandler(event:MouseEvent):void
 			{
 				navigator.popView();
+			}
+			
+			protected function wrongSelectionHandler(event:MouseEvent):void
+			{
+				wrongSelection();
+			}
+			
+			protected function rightSelectionHandler(event:MouseEvent):void
+			{
+				rightSelection();
+				goToNextQuestion();
 			}
 			
 			protected function rightSelection():void
@@ -142,6 +163,7 @@
 			protected function updateQuestionType(question:XML):void
 			{
 				trace("questionType: " + question.@questionType);
+				var answerXMLList:XMLList = currentQuestionXML.answer;
 				if (question.@questionType== "symbolOperators") {
 					operatorSymbols = new OperatorSymbols();
 					addToAnswer(operatorSymbols);
@@ -159,11 +181,19 @@
 					addToAnswer(currency);
 				}  else if (question.@questionType== "shapeNames") {
 					shapeNames = new ShapeNames();
-					var answerNode:XMLList = currentQuestionXML.answer;
-					var answerContents:String = answerNode[0];
+					var answerContents:String = answerXMLList[0];
 					shapeNames.setAnswer(answerContents);
 					addToAnswer(shapeNames);
-				} else {
+				}
+				
+				else if (question.@questionType== "multipleChoice") {
+					multipleChoice = new MultipleChoice();
+//					multipleChoice.setAnswer(answerXMLList);
+					addToAnswer(multipleChoice);
+					trace("multiple choice");
+				} 
+				
+				else {
 					numericKeypad = new NumericKeypad();
 					addToAnswer(numericKeypad);
 				}
@@ -181,6 +211,7 @@
 				if (currentQuestionXML) {
 					updateQuestionType(currentQuestionXML);
 					questionContentStr = currentQuestionXML.questionContent;
+					
 					var imageUrlStr : String = String(currentQuestionXML.imageInfo);
 					var answers: XMLList = currentQuestionXML.answers.answer;
 					if (imageUrlStr.length > 0) {
@@ -205,9 +236,9 @@
 							myButton.label = answerContents;
 							var isCorrect : String = answerXML.@correct;
 							if (isCorrect == "true") {
-								myButton.addEventListener( 'click', rightSelection );
+								myButton.addEventListener( 'click', rightSelectionHandler );
 							} else {
-								myButton.addEventListener( 'click', wrongSelection );
+								myButton.addEventListener( 'click', wrongSelectionHandler );
 							}
 							trace("answer: " + answerContents + " correct: " + isCorrect);
 							multipleChoiceSection.addElement(myButton);
@@ -223,6 +254,7 @@
 			
 			private function checkAnswer():Boolean
 			{
+
 				var answerNode:XMLList;
 				var answerContents:String;
 				var userAnswer:String;
@@ -242,6 +274,10 @@
 					userAnswer = currency.getText();
 				} else if (currentQuestionXML.@questionType== "shapeNames") {
 					userAnswer = shapeNames.getText();
+				} else if (currentQuestionXML.@questionType== "multipleChoice") {
+					alertPopUp.setAlert("Select one of the multiple choices");
+					alertPopUp.open(this,false);
+					return false;
 				}
 				trace("The correct answer is: " + answerContents + " you entered: " + userAnswer);
 				if (answerContents == userAnswer) {
@@ -274,7 +310,7 @@
 			protected function jumpToQuestionButton_clickHandler(event:MouseEvent):void
 			{
 				var questionToGoTo : String = jumpToQuestionTextInput.text;
-				goToQuestion(uint(questionToGoTo));
+				goToQuestion(uint(questionToGoTo) - 1);
 			}
 			
 		]]>
@@ -331,7 +367,5 @@
 			<s:Button label="Pass >" click="passClickHandler(event)" />
 		</s:HGroup>
 	
-		
 	</s:VGroup>
-
 </s:View>
