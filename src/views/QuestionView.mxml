@@ -5,6 +5,7 @@
 		xmlns:BIP="components" 
 		title="Lesson #{data.lessonName}"
 		contentCreationComplete="contentCreationCompleted(event)" xmlns:components="components.*"
+		backgroundColor="0xcccccc"
 		>
 	<s:layout>
 		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" horizontalAlign="center" />
@@ -20,21 +21,39 @@
 			fontSize: 20;
 		}
 	</fx:Style>
+
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:Fade id="fadeOut" 
+				target="{this}"
+				alphaFrom="1"
+				alphaTo=".5"
+				/>
+		<s:Fade id="fadeIn" 
+				target="{this}"
+				alphaFrom=".5"
+				alphaTo="1"
+				/>
+	</fx:Declarations>
 	
 	<fx:Script>
 		<![CDATA[
+			import mx.events.CloseEvent;
 			import mx.events.FlexEvent;
-
-			import components.MyAlertPopUp;			
+			import mx.managers.PopUpManager;
+			
+			import spark.components.TitleWindow;
+			
+			import components.BIPTitleWindow;
 			import components.Currency;
 			import components.EqualitySymbols;
 			import components.ImperialMeasure;
+			import components.MultipleChoice;
+			import components.MyAlertPopUp;
 			import components.NumericKeypad;
 			import components.OperatorSymbols;
-			import components.Time;
 			import components.ShapeNames;
-			import components.MultipleChoice;
-
+			import components.Time;
 			
 			public var correctAnswerId : String;
 			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
@@ -50,6 +69,8 @@
 			public var multipleChoice : MultipleChoice;
 			public var alertPopUp:MyAlertPopUp = new MyAlertPopUp();
 
+			
+			private var titleWindow:BIPTitleWindow;
 			
 			[Bindable]
 			public var currentQuestion:Number;
@@ -69,6 +90,14 @@
 				if (currentQuestion == 0) {
 					previousButton.enabled = false;
 				}
+			}
+			
+			// invoked when the user closes out the Title Window Modail Dialog e.g. for displaying answers
+			protected function closeTitleWindowHandler(event:CloseEvent):void
+			{
+				trace("Close Title Window");
+				fadeIn.end();
+				fadeIn.play();
 			}
 			
 			protected function nextButton_clickHandler(event:MouseEvent):void
@@ -205,6 +234,18 @@
 				answerSection.addElement(answerToAdd);
 			}
 			
+			
+			private function showTitleWindow(message:String):void {
+				// Create a non-modal TitleWindow container.
+				fadeOut.end();
+				fadeOut.play();
+				titleWindow = PopUpManager.createPopUp(this, BIPTitleWindow, true) as BIPTitleWindow;
+				titleWindow.addEventListener(CloseEvent.CLOSE,closeTitleWindowHandler);
+				titleWindow.title = "Error";
+				titleWindow.setMessage(message);
+				PopUpManager.centerPopUp(titleWindow);
+			}
+			
 			protected function updateQuestionInfo():void 
 			{
 				currentQuestionXML = data.questions[currentQuestion];
@@ -275,8 +316,10 @@
 				} else if (currentQuestionXML.@questionType== "shapeNames") {
 					userAnswer = shapeNames.getText();
 				} else if (currentQuestionXML.@questionType== "multipleChoice") {
-					alertPopUp.setAlert("Select one of the multiple choices");
-					alertPopUp.open(this,false);
+					showTitleWindow("Select one of the multiple choices");
+// Display Pop Up (can't drag it lighter weight) need to figure out how to center it
+//					alertPopUp.open(viewContainer,true);
+//					alertPopUp.setAlert("Select one of the multiple choices");
 					return false;
 				}
 				trace("The correct answer is: " + answerContents + " you entered: " + userAnswer);
@@ -313,13 +356,12 @@
 				goToQuestion(uint(questionToGoTo) - 1);
 			}
 			
+		
+			
 		]]>
 	</fx:Script>
-	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
-	</fx:Declarations>
 
-	<s:VGroup height="100%" minHeight="400" minWidth="500" horizontalAlign="center">
+	<s:VGroup id="viewContainer" height="100%" minHeight="400" minWidth="500" horizontalAlign="center">
 		<s:Spacer height="15" />
 		<s:Group width="100%" >
 			<!-- <s:Rect x="0" y="0" 
