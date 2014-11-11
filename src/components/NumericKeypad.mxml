@@ -44,5 +44,4 @@
 		<s:Button label="." click="keyPadClickHandler(event)"/>
 		<s:Button label="delete" click="keyPadClickHandler(event)" />
 	</s:HGroup>
-	<s:Button label="Check" />
 </s:VGroup>

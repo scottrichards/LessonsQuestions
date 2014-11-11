@@ -58,6 +58,7 @@
 			import events.CloseTitleWindow;
 			
 			public var correctAnswerId : String;
+			protected var correctAnswerStr : String;
 			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
 			public var currentQuestionXML : XML;
 			
@@ -70,6 +71,7 @@
 			public var shapeNames : ShapeNames;
 			public var multipleChoice : MultipleChoice;
 			public var alertPopUp:MyAlertPopUp = new MyAlertPopUp();
+			public var numberCorrectAnswers : uint;
 
 			
 			private var titleWindow:BIPTitleWindow;
@@ -83,6 +85,9 @@
 			[Bindable]
 			public var imageUrlContents:String;
 			
+			[Bindable]
+			public var statusStr:String;
+			
 			
 			protected function contentCreationCompleted(event:FlexEvent):void
 			{
@@ -92,15 +97,9 @@
 				if (currentQuestion == 0) {
 					previousButton.enabled = false;
 				}
+				statusStr = "0  / " + data.questions.length();
 			}
 			
-			// invoked when the user closes out the Title Window Modail Dialog e.g. for displaying answers
-			protected function closeTitleWindowHandler(event:Event):void
-			{
-				trace("Close Title Window");
-				fadeIn.end();
-				fadeIn.play();
-			}
 			
 			protected function nextButton_clickHandler(event:MouseEvent):void
 			{
@@ -149,9 +148,10 @@
 				navigator.popView();
 			}
 			
+			// this is currently only called for multiple choice questions
 			protected function wrongSelectionHandler(event:MouseEvent):void
 			{
-				wrongSelection();
+				wrongSelection(correctAnswerStr);
 			}
 			
 			protected function rightSelectionHandler(event:MouseEvent):void
@@ -164,11 +164,15 @@
 			{
 				trace("Yea you got it right!");	
 				playCorrectSound();
+				numberCorrectAnswers++;
+				statusStr = numberCorrectAnswers.toString() + " / " + data.questions.length();
 			}
 			
-			protected function wrongSelection():void
+			protected function wrongSelection(correctAnswer:String):void
 			{
 				trace("Bummer you missed the question...");
+				var message:String = "The correct answer is: " + correctAnswer;
+				showTitleWindow(message);
 				playWrongSound();
 			}
 			
@@ -248,7 +252,16 @@
 				titleWindow.setMessage(message);
 				PopUpManager.centerPopUp(titleWindow);
 			}
-			
+
+			// invoked when the user closes out the Title Window Modail Dialog e.g. for displaying answers
+			protected function closeTitleWindowHandler(event:Event):void
+			{
+				trace("Close Title Window");
+				fadeIn.end();
+				fadeIn.play();
+				goToNextQuestion();
+			}
+
 			protected function updateQuestionInfo():void 
 			{
 				currentQuestionXML = data.questions[currentQuestion];
@@ -258,18 +271,21 @@
 					
 					var imageUrlStr : String = String(currentQuestionXML.imageInfo);
 					var answers: XMLList = currentQuestionXML.answers.answer;
+					// display the image
 					if (imageUrlStr.length > 0) {
 						questionImage.visible = true;
 						questionImage.percentWidth=50;
 						questionContent.percentWidth=50;
 						loadImage(currentQuestionXML.imageInfo);
 						questionImage.maxHeight=300;
+						questionImage.includeInLayout = true;
 					} else {	// make the text take up all of the space
 						questionImage.percentWidth=0;
 						questionContent.percentWidth=100;
 						questionImage.width=0;
 						questionImage.maxHeight=0;
 						questionImage.visible = false;
+						questionImage.includeInLayout = false;
 					} 
 					if (answers.length() > 0) {
 						multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
@@ -280,6 +296,7 @@
 							myButton.label = answerContents;
 							var isCorrect : String = answerXML.@correct;
 							if (isCorrect == "true") {
+								correctAnswerStr = answerContents;
 								myButton.addEventListener( 'click', rightSelectionHandler );
 							} else {
 								myButton.addEventListener( 'click', wrongSelectionHandler );
@@ -330,7 +347,7 @@
 					rightSelection();
 					return true;
 				} else {
-					wrongSelection();
+					wrongSelection(answerContents);
 					return false;
 				}
 			}
@@ -363,9 +380,12 @@
 			
 		]]>
 	</fx:Script>
-
+	<s:HGroup id="statusSection" width="100%">
+		<mx:Spacer width="100%" />
+		<s:Label text="{statusStr}" paddingRight="10"/>
+	</s:HGroup>
 	<s:VGroup id="viewContainer" height="100%" minHeight="400" minWidth="500" horizontalAlign="center">
-		<s:Spacer height="15" />
+		
 		<s:Group width="100%" >
 			<!-- <s:Rect x="0" y="0" 
 					radiusX="4" radiusY="4" 
@@ -386,6 +406,7 @@
 		</s:Group>
 		
 		<mx:Spacer height="15%"/>
+		
 		<s:HGroup width="100%" horizontalAlign="center">
 			<s:Label id="questionContent" text="{questionContentStr}" width="100%" styleName="questionContentStyle" paddingRight="10" />
 			<s:BitmapImage  id="questionImage" source="" fillMode="scale" scaleMode="stretch" maxWidth="400" maxHeight="300"  />
