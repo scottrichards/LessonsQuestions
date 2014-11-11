@@ -11,16 +11,20 @@
 	<fx:Script>
 		<![CDATA[
 			import mx.managers.PopUpManager;
+
+			import events.CloseTitleWindow;
 			
 			// Handle the close button and Cancel button.
 			private function handleCloseEvent():void {
 				PopUpManager.removePopUp(this);
+				dispatchEvent(new CloseTitleWindow());
 			}            
 			
 			// Handle the OK button.
 			private function handleOk():void {
 				// Check credentials (not shown) then remove pop up.
 				PopUpManager.removePopUp(this);
+				dispatchEvent(new CloseTitleWindow());
 			}
 			
 			public function setMessage(messageStr:String):void 

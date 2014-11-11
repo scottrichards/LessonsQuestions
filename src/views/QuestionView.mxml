@@ -55,6 +55,8 @@
 			import components.ShapeNames;
 			import components.Time;
 			
+			import events.CloseTitleWindow;
+			
 			public var correctAnswerId : String;
 			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
 			public var currentQuestionXML : XML;
@@ -93,7 +95,7 @@
 			}
 			
 			// invoked when the user closes out the Title Window Modail Dialog e.g. for displaying answers
-			protected function closeTitleWindowHandler(event:CloseEvent):void
+			protected function closeTitleWindowHandler(event:Event):void
 			{
 				trace("Close Title Window");
 				fadeIn.end();
@@ -240,7 +242,8 @@
 				fadeOut.end();
 				fadeOut.play();
 				titleWindow = PopUpManager.createPopUp(this, BIPTitleWindow, true) as BIPTitleWindow;
-				titleWindow.addEventListener(CloseEvent.CLOSE,closeTitleWindowHandler);
+//				titleWindow.addEventListener(CloseEvent.CLOSE,closeTitleWindowHandler);
+				titleWindow.addEventListener(CloseTitleWindow.EVENT_NAME, closeTitleWindowHandler);
 				titleWindow.title = "Error";
 				titleWindow.setMessage(message);
 				PopUpManager.centerPopUp(titleWindow);
