@@ -36,6 +36,20 @@
 				/>
 	</fx:Declarations>
 	
+	<s:states>
+		<s:State name="default" />
+		<s:State name="goToQuestion" />
+		<s:State name="showAnswer" />
+	</s:states>
+	<s:transitions>
+		<s:Transition fromState="default" toState="goToQuestion" >
+			<s:Fade target="{viewContainer}" duration="1000" alphaFrom="1" alphaTo="0" repeatBehavior="reverse" />
+		</s:Transition>
+		<s:Transition fromState="goToQuestion" toState="default">
+			<s:Fade target="{viewContainer}" duration="1000" alphaFrom="0" alphaTo="1" />
+		</s:Transition>
+	</s:transitions>
+	
 	<fx:Script>
 		<![CDATA[
 			import mx.events.CloseEvent;
@@ -115,7 +129,9 @@
 			
 			protected function goToNextQuestion():void
 			{
-				goToQuestion(++currentQuestion);	
+				currentState = "goToQuestion";
+				goToQuestion(++currentQuestion);
+				currentState = "default";
 			}
 			
 			protected function previousButton_clickHandler(event:MouseEvent):void
@@ -378,6 +394,12 @@
 			
 		
 			
+			protected function transitionTest(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				currentState="goToQuestion";
+			}
+			
 		]]>
 	</fx:Script>
 	<s:HGroup id="statusSection" width="100%">
@@ -429,6 +451,7 @@
 			<mx:Spacer width="100%" />
 			<s:TextInput id="jumpToQuestionTextInput" width="40" />
 			<s:Button id="jumpToQuestionButton" label="Go" click="jumpToQuestionButton_clickHandler(event)" />
+			<s:Button label="Transition" click="transitionTest(event)" />
 			<mx:Spacer width="100%"/>
 			<s:Button label="Pass >" click="passClickHandler(event)" />
 		</s:HGroup>

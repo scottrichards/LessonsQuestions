@@ -19,7 +19,7 @@
 		<![CDATA[
 			import spark.components.Button;
 			protected const NUMBER_OF_ANSWERS:uint = 4;
-			public var distractors :Array = new Array("Cube", "Cone", "Cylinder", "Rectangle", "Square", "Pentagon", "Hexagon");
+			public var distractors :Array = new Array("Cube", "Cone", "Cylinder", "Sphere", "Square", "Rectangle", "Triangle", "Pentagon", "Hexagon");
 			protected var selectedButtonLabel : String;
 			protected var answer : String;
 			protected var randomCorrectNumber : uint;

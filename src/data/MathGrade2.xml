@@ -52,7 +52,7 @@
         <questionContent>14 + 12 + 15 =  </questionContent>
 		<answer>41</answer>
       </question>
-      <question questionType="???" numAnswers="3" answer1Type="Integer">
+      <question questionType="equation">
         <questionNumber>9</questionNumber>
         <questionContent>Count by tens. 50, 60,<answer type="numeric">70</answer>, <answer type="numeric">80</answer>, <answer type="numeric">90</answer>, 100 </questionContent>
       </question>
