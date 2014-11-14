@@ -33,14 +33,8 @@
       </question>
       <question questionType="equation">
         <questionNumber>6</questionNumber>
-        <questionContent>Count the objects in the array.  Write an addition sentence to show the sum. <answer type="numeric">3</answer> + <answer type="numeric">3</answer> + <answer type="numeric">3</answer> = <answer type="numeric">12</answer></questionContent>
+        <questionContent>Count the objects in the array.  Write an addition sentence to show the sum. <answer type="numeric">4</answer> + <answer type="numeric">4</answer> + <answer type="numeric">4</answer> = <answer type="numeric">12</answer></questionContent>
 		<imageInfo type="question">images/3 x 4 ARRAY.ai.png</imageInfo>
-		<answers>
-			<answer>4</answer>
-			<answer>4</answer>
-			<answer>4</answer>
-			<answer>12</answer>
-		</answers>
       </question>
       <question questionType="symbolEquality">
         <questionNumber>7</questionNumber>

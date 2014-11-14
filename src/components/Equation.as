@@ -7,6 +7,8 @@ package components
 	import spark.components.TextInput;
 	import spark.primitives.Rect;
 	
+	import model.EquationData;
+	
 	public class Equation extends UIComponent
 	{
 		private static const COMPONENT_HEIGHT:uint = 40;
@@ -27,6 +29,41 @@ package components
 		public function Equation()
 		{
 			super();
+		}
+		
+		// -----------------
+		// public methods
+		// -----------------
+		
+		
+		// From the question node it finds questionContent and traverses all subnodes looking for <answer> tags
+		public function addXMLData(question:XML):void
+		{
+			_data = new ArrayCollection();
+			
+			var questionContentList : XMLList = question.questionContent;
+			var numItems:uint = questionContentList.length();
+			if (numItems > 0) {
+				var questionContentNode : XML = questionContentList[0];
+				var childrenList : XMLList = questionContentNode.children();
+				for each (var childNode:XML in childrenList) {
+					var tag:String = "text";
+					var type:String="";
+					var value:String ="";
+					var nodeKind : String = childNode.nodeKind(); 
+					if (nodeKind == "text") {
+						value = childNode.toString();
+					} else if (nodeKind == "element") {
+						var localName :String = childNode.name().localName;
+						if (localName == "answer") {
+							tag = "answer";
+							value = childNode.toString();
+						}
+					} 
+					var eqData:EquationData = new EquationData(tag,value);
+					_data.addItem(eqData);
+				}
+			}
 		}
 		
 		// -----------------

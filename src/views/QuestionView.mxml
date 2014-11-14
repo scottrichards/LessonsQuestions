@@ -73,10 +73,13 @@
 			
 			import events.CloseTitleWindow;
 			
+			import model.EquationData;
+			
 			public var correctAnswerId : String;
 			protected var correctAnswerStr : String;
 			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
 			public var currentQuestionXML : XML;
+			public var currentQuestionType : String; 	// the type of the currently selected question
 			
 			public var numericKeypad : NumericKeypad;	// TO DO inherit from subclass for all answer types
 			public var operatorSymbols : OperatorSymbols;
@@ -227,9 +230,12 @@
 				s.play();
 			}
 			
+			
+			
 			protected function updateQuestionType(question:XML):void
 			{
 				trace("questionType: " + question.@questionType);
+				currentQuestionType = question.@questionType;
 				var answerXMLList:XMLList = currentQuestionXML.answer;
 				if (question.@questionType== "symbolOperators") {
 					operatorSymbols = new OperatorSymbols();
@@ -253,12 +259,9 @@
 					addToAnswer(shapeNames);
 				} else if (question.@questionType== "equation") {
 					equation = new Equation();
-					var answerContents:String = answerXMLList[0];
-					equation.data = equationData;
+					equation.addXMLData(currentQuestionXML);
 					addToAnswer(equation);
-				}
-				
-				else if (question.@questionType== "multipleChoice") {
+				} else if (question.@questionType== "multipleChoice") {
 					multipleChoice = new MultipleChoice();
 //					multipleChoice.setAnswer(answerXMLList);
 					addToAnswer(multipleChoice);
@@ -271,10 +274,13 @@
 				}
 			}
 			
-			protected function addToAnswer(answerToAdd:*):void
+			protected function addToAnswer(answerToAdd:*,removeQuestionContents:Boolean=false):void
 			{
 				answerSection.removeAllElements();	// remove any items that had been previously added
 				answerSection.addElement(answerToAdd);
+				if (removeQuestionContents) {
+					
+				}
 			}
 			
 			
@@ -304,7 +310,11 @@
 				currentQuestionXML = data.questions[currentQuestion];
 				if (currentQuestionXML) {
 					updateQuestionType(currentQuestionXML);
-					questionContentStr = currentQuestionXML.questionContent;
+					if (currentQuestionType == "equation") {
+						questionContentStr = "";
+					} else {
+						questionContentStr = currentQuestionXML.questionContent;
+					}
 					
 					var imageUrlStr : String = String(currentQuestionXML.imageInfo);
 					var answers: XMLList = currentQuestionXML.answers.answer;
