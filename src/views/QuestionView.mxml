@@ -52,6 +52,7 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import mx.collections.ArrayCollection;
 			import mx.events.CloseEvent;
 			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
@@ -61,6 +62,7 @@
 			import components.BIPTitleWindow;
 			import components.Currency;
 			import components.EqualitySymbols;
+			import components.Equation;
 			import components.ImperialMeasure;
 			import components.MultipleChoice;
 			import components.MyAlertPopUp;
@@ -84,6 +86,20 @@
 			public var currency : Currency;
 			public var shapeNames : ShapeNames;
 			public var multipleChoice : MultipleChoice;
+			public var equation : Equation;
+			
+			[Bindable]
+			private var equationData:ArrayCollection = new ArrayCollection([
+				{tag:'text', value:'Count by tens. 50, 60, '},
+				{tag:'answer', value:'70', type:'numeric'},
+				{tag:'text', value:', '},
+				{tag:'answer', value:'80', type:'numeric'},
+				{tag:'text', value:', '},
+				{tag:'answer', value:'90', type:'numeric'},
+				{tag:'text', value:', 100'},
+			]);
+
+			
 			public var alertPopUp:MyAlertPopUp = new MyAlertPopUp();
 			public var numberCorrectAnswers : uint;
 
@@ -235,6 +251,11 @@
 					var answerContents:String = answerXMLList[0];
 					shapeNames.setAnswer(answerContents);
 					addToAnswer(shapeNames);
+				} else if (question.@questionType== "equation") {
+					equation = new Equation();
+					var answerContents:String = answerXMLList[0];
+					equation.data = equationData;
+					addToAnswer(equation);
 				}
 				
 				else if (question.@questionType== "multipleChoice") {
@@ -394,11 +415,10 @@
 			
 		
 			
-			protected function transitionTest(event:MouseEvent):void
-			{
-				// TODO Auto-generated method stub
-				currentState="goToQuestion";
-			}
+//			protected function transitionTest(event:MouseEvent):void
+//			{
+//				currentState="goToQuestion";
+//			}
 			
 		]]>
 	</fx:Script>
@@ -409,21 +429,6 @@
 	<s:VGroup id="viewContainer" height="100%" minHeight="400" minWidth="500" horizontalAlign="center">
 		
 		<s:Group width="100%" >
-			<!-- <s:Rect x="0" y="0" 
-					radiusX="4" radiusY="4" 
-					height="100%" width="100%">
-				<s:stroke>
-					<s:LinearGradientStroke weight="1" scaleMode="normal"/>
-				</s:stroke>
-				<s:fill>
-					<s:LinearGradient>
-						<s:entries>
-							<mx:GradientEntry color="0x999999"/>
-						</s:entries>
-					</s:LinearGradient>
-				</s:fill>
-				
-			</s:Rect> -->
 			<s:Label id="questionNumber" text="Question #{currentQuestion+1}" paddingTop="10" horizontalCenter="0" styleName="myHeadingStyle"  />	
 		</s:Group>
 		
@@ -451,7 +456,6 @@
 			<mx:Spacer width="100%" />
 			<s:TextInput id="jumpToQuestionTextInput" width="40" />
 			<s:Button id="jumpToQuestionButton" label="Go" click="jumpToQuestionButton_clickHandler(event)" />
-			<s:Button label="Transition" click="transitionTest(event)" />
 			<mx:Spacer width="100%"/>
 			<s:Button label="Pass >" click="passClickHandler(event)" />
 		</s:HGroup>

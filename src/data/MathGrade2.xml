@@ -31,9 +31,9 @@
         <questionContent>Select the symbol that tells you to add.</questionContent>
 		<answer>+</answer>
       </question>
-      <question questionType="ADDSTATE" numAnswers="3" answer1Type="Integer">
+      <question questionType="equation">
         <questionNumber>6</questionNumber>
-        <questionContent>Count the objects in the array.  Write an addition sentence to show the sum.  %d +   %d   +  %d       =  %d          </questionContent>
+        <questionContent>Count the objects in the array.  Write an addition sentence to show the sum. <answer type="numeric">3</answer> + <answer type="numeric">3</answer> + <answer type="numeric">3</answer> = <answer type="numeric">12</answer></questionContent>
 		<imageInfo type="question">images/3 x 4 ARRAY.ai.png</imageInfo>
 		<answers>
 			<answer>4</answer>
