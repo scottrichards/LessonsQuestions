@@ -231,7 +231,6 @@
 			}
 			
 			
-			
 			protected function updateQuestionType(question:XML):void
 			{
 				trace("questionType: " + question.@questionType);
@@ -388,6 +387,9 @@
 //					alertPopUp.open(viewContainer,true);
 //					alertPopUp.setAlert("Select one of the multiple choices");
 					return false;
+				} else if (currentQuestionXML.@questionType== "equation") {
+					userAnswer = equation.response;
+					answerContents = equation.correctAnswer;
 				}
 				trace("The correct answer is: " + answerContents + " you entered: " + userAnswer);
 				if (answerContents == userAnswer) {

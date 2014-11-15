@@ -73,8 +73,8 @@ package components
 		override protected function createChildren():void
 		{
 			super.createChildren();
-
-			
+			_numTextLabels = 0;
+			_numAnswers = 0;
 			for each(var item:Object in _data)
 			{
 				if (item.tag == "text") {
@@ -91,11 +91,12 @@ package components
 					uic.height = COMPONENT_HEIGHT;
 					uic.graphics.lineStyle(1,0xcccccc); 
 					addChild(uic);*/
-					_numAnswers++;
 					var inputField:TextInput = new TextInput();
 					inputField.width = INPUT_FIELD_WIDTH;
 					inputField.name = "answer" + _numAnswers.toString();
+					trace("add ANSWER: " + inputField.name);
 					inputField.height = INPUT_FIELD_HEIGHT;
+					_numAnswers++;
 					addChild(inputField);
 				}
 			}
@@ -115,8 +116,8 @@ package components
 			measuredHeight = COMPONENT_HEIGHT;
 			measuredMinHeight = COMPONENT_HEIGHT;
 			measuredWidth = measuredMinWidth = 0;
-			var textLabelCount:uint;
-			var answerCount:uint;
+			var textLabelCount:uint = 0;
+			var answerCount:uint = 0;
 			for each(var item:Object in _data) 
 			{
 				if (item.tag == "text") {
@@ -126,7 +127,7 @@ package components
 					measuredMinWidth += label.getExplicitOrMeasuredWidth();
 				}
 				if (item.tag == "answer") {
-					var uic:UIComponent= this.getChildByName("answer" + answerCount.toString()) as UIComponent;
+//					var ti:TextInput= this.getChildByName("answer" + answerCount.toString()) as TextInput;
 					answerCount++;
 					measuredWidth += INPUT_FIELD_WIDTH;
 					measuredMinWidth += INPUT_FIELD_WIDTH;
@@ -155,54 +156,91 @@ package components
 			trace("unscaledWidth: " + unscaledWidth + " unscaledHeight: " + unscaledHeight);
 			var currentWidth:Number = 0;
 			var labelWidth:Number;
-			var textLabelCount:uint;
+			var textLabelCount:uint = 0;
+			var answersCount:uint = 0;
 			for each(var item:Object in _data) 
 			{
 				if (item.tag == "text") {
 					var label:Label = this.getChildByName("textLabel" + textLabelCount.toString()) as Label;
-					textLabelCount++;
-					trace("label named: " + label.name);
-					trace("label.text: " + label.text);
-					label.move( currentWidth, TOP_PADDING);
-					labelWidth = label.getExplicitOrMeasuredWidth();
-					trace("label.getExplicitOrMeasuredWidth(): " + labelWidth);
-					currentWidth += label.getExplicitOrMeasuredWidth();
-					label.setActualSize(labelWidth,COMPONENT_HEIGHT);
-					trace("current width: " + currentWidth);
+					if (label != null) {
+						textLabelCount++;
+						trace("label named: " + label.name);
+						trace("label.text: " + label.text);
+						label.move( currentWidth, TOP_PADDING);
+						labelWidth = label.getExplicitOrMeasuredWidth();
+						trace("label.getExplicitOrMeasuredWidth(): " + labelWidth);
+						currentWidth += label.getExplicitOrMeasuredWidth();
+						label.setActualSize(labelWidth,COMPONENT_HEIGHT);
+						trace("current width: " + currentWidth);
+					}
 				}
 				if (item.tag == "answer") {
-					var input:TextInput = this.getChildByName("answer" + textLabelCount.toString()) as TextInput;
+					var input:TextInput = this.getChildByName("answer" + answersCount.toString()) as TextInput;
 					if (input != null) {
+						answersCount++;
 						trace("answer named: " + input.name);
+						trace("current width before: " + currentWidth);
 						input.move( currentWidth + INPUT_FIELD_H_PADDING, INPUT_FIELD_V_PADDING);
-						var inputWidth:Number = label.getExplicitOrMeasuredWidth();
+						var inputWidth:Number = input.getExplicitOrMeasuredWidth();
 						input.setActualSize(INPUT_FIELD_WIDTH, INPUT_FIELD_HEIGHT);
 						currentWidth += INPUT_FIELD_WIDTH + (INPUT_FIELD_H_PADDING * 2);
 					}
 				}
 			}
 			
-//			for (var i:uint=0;i<_numTextLabels;i++)
-//			{
-//				var label:Label = this.getChildByName("textLabel" + i.toString()) as Label;
-//				trace("label named: " + label.name);
-//				trace("label.text: " + label.text);
-//				label.move( currentWidth, TOP_PADDING);
-//				labelWidth = label.getExplicitOrMeasuredWidth();
-//				trace("label.getExplicitOrMeasuredWidth(): " + labelWidth);
-//				currentWidth += label.getExplicitOrMeasuredWidth();
-//				label.setActualSize(labelWidth,COMPONENT_HEIGHT);
-//				trace("current width: " + currentWidth);
-//			}
-			
 		}
 		
-		
+		// -----------------
+		// Setter & Getters
+		// -----------------
+
+		// set the data an arrayCollection of objects tag identifies if it is an answer in which case we provide an input field
+		// or text that makes up part of the question
 		public function set data(value:ArrayCollection):void
 		{
 			_data = value;
 			invalidateProperties();
 			invalidateSize();
 		}
+		
+		// Return the text the user entered in input fields separated by commas 
+		public function get response():String
+		{
+			var answerStr : String = "";
+			var answerCount:uint = 0;
+			var firstItem :Boolean = true;
+			for each(var item:Object in _data) 
+			{
+				if (item.tag == "answer") {
+					var input:TextInput = this.getChildByName("answer" + answerCount.toString()) as TextInput;
+					answerCount++;
+					if (firstItem) 	// if it is not the first item separate answers with a comma e.g. 70, 80, 90
+						firstItem = false;
+					else
+						answerStr += ", ";
+					answerStr += input.text;
+				}
+			}
+			return answerStr;
+		}
+		
+		// Return the correct answer separated by commas e.g. for 4 + 4 = 8 we would return 4, 4, 8
+		public function get correctAnswer():String
+		{
+			var answerStr : String = "";
+			var firstItem :Boolean = true;
+			for each(var item:Object in _data) 
+			{
+				if (item.tag == "answer") {
+					if (firstItem) 	// if it is not the first item separate answers with a comma e.g. 70, 80, 90
+						firstItem = false;
+					else
+						answerStr += ", ";
+					answerStr += item.value;
+				}
+			}
+			return answerStr;
+		}
+
 	}
 }
