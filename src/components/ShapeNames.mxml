@@ -17,16 +17,19 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import spark.components.Button;
+			import spark.components.ToggleButton;
+
 			protected const NUMBER_OF_ANSWERS:uint = 4;
 			public var distractors :Array = new Array("Cube", "Cone", "Cylinder", "Sphere", "Square", "Rectangle", "Triangle", "Pentagon", "Hexagon");
 			protected var selectedButtonLabel : String;
 			protected var answer : String;
 			protected var randomCorrectNumber : uint;
+			private var buttonArray : Array;
 			
 			protected function componentInitHandler(event:Event):void {
 				var distractorList : Dictionary = new Dictionary();
 				var numDistractors : uint = 0;
+				buttonArray = new Array();
 				do {
 					if (randomCorrectNumber == numDistractors) {
 						numDistractors++;
@@ -45,7 +48,8 @@
 			
 			protected function addButton(id:String,label:String):void 
 			{
-				var button:Button = new Button();
+				var button:ToggleButton = new ToggleButton();
+				buttonArray.push(button);
 				button.id = id;
 				button.label = label;
 				button.addEventListener(MouseEvent.CLICK,clickHandler);
@@ -66,6 +70,18 @@
 				var buttonLabel : String = event.currentTarget.label;
 				selectedButtonLabel = buttonLabel;
 				textLabel.text = selectedButtonLabel;
+				disableOtherButtons(buttonId);
+			}
+			
+			// when we click on a toggle button we want to deselect all the other buttons
+			protected function disableOtherButtons(selectedButtonId:String):void
+			{
+				for (var i : int; i < buttonArray.length; i++) 	
+				{
+					var tb:ToggleButton = buttonArray[i];
+					if (tb.id != selectedButtonId) 
+						tb.selected = false;
+				}
 			}
 			
 			public function getText():String
