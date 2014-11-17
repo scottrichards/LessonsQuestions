@@ -14,7 +14,11 @@
 			fontSize: 20;
 			backgroundColor: #7A9091;
 			color: #FFFFFF;
-			borderColor: #00FF00;
+		}
+			
+		.dropTarget { 
+			fontSize: 20;
+			backgroundColor: #DDDDDD;
 		}
 	</fx:Style>
 	<fx:Script>
@@ -65,14 +69,14 @@
 			// Called if the target accepts the dragged object and the user 
 			// releases the mouse button while over the Canvas container. 
 			private function dragDropHandler(event:DragEvent):void {
-				
+				var dropTarget:SkinnableContainer = SkinnableContainer(event.currentTarget);
 				// Get the data identified by the color format 
 				// from the drag source.
 				var data:Object = event.dragSource.dataForFormat('color');
 				var text:String = event.dragSource.dataForFormat('label') as String;
 				// Set the canvas color.
-				myCanvas.setStyle("backgroundColor", data);
-				var targetLabel : Label = myCanvas.contentGroup.getChildByName("targetLabel") as Label;
+				dropTarget.setStyle("backgroundColor", data);
+				var targetLabel : Label = dropTarget.contentGroup.getChildByName("targetLabel") as Label;
 				targetLabel.text = text;
 			}    
 			
@@ -80,20 +84,29 @@
 			{
 				this.answer = answerStr;
 			}
+			
+			public function setChoices(question:XML):void 
+			{
+				var choiceList : XMLList = question.choices.choice;
+				var numItems:uint = choiceList.length();
+				for each (var choiceNode:XML in choiceList) {
+					trace("choice: " + choiceNode.toString());
+				}
+			}
 		]]>
 	</fx:Script>
 	<s:VGroup>
 		
-		<s:HGroup>
+		<s:HGroup id="choiceGroup" gap="15">
 			<s:SkinnableContainer
-				backgroundColor="red" 
+				styleName="dragItem" 
 				skinClass="skins.DragDropItem"
 				mouseMove="mouseMoveHandler(event);">
 				<s:Label name="labelName" text="One" />
 			</s:SkinnableContainer>
 			
 			<s:SkinnableContainer 
-							   backgroundColor="green" 
+								styleName="dragItem" 
 							   skinClass="skins.DragDropItem"
 							   mouseMove="mouseMoveHandler(event);" >
 				<s:Label name="labelName" text="Two" />
@@ -107,24 +120,38 @@
 			</s:SkinnableContainer>
 
 		</s:HGroup>
+
 		
-		<s:Label text="Drag a color onto the Canvas container."/>
-		
-		<s:HGroup>
+		<s:HGroup id="dropGroup" gap="15">
 			<s:SkinnableContainer  id="myCanvas" 
-								width="70" height="40" 
+								width="120"
 								backgroundColor="#dddddd"  
+								styleName="dropTarget"
 								skinClass="skins.DropTarget"
 								dragEnter="dragEnterHandler(event);" 
 								dragDrop="dragDropHandler(event);">
 				<s:Label name="targetLabel" text="Target" />
 			</s:SkinnableContainer>
+			<s:SkinnableContainer  
+								   width="120"
+								   backgroundColor="#dddddd"
+								   styleName="dropTarget"
+								   skinClass="skins.DropTarget"
+								   dragEnter="dragEnterHandler(event);" 
+								   dragDrop="dragDropHandler(event);">
+				<s:Label name="targetLabel" text="Target" />
+			</s:SkinnableContainer>
+			<s:SkinnableContainer  
+								   width="120"
+								   backgroundColor="#dddddd"  
+								   skinClass="skins.DropTarget"
+								   styleName="dropTarget"
+								   dragEnter="dragEnterHandler(event);" 
+								   dragDrop="dragDropHandler(event);">
+				<s:Label name="targetLabel" text="Target" />
+			</s:SkinnableContainer>
 			
 		</s:HGroup>
-		
-		<s:Button id="b1" 
-				   label="Clear Canvas" 
-				   click="myCanvas.setStyle('backgroundColor', '0xFFFFFF');"/>
 		
 	</s:VGroup>
 </s:View>
