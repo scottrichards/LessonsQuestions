@@ -9,6 +9,12 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
+		<fx:Style>
+		.dragItem { 
+			fontSize: 30;
+			backgroundColor: #9933FF;
+		}
+	</fx:Style>
 	<fx:Script>
 		<![CDATA[
 			import mx.managers.DragManager;
@@ -69,47 +75,44 @@
 	</fx:Script>
 	<s:VGroup>
 		
-		<s:VGroup>
+		<s:HGroup>
 			<s:BorderContainer
-				width="30" height="30" 
+				width="70" height="30" 
 				backgroundColor="red" 
 				borderStyle="solid" 
-				mouseMove="mouseMoveHandler(event);"
-			/>
+				mouseMove="mouseMoveHandler(event);">
+				<s:Label text="One" />
+			</s:BorderContainer>
 			
-			<s:BorderContainer width="30" height="30" 
+			<s:BorderContainer height="30" 
 							   backgroundColor="green" 
 							   borderStyle="solid" 
-							   mouseMove="mouseMoveHandler(event);" />
-	<!--		<mx:Canvas 
-				width="30" height="30" 
-				backgroundColor="red" 
-				borderStyle="solid" 
-				mouseMove="mouseMoveHandler(event);"/>
-			<mx:Canvas 
-				width="30" height="30" 
-				backgroundColor="green" 
-				borderStyle="solid" 
-				mouseMove="mouseMoveHandler(event);"/>
-			-->
-		</s:VGroup>
+							   mouseMove="mouseMoveHandler(event);" >
+				<s:Label text="Two" />
+			</s:BorderContainer>
+			<s:SkinnableContainer
+ 							   height="30"  
+							   mouseMove="mouseMoveHandler(event);"
+							   skinClass="skins.DragDropItem"
+							   styleName="dragItem" 
+							   >
+				<s:Label text="Three" />
+			</s:SkinnableContainer>
+
+		</s:HGroup>
 		
 		<s:Label text="Drag a color onto the Canvas container."/>
 		
-		<!-- Handles dragEnter and dragDrop events to allow dropping. -->
-	<!--	<mx:Canvas id="myCanvas" 
-				   width="100" height="100" 
-				   backgroundColor="#FFFFFF" 
-				   borderStyle="solid" 
-				   dragEnter="dragEnterHandler(event);" 
-				   dragDrop="dragDropHandler(event);"/> -->
-		
-		<s:BorderContainer  id="myCanvas" 
-							width="100" height="100" 
-							backgroundColor="#FFFFFF" 
-							borderStyle="solid" 
-							dragEnter="dragEnterHandler(event);" 
-							dragDrop="dragDropHandler(event);" />
+		<s:HGroup>
+			<s:BorderContainer  id="myCanvas" 
+								width="100" height="100" 
+								backgroundColor="#FFFFFF" 
+								borderStyle="solid" 
+								dragEnter="dragEnterHandler(event);" 
+								dragDrop="dragDropHandler(event);">
+			</s:BorderContainer>
+			
+		</s:HGroup>
 		
 		<s:Button id="b1" 
 				   label="Clear Canvas" 
