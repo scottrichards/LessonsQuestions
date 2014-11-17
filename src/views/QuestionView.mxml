@@ -53,6 +53,7 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import components.DragDropView;
 			import mx.collections.ArrayCollection;
 			import mx.events.CloseEvent;
 			import mx.events.FlexEvent;
@@ -94,6 +95,7 @@
 			protected var shapeNames : ShapeNames;
 			protected var multipleChoice : MultipleChoice;
 			protected var equation : Equation;
+			protected var dragDrop : DragDropView;
 			
 			[Bindable]
 			private var equationData:ArrayCollection = new ArrayCollection([
@@ -258,34 +260,38 @@
 			
 			protected function updateQuestionType(question:XML):void
 			{
-				trace("questionType: " + question.@questionType);
-				currentQuestionType = question.@questionType;
+				trace("type: " + question.@type);
+				currentQuestionType = question.@type;
 				var answerXMLList:XMLList = currentQuestionXML.answer;
-				if (question.@questionType== "symbolOperators") {
+				if (question.@type== "symbolOperators") {
 					operatorSymbols = new OperatorSymbols();
 					addToAnswer(operatorSymbols);
-				} else if (question.@questionType== "symbolEquality") {
+				} else if (question.@type== "symbolEquality") {
 					equalitySymbols = new EqualitySymbols();
 					addToAnswer(equalitySymbols);
-				}  else if (question.@questionType== "time") {
+				}  else if (question.@type== "time") {
 					timeInput = new Time();
 					addToAnswer(timeInput);
-				}  else if (question.@questionType== "measurementImperial") {
+				}  else if (question.@type== "measurementImperial") {
 					measurement = new ImperialMeasure();
 					addToAnswer(measurement);
-				}  else if (question.@questionType== "currency") {
+				}  else if (question.@type== "currency") {
 					currency = new Currency();
 					addToAnswer(currency);
-				}  else if (question.@questionType== "shapeNames") {
+				}  else if (question.@type== "shapeNames") {
 					shapeNames = new ShapeNames();
 					var answerContents:String = answerXMLList[0];
 					shapeNames.setAnswer(answerContents);
 					addToAnswer(shapeNames);
-				} else if (question.@questionType== "equation") {
+				} else if (question.@type== "equation") {
 					equation = new Equation();
 					equation.addXMLData(currentQuestionXML);
 					addToAnswer(equation);
-				} else if (question.@questionType== "multipleChoice") {
+				}  else if (question.@type== "dragDrop") {
+					dragDrop = new DragDropView();
+//					dragDrop.setAnswer(answerContents);
+					addToAnswer(dragDrop);
+				} else if (question.@type== "multipleChoice") {
 					multipleChoice = new MultipleChoice();
 //					multipleChoice.setAnswer(answerXMLList);
 					addToAnswer(multipleChoice);
@@ -392,29 +398,31 @@
 				var userAnswer:String;
 				answerNode = currentQuestionXML.answer;
 				answerContents = answerNode[0];
-				if (currentQuestionXML.@questionType== "keyboardEntry") {
+				if (currentQuestionXML.@type== "keyboardEntry") {
 					userAnswer = numericKeypad.textInputField.text;
-				} else if (currentQuestionXML.@questionType== "symbolOperators") {
+				} else if (currentQuestionXML.@type== "symbolOperators") {
 					userAnswer = operatorSymbols.getText();
-				} else if (currentQuestionXML.@questionType== "symbolEquality") {
+				} else if (currentQuestionXML.@type== "symbolEquality") {
 					userAnswer = equalitySymbols.getText();
-				} else if (currentQuestionXML.@questionType== "time") {
+				} else if (currentQuestionXML.@type== "time") {
 					userAnswer = timeInput.getText();
-				} else if (currentQuestionXML.@questionType== "measurementImperial") {
+				} else if (currentQuestionXML.@type== "measurementImperial") {
 					userAnswer = timeInput.getText();
-				} else if (currentQuestionXML.@questionType== "currency") {
+				} else if (currentQuestionXML.@type== "currency") {
 					userAnswer = currency.getText();
-				} else if (currentQuestionXML.@questionType== "shapeNames") {
+				} else if (currentQuestionXML.@type== "shapeNames") {
 					userAnswer = shapeNames.getText();
-				} else if (currentQuestionXML.@questionType== "multipleChoice") {
+				} else if (currentQuestionXML.@type== "multipleChoice") {
 					showTitleWindow("Select one of the multiple choices");
 // Display Pop Up (can't drag it lighter weight) need to figure out how to center it
 //					alertPopUp.open(viewContainer,true);
 //					alertPopUp.setAlert("Select one of the multiple choices");
 					return false;
-				} else if (currentQuestionXML.@questionType== "equation") {
+				} else if (currentQuestionXML.@type== "equation") {
 					userAnswer = equation.response;
 					answerContents = equation.correctAnswer;
+				} else {
+					userAnswer = numericKeypad.textInputField.text;
 				}
 				trace("The correct answer is: " + answerContents + " you entered: " + userAnswer);
 				if (answerContents == userAnswer) {

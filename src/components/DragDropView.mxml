@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		title="DragDropView">
+	<s:layout>
+		<s:BasicLayout/>
+	</s:layout>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.managers.DragManager;
+			import mx.core.DragSource;
+			import mx.events.DragEvent;
+			
+			private var answer : String;
+			
+			// Initializes the drag and drop operation.
+			private function mouseMoveHandler(event:MouseEvent):void {
+				
+				// Get the drag initiator component from the event object.
+				var dragInitiator:BorderContainer= BorderContainer(event.currentTarget);
+				
+				// Get the color of the drag initiator component.
+				var dragColor:int = dragInitiator.getStyle('backgroundColor');
+				
+				// Create a DragSource object.
+				var ds:DragSource = new DragSource();
+				
+				// Add the data to the object.
+				ds.addData(dragColor, 'color');
+				
+				// Call the DragManager doDrag() method to start the drag. 
+				DragManager.doDrag(dragInitiator, ds, event);
+			}
+			
+			// Called when the user moves the drag indicator onto the drop target.
+			private function dragEnterHandler(event:DragEvent):void {
+				
+				// Accept the drag only if the user is dragging data 
+				// identified by the 'color' format value.
+				if (event.dragSource.hasFormat('color')) {
+					
+					// Get the drop target component from the event object.
+					var dropTarget:BorderContainer = BorderContainer(event.currentTarget);
+					// Accept the drop.
+					DragManager.acceptDragDrop(dropTarget);
+				}
+			}
+			
+			// Called if the target accepts the dragged object and the user 
+			// releases the mouse button while over the Canvas container. 
+			private function dragDropHandler(event:DragEvent):void {
+				
+				// Get the data identified by the color format 
+				// from the drag source.
+				var data:Object = event.dragSource.dataForFormat('color');
+				// Set the canvas color.
+				myCanvas.setStyle("backgroundColor", data);
+			}    
+			
+			public function setAnswer(answerStr:String):void 
+			{
+				this.answer = answerStr;
+			}
+		]]>
+	</fx:Script>
+	<s:VGroup>
+		
+		<s:VGroup>
+			<s:BorderContainer
+				width="30" height="30" 
+				backgroundColor="red" 
+				borderStyle="solid" 
+				mouseMove="mouseMoveHandler(event);"
+			/>
+			
+			<s:BorderContainer width="30" height="30" 
+							   backgroundColor="green" 
+							   borderStyle="solid" 
+							   mouseMove="mouseMoveHandler(event);" />
+	<!--		<mx:Canvas 
+				width="30" height="30" 
+				backgroundColor="red" 
+				borderStyle="solid" 
+				mouseMove="mouseMoveHandler(event);"/>
+			<mx:Canvas 
+				width="30" height="30" 
+				backgroundColor="green" 
+				borderStyle="solid" 
+				mouseMove="mouseMoveHandler(event);"/>
+			-->
+		</s:VGroup>
+		
+		<s:Label text="Drag a color onto the Canvas container."/>
+		
+		<!-- Handles dragEnter and dragDrop events to allow dropping. -->
+	<!--	<mx:Canvas id="myCanvas" 
+				   width="100" height="100" 
+				   backgroundColor="#FFFFFF" 
+				   borderStyle="solid" 
+				   dragEnter="dragEnterHandler(event);" 
+				   dragDrop="dragDropHandler(event);"/> -->
+		
+		<s:BorderContainer  id="myCanvas" 
+							width="100" height="100" 
+							backgroundColor="#FFFFFF" 
+							borderStyle="solid" 
+							dragEnter="dragEnterHandler(event);" 
+							dragDrop="dragDropHandler(event);" />
+		
+		<s:Button id="b1" 
+				   label="Clear Canvas" 
+				   click="myCanvas.setStyle('backgroundColor', '0xFFFFFF');"/>
+		
+	</s:VGroup>
+</s:View>

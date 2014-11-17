@@ -5,56 +5,58 @@
       
     <pageName>2</pageName>
     <questions>
-      <question questionType="keyboardEntry" numAnswers="1" answer1Type="Integer">
+      <question type="keyboardEntry">
         <questionNumber>1</questionNumber>
         <questionContent>456 + 213 =  </questionContent>
 		<answer>669</answer>
       </question>
-      <question questionType="time" numAnswers="1">
+      <question type="time">
         <questionNumber>2</questionNumber>
         <questionContent>What time is it</questionContent>
 		<answer>2:20</answer>
 		<imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/Clock%20220.ai.png" question="2" type="question">images/Clock220.ai.png</imageInfo>
       </question>
-      <question questionType="keyboardEntry" numAnswers="1" answer1Type="Integer">
+      <question type="keyboardEntry" numAnswers="1" answer1Type="Integer">
         <questionNumber>3</questionNumber>
         <questionContent>548 − 235 =  </questionContent>
 		<answer>313</answer>
       </question>
-      <question questionType="shapeNames">
+      <question type="shapeNames">
         <questionNumber>4</questionNumber>
         <questionContent>Name a shape with 5 sides and 5 angles.</questionContent>
 		<answer>Pentagon</answer>
       </question>
-      <question questionType="symbolOperators">
+      <question type="symbolOperators">
         <questionNumber>5</questionNumber>
         <questionContent>Select the symbol that tells you to add.</questionContent>
 		<answer>+</answer>
       </question>
-      <question questionType="equation">
+      <question type="equation">
         <questionNumber>6</questionNumber>
         <questionContent>Count the objects in the array.  Write an addition sentence to show the sum. <answer type="numeric">4</answer> + <answer type="numeric">4</answer> + <answer type="numeric">4</answer> = <answer type="numeric">12</answer></questionContent>
 		<imageInfo type="question">images/3 x 4 ARRAY.ai.png</imageInfo>
       </question>
-      <question questionType="symbolEquality">
+      <question type="symbolEquality">
         <questionNumber>7</questionNumber>
         <questionContent>434 ( ) 443</questionContent>
 		<answer>&lt;</answer>
       </question>
-      <question questionType="keyboardEntry">
+      <question type="keyboardEntry">
         <questionNumber>8</questionNumber>
         <questionContent>14 + 12 + 15 =  </questionContent>
 		<answer>41</answer>
       </question>
-      <question questionType="equation">
+      <question type="equation">
         <questionNumber>9</questionNumber>
         <questionContent>Count by tens. 50, 60,<answer type="numeric">70</answer>, <answer type="numeric">80</answer>, <answer type="numeric">90</answer>, 100 </questionContent>
       </question>
-      <question questionType="multipleChoiceImage">
+      <question type="multipleChoiceImage">
         <questionNumber>10</questionNumber>
         <questionContent>Circle the rectangle that has 10 square units. </questionContent>
+		<choices>
+		</choices>
       </question>
-      <question questionType="multipleChoice">
+      <question type="multipleChoice">
         <questionNumber>11</questionNumber>
         <questionContent>Would Sari’s foot print be 18 meters long or 18 centimeters? </questionContent>
 		<answers>
@@ -62,7 +64,7 @@
 			<answer correct="true">18 centimeters</answer>
 		</answers>
       </question>
-      <question questionType="multipleChoice" numAnswers="4" answer1Type="Text">
+      <question type="multipleChoice" numAnswers="4" answer1Type="Text">
         <questionNumber>12</questionNumber>
         <questionContent>If you have two dollar bills, one quarter, and ten pennies, how much money do you have?</questionContent>
 		<answers>
@@ -72,17 +74,17 @@
 			<answer correct="true">$2 and 35¢</answer> 
 		</answers>
       </question>
-      <question questionType="keyboardEntry" numAnswers="1" answer1Type="Integer">
+      <question type="keyboardEntry" numAnswers="1" answer1Type="Integer">
         <questionNumber>13</questionNumber>
         <questionContent>Write the number using base-ten numerals. 15 tens</questionContent>
 		<answer>150</answer>
       </question>
-      <question questionType="currency">
+      <question type="currency">
         <questionNumber>14</questionNumber>
         <questionContent>Ellen bought a pen for $1.50 and a tablet for $1.35.  How much money did Ellen spend on these supplies? </questionContent>
 		<answer>2.85</answer>
       </question>
-      <question questionType="measurementImperial">
+      <question type="measurementImperial">
         <questionNumber>15</questionNumber>
         <questionContent>How long is the pencil?</questionContent>
 		<imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/ruler.ai.png" question="15" type="question">images/ruler.ai.png</imageInfo>
@@ -124,60 +126,77 @@
       <imageLink>images/2 x 4.ai.png</imageLink>
     </graphic>
   </lesson>
+  
   <lesson>Lesson #
     <lessonName>2</lessonName>
-      
+     
     <pageName>4</pageName>
     <questions>
-      <question>
+      <question type="time">
         <questionNumber>1</questionNumber>
         <questionContent>What time is shown on the clock? </questionContent>
 		<imageInfo>images/Clock935.ai.png</imageInfo>
-		<answer></answer>
+		<answer>9:35</answer>
       </question>
       <question>
         <questionNumber>2</questionNumber>
-        <questionContent>77 + 35 = ? </questionContent>
+        <questionContent>77 + 35 = ?</questionContent>
+		<answer>112</answer>
       </question>
       <question>
         <questionNumber>3</questionNumber>
-        <questionContent>Of the 59 students in the second grade, 26 are in Room 2A. How many students are in Room 2B? </questionContent>
+        <questionContent>Of the 59 students in the second grade, 26 are in Room 2A. How many students are in Room 2B?</questionContent>
+		<answer>33</answer>
       </question>
-      <question>
+      <question type="equation">
         <questionNumber>4</questionNumber>
-        <questionContent>Count by fives.  70, 75,           ,           ,           , 95 </questionContent>
+        <questionContent>Count by fives.  70, 75, <answer type="numeric">80</answer>, <answer type="numeric">85</answer>, <answer type="numeric">90</answer>, 95 </questionContent>
       </question>
       <question>
         <questionNumber>5</questionNumber>
         <questionContent>What number is 100 more than 629? </questionContent>
+		<answer>729</answer>
       </question>
-      <question>
+      <question type="shapeNames">
         <questionNumber>6</questionNumber>
         <questionContent>What is the name of the shape? </questionContent>
+		<answer>Cube</answer>
+		<imageInfo>images/cube (solid).ai.png</imageInfo>
       </question>
-      <question>
+      <question type="dragDrop">
         <questionNumber>7</questionNumber>
         <questionContent>Write 341 using words. </questionContent>
+		<answer>three hundred forty one</answer>
+		<choices>
+			<choice>one</choice> 
+			<choice>three</choice>
+			<choice>hundred</choice>
+			<choice>forty</choice>
+		</choices>
       </question>
       <question>
         <questionNumber>8</questionNumber>
         <questionContent>Would the length of a small dog’s tail be 10 centimeters or 10 meters? </questionContent>
+		<answers>
+			<answer correct="true">10 centimeters</answer>
+			<answer>10 meters</answer>
+		</answers>
       </question>
-      <question>
+      <question type="mathWordsAddSub">
         <questionNumber>9</questionNumber>
         <questionContent>The difference is the answer to a(n) 	                      problem. </questionContent>
       </question>
-      <question>
+      <question type="currency">
         <questionNumber>10</questionNumber>
         <questionContent>How many cents do you have if you have two quarters, three dimes, and three pennies? </questionContent>
       </question>
-      <question>
+      <question type="equation">
         <questionNumber>11</questionNumber>
-        <questionContent>42 +            = 86 </questionContent>
+        <questionContent>42 + <answer type="numeric">12</answer> = 86 </questionContent>
       </question>
-      <question>
+      <question type="equation">
         <questionNumber>12</questionNumber>
-        <questionContent>964 − 533 = ? </questionContent>
+        <questionContent>964 − 533 = <answer type="numeric">431</answer> </questionContent>
       </question>
       <question>
         <questionNumber>13</questionNumber>
@@ -186,10 +205,12 @@
       <question>
         <questionNumber>14</questionNumber>
         <questionContent>Write this as a base-ten numeral.  2 tens, 1 one, and 6 hundreds </questionContent>
+		<answer>621</answer>
       </question>
-      <question>
+      <question type="measurementImperial">
         <questionNumber>15</questionNumber>
-        <questionContent>Write your answers in inches. How long is Y?   How long is Z?   How much longer is  Y than Z?  </questionContent>
+        <questionContent>Write your answers in inches. 
+		How much longer is Y than Z?</questionContent>
       </question>
     </questions>
     <graphic>
@@ -228,7 +249,7 @@
         <questionNumber>3</questionNumber>
         <questionContent>554 + 223 = ? </questionContent>
       </question>
-      <question questionType="symbol">
+      <question type="symbol">
         <questionNumber>4</questionNumber>
         <questionContent>Write the symbol that tells you to subtract.</questionContent>
 		<answer>-</answer>
