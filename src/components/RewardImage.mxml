@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="RewardImage"
+		contentCreationComplete="onContentCreationComplete(event)"
+		>
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center"/>
+	</s:layout>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			public var affirmationStrings :Array = new Array("Great job!", "You did it!", "So smart", "That is right", "Awesome!");
+			
+			
+			protected function onContentCreationComplete(e:Event):void
+			{
+				var randomNum:uint = uint(Math.random() * affirmationStrings.length);
+				textLabel.text = affirmationStrings[randomNum];
+				trace("width: " + this.width + " height: " + this.height);
+				this.x = (this.stage.stageWidth / 2) - 100;
+				this.y = (this.stage.stageHeight / 2) - 160;	
+			}
+				
+			
+		]]>
+	</fx:Script>
+	<s:Image id="rewardImage" source="@Embed(source='icons/Charlie.png')" /> 
+	<s:Label id="textLabel" text="Great Job!"  />
+</s:View>

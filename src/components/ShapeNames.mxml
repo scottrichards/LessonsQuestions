@@ -18,6 +18,8 @@
 	<fx:Script>
 		<![CDATA[
 			import spark.components.ToggleButton;
+			
+			import skins.ToggleButtonSkin;
 
 			protected const NUMBER_OF_ANSWERS:uint = 4;
 			public var distractors :Array = new Array("Cube", "Cone", "Cylinder", "Sphere", "Square", "Rectangle", "Triangle", "Pentagon", "Hexagon");
@@ -52,6 +54,7 @@
 				buttonArray.push(button);
 				button.id = id;
 				button.label = label;
+				button.setStyle('skinClass', skins.ToggleButtonSkin);  
 				button.addEventListener(MouseEvent.CLICK,clickHandler);
 				buttonGroup.addElement(button);
 			}

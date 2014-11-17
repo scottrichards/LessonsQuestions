@@ -7,9 +7,10 @@
 		contentCreationComplete="contentCreationCompleted(event)" xmlns:components="components.*"
 		backgroundColor="0xcccccc"
 		>
-	<s:layout>
+<!--	<s:layout>
 		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" horizontalAlign="center" />
 	</s:layout>
+	-->
 	
 	<fx:Style>
 		.myHeadingStyle { 
@@ -68,6 +69,7 @@
 			import components.MyAlertPopUp;
 			import components.NumericKeypad;
 			import components.OperatorSymbols;
+			import components.RewardImage;
 			import components.ShapeNames;
 			import components.Time;
 			
@@ -75,21 +77,23 @@
 			
 			import model.EquationData;
 			
-			public var correctAnswerId : String;
+			protected var correctAnswerId : String;
 			protected var correctAnswerStr : String;
-			public var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
-			public var currentQuestionXML : XML;
-			public var currentQuestionType : String; 	// the type of the currently selected question
+			protected var wrongAnswerSounds :Array = new Array("error.mp3", "error1.mp3", "wrong-action.mp3", "HoustonProblem.mp3");
+			protected var currentQuestionXML : XML;
+			protected var currentQuestionType : String; 	// the type of the currently selected question
+			protected var rewardTimer : Timer;
+			protected var rewardView : RewardImage;
 			
-			public var numericKeypad : NumericKeypad;	// TO DO inherit from subclass for all answer types
-			public var operatorSymbols : OperatorSymbols;
-			public var equalitySymbols : EqualitySymbols;
-			public var timeInput : Time;
-			public var measurement : ImperialMeasure;
-			public var currency : Currency;
-			public var shapeNames : ShapeNames;
-			public var multipleChoice : MultipleChoice;
-			public var equation : Equation;
+			protected var numericKeypad : NumericKeypad;	// TO DO inherit from subclass for all answer types
+			protected var operatorSymbols : OperatorSymbols;
+			protected var equalitySymbols : EqualitySymbols;
+			protected var timeInput : Time;
+			protected var measurement : ImperialMeasure;
+			protected var currency : Currency;
+			protected var shapeNames : ShapeNames;
+			protected var multipleChoice : MultipleChoice;
+			protected var equation : Equation;
 			
 			[Bindable]
 			private var equationData:ArrayCollection = new ArrayCollection([
@@ -198,9 +202,30 @@
 			protected function rightSelection():void
 			{
 				trace("Yea you got it right!");	
+				displayRewardImage();
 				playCorrectSound();
 				numberCorrectAnswers++;
 				statusStr = numberCorrectAnswers.toString() + " / " + data.questions.length();
+			}
+			
+			// when question is answered correctly display character image with an affirmation 
+			protected function displayRewardImage():void
+			{
+				if (rewardView == null)
+					rewardView = new RewardImage();
+				addElement(rewardView);
+				if (rewardTimer == null) {
+					rewardTimer = new Timer(1000, 2);
+					rewardTimer.addEventListener("timer", timerHandler);
+				}
+				rewardTimer.start();
+			}
+			
+			protected function timerHandler(event:TimerEvent):void {
+				trace("timerHandler: " + event);
+				rewardTimer.stop();
+				if (rewardView)
+					removeElement(rewardView);
 			}
 			
 			protected function wrongSelection(correctAnswer:String):void
@@ -434,43 +459,48 @@
 			
 		]]>
 	</fx:Script>
-	<s:HGroup id="statusSection" width="100%">
-		<mx:Spacer width="100%" />
-		<s:Label text="{statusStr}" paddingRight="10"/>
-	</s:HGroup>
-	<s:VGroup id="viewContainer" height="100%" minHeight="400" minWidth="500" horizontalAlign="center">
+
+	<s:VGroup paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" horizontalAlign="center" width="100%">
 		
-		<s:Group width="100%" >
-			<s:Label id="questionNumber" text="Question #{currentQuestion+1}" paddingTop="10" horizontalCenter="0" styleName="myHeadingStyle"  />	
-		</s:Group>
-		
-		<mx:Spacer height="15%"/>
-		
-		<s:HGroup width="100%" horizontalAlign="center">
-			<s:Label id="questionContent" text="{questionContentStr}" width="100%" styleName="questionContentStyle" paddingRight="10" />
-			<s:BitmapImage  id="questionImage" source="" fillMode="scale" scaleMode="stretch" maxWidth="400" maxHeight="300"  />
-		</s:HGroup>
-		<mx:Spacer height="10%"/>
-		<s:HGroup id="answerSection" width="100%" gap="40" horizontalAlign="center">	
-		</s:HGroup>
-		<s:HGroup id="multipleChoiceSection" width="100%" gap="40" horizontalAlign="center" includeInLayout="false">
-		</s:HGroup>
-		<mx:Spacer height="10%"/>
-	</s:VGroup>
-	<s:VGroup verticalAlign="bottom" paddingBottom="40" width="500">
-		<s:HGroup paddingBottom="15" width="100%" verticalAlign="bottom">
-			<s:Button label="Previous" id="previousButton" click="previousButton_clickHandler(event)" icon="@Embed('icons/Previous.png')" />
-			<mx:Spacer width="100%"/>
-			<s:Button label="Next" id="nextButton" click="nextButton_clickHandler(event)" icon="@Embed('icons/Next.png')"  />	
-		</s:HGroup>
-		<s:HGroup width="100%">
-			<s:Button label="&lt; Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
+
+		<s:HGroup id="statusSection" width="100%">
 			<mx:Spacer width="100%" />
-			<s:TextInput id="jumpToQuestionTextInput" width="40" />
-			<s:Button id="jumpToQuestionButton" label="Go" click="jumpToQuestionButton_clickHandler(event)" />
-			<mx:Spacer width="100%"/>
-			<s:Button label="Pass >" click="passClickHandler(event)" />
+			<s:Label text="{statusStr}" paddingRight="10"/>
 		</s:HGroup>
-	
+		<s:VGroup id="viewContainer" height="100%" minHeight="400" minWidth="500" horizontalAlign="center">
+			
+			<s:Group width="100%" >
+				<s:Label id="questionNumber" text="Question #{currentQuestion+1}" paddingTop="10" horizontalCenter="0" styleName="myHeadingStyle"  />	
+			</s:Group>
+			
+			<mx:Spacer height="15%"/>
+			
+			<s:HGroup width="100%" horizontalAlign="center">
+				<s:Label id="questionContent" text="{questionContentStr}" width="100%" styleName="questionContentStyle" paddingRight="10" />
+				<s:BitmapImage  id="questionImage" source="" fillMode="scale" scaleMode="stretch" maxWidth="400" maxHeight="300"  />
+			</s:HGroup>
+			<mx:Spacer height="10%"/>
+			<s:HGroup id="answerSection" width="100%" gap="40" horizontalAlign="center">	
+			</s:HGroup>
+			<s:HGroup id="multipleChoiceSection" width="100%" gap="40" horizontalAlign="center" includeInLayout="false">
+			</s:HGroup>
+			<mx:Spacer height="10%"/>
+		</s:VGroup>
+		<s:VGroup verticalAlign="bottom" paddingBottom="40" width="500">
+			<s:HGroup paddingBottom="15" width="100%" verticalAlign="bottom">
+				<s:Button label="Previous" id="previousButton" click="previousButton_clickHandler(event)" icon="@Embed('icons/Previous.png')" />
+				<mx:Spacer width="100%"/>
+				<s:Button label="Next" id="nextButton" click="nextButton_clickHandler(event)" icon="@Embed('icons/Next.png')"  />	
+			</s:HGroup>
+			<s:HGroup width="100%">
+				<s:Button label="&lt; Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
+				<mx:Spacer width="100%" />
+				<s:TextInput id="jumpToQuestionTextInput" width="40" />
+				<s:Button id="jumpToQuestionButton" label="Go" click="jumpToQuestionButton_clickHandler(event)" />
+				<mx:Spacer width="100%"/>
+				<s:Button label="Pass >" click="passClickHandler(event)" />
+			</s:HGroup>
+		
+		</s:VGroup>
 	</s:VGroup>
 </s:View>
