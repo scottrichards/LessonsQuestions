@@ -11,15 +11,17 @@
 	</fx:Declarations>
 		<fx:Style>
 		.dragItem { 
-			fontSize: 30;
-			backgroundColor: #9933FF;
+			fontSize: 20;
+			backgroundColor: #7A9091;
+			color: #FFFFFF;
+			borderColor: #00FF00;
 		}
 	</fx:Style>
 	<fx:Script>
 		<![CDATA[
-			import mx.managers.DragManager;
 			import mx.core.DragSource;
 			import mx.events.DragEvent;
+			import mx.managers.DragManager;
 			
 			private var answer : String;
 			
@@ -27,16 +29,20 @@
 			private function mouseMoveHandler(event:MouseEvent):void {
 				
 				// Get the drag initiator component from the event object.
-				var dragInitiator:BorderContainer= BorderContainer(event.currentTarget);
+				var dragInitiator:SkinnableContainer= SkinnableContainer(event.currentTarget);
 				
 				// Get the color of the drag initiator component.
 				var dragColor:int = dragInitiator.getStyle('backgroundColor');
+				
+				var label:Label = dragInitiator.contentGroup.getChildByName("labelName") as Label;
 				
 				// Create a DragSource object.
 				var ds:DragSource = new DragSource();
 				
 				// Add the data to the object.
 				ds.addData(dragColor, 'color');
+				if (label != null)
+					ds.addData(label.text, 'label');
 				
 				// Call the DragManager doDrag() method to start the drag. 
 				DragManager.doDrag(dragInitiator, ds, event);
@@ -50,7 +56,7 @@
 				if (event.dragSource.hasFormat('color')) {
 					
 					// Get the drop target component from the event object.
-					var dropTarget:BorderContainer = BorderContainer(event.currentTarget);
+					var dropTarget:SkinnableContainer = SkinnableContainer(event.currentTarget);
 					// Accept the drop.
 					DragManager.acceptDragDrop(dropTarget);
 				}
@@ -63,8 +69,11 @@
 				// Get the data identified by the color format 
 				// from the drag source.
 				var data:Object = event.dragSource.dataForFormat('color');
+				var text:String = event.dragSource.dataForFormat('label') as String;
 				// Set the canvas color.
 				myCanvas.setStyle("backgroundColor", data);
+				var targetLabel : Label = myCanvas.contentGroup.getChildByName("targetLabel") as Label;
+				targetLabel.text = text;
 			}    
 			
 			public function setAnswer(answerStr:String):void 
@@ -76,27 +85,25 @@
 	<s:VGroup>
 		
 		<s:HGroup>
-			<s:BorderContainer
-				width="70" height="30" 
-				backgroundColor="red" 
-				borderStyle="solid" 
-				mouseMove="mouseMoveHandler(event);">
-				<s:Label text="One" />
-			</s:BorderContainer>
-			
-			<s:BorderContainer height="30" 
-							   backgroundColor="green" 
-							   borderStyle="solid" 
-							   mouseMove="mouseMoveHandler(event);" >
-				<s:Label text="Two" />
-			</s:BorderContainer>
 			<s:SkinnableContainer
- 							   height="30"  
+				backgroundColor="red" 
+				skinClass="skins.DragDropItem"
+				mouseMove="mouseMoveHandler(event);">
+				<s:Label name="labelName" text="One" />
+			</s:SkinnableContainer>
+			
+			<s:SkinnableContainer 
+							   backgroundColor="green" 
+							   skinClass="skins.DragDropItem"
+							   mouseMove="mouseMoveHandler(event);" >
+				<s:Label name="labelName" text="Two" />
+			</s:SkinnableContainer>
+			<s:SkinnableContainer
 							   mouseMove="mouseMoveHandler(event);"
 							   skinClass="skins.DragDropItem"
 							   styleName="dragItem" 
 							   >
-				<s:Label text="Three" />
+				<s:Label name="labelName" text="Three" />
 			</s:SkinnableContainer>
 
 		</s:HGroup>
@@ -104,13 +111,14 @@
 		<s:Label text="Drag a color onto the Canvas container."/>
 		
 		<s:HGroup>
-			<s:BorderContainer  id="myCanvas" 
-								width="100" height="100" 
-								backgroundColor="#FFFFFF" 
-								borderStyle="solid" 
+			<s:SkinnableContainer  id="myCanvas" 
+								width="70" height="40" 
+								backgroundColor="#dddddd"  
+								skinClass="skins.DropTarget"
 								dragEnter="dragEnterHandler(event);" 
 								dragDrop="dragDropHandler(event);">
-			</s:BorderContainer>
+				<s:Label name="targetLabel" text="Target" />
+			</s:SkinnableContainer>
 			
 		</s:HGroup>
 		
