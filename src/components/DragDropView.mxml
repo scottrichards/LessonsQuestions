@@ -27,13 +27,17 @@
 			import mx.events.DragEvent;
 			import mx.managers.DragManager;
 			
+			import spark.components.Label;
+			import spark.components.SkinnableContainer;
+			import spark.components.TextInput;
+			
 			private var answer : String;
 			
 			// Initializes the drag and drop operation.
 			private function mouseMoveHandler(event:MouseEvent):void {
 				
 				// Get the drag initiator component from the event object.
-				var dragInitiator:SkinnableContainer= SkinnableContainer(event.currentTarget);
+				var dragInitiator:SkinnableContainer = SkinnableContainer(event.currentTarget);
 				
 				// Get the color of the drag initiator component.
 				var dragColor:int = dragInitiator.getStyle('backgroundColor');
@@ -69,14 +73,14 @@
 			// Called if the target accepts the dragged object and the user 
 			// releases the mouse button while over the Canvas container. 
 			private function dragDropHandler(event:DragEvent):void {
-				var dropTarget:SkinnableContainer = SkinnableContainer(event.currentTarget);
+				var dropTargetItem:SkinnableContainer = SkinnableContainer(event.currentTarget);
 				// Get the data identified by the color format 
 				// from the drag source.
 				var data:Object = event.dragSource.dataForFormat('color');
 				var text:String = event.dragSource.dataForFormat('label') as String;
 				// Set the canvas color.
-				dropTarget.setStyle("backgroundColor", data);
-				var targetLabel : Label = dropTarget.contentGroup.getChildByName("targetLabel") as Label;
+				dropTargetItem.setStyle("backgroundColor", data);
+				var targetLabel : Label = dropTargetItem.contentGroup.getChildByName("targetLabel") as Label;
 				targetLabel.text = text;
 			}    
 			
@@ -89,69 +93,57 @@
 			{
 				var choiceList : XMLList = question.choices.choice;
 				var numItems:uint = choiceList.length();
+				var maxWidth : Number;
 				for each (var choiceNode:XML in choiceList) {
-					trace("choice: " + choiceNode.toString());
+					var dragItem : DragItem = new DragItem();
+					var label : Label = new Label();
+					label.name = "labelName";
+					label.text = choiceNode.toString();
+					dragItem.addElement(label);
+					dragItem.addEventListener(MouseEvent.MOUSE_MOVE,mouseMoveHandler);
+					choiceGroup.addElement(dragItem);
+					if (dragItem.width > maxWidth)
+						maxWidth = dragItem.width;
 				}
+				for (var i:int;i<numItems;i++) {
+					createDropTarget(maxWidth);
+				}
+			}
+			
+			protected function createDropTarget(maxWidth:Number):void
+			{				
+				var dropTarget : DropTargetContainer = new DropTargetContainer();
+				var label : Label = new Label();
+				label.name = "targetLabel";
+				dropTarget.addElement(label);
+				dropTarget.addEventListener(DragEvent.DRAG_ENTER,dragEnterHandler);
+				dropTarget.addEventListener(DragEvent.DRAG_DROP,dragDropHandler);
+				dropTarget.width = 120;
+				dropGroup.addElement(dropTarget);
+			}
+			
+			// Return the text the user entered in input fields separated by commas 
+			public function getAnswer():String
+			{
+				var answerStr : String = "";
+				var answerCount:uint = 0;
+				var firstItem :Boolean = true;
+				for (var i:int;i<dropGroup.numElements-1;i++)
+				{
+					var dropTarget : DropTargetContainer = dropGroup.getElementAt(i) as DropTargetContainer;
+					var label : Label = dropTarget.getChildByName("targetLabel") as Label;
+					if (label) {
+						answerStr += label.text;
+					}
+				}
+				return answerStr;
 			}
 		]]>
 	</fx:Script>
-	<s:VGroup>
-		
+	<s:VGroup>		
 		<s:HGroup id="choiceGroup" gap="15">
-			<s:SkinnableContainer
-				styleName="dragItem" 
-				skinClass="skins.DragDropItem"
-				mouseMove="mouseMoveHandler(event);">
-				<s:Label name="labelName" text="One" />
-			</s:SkinnableContainer>
-			
-			<s:SkinnableContainer 
-								styleName="dragItem" 
-							   skinClass="skins.DragDropItem"
-							   mouseMove="mouseMoveHandler(event);" >
-				<s:Label name="labelName" text="Two" />
-			</s:SkinnableContainer>
-			<s:SkinnableContainer
-							   mouseMove="mouseMoveHandler(event);"
-							   skinClass="skins.DragDropItem"
-							   styleName="dragItem" 
-							   >
-				<s:Label name="labelName" text="Three" />
-			</s:SkinnableContainer>
-
 		</s:HGroup>
-
-		
 		<s:HGroup id="dropGroup" gap="15">
-			<s:SkinnableContainer  id="myCanvas" 
-								width="120"
-								backgroundColor="#dddddd"  
-								styleName="dropTarget"
-								skinClass="skins.DropTarget"
-								dragEnter="dragEnterHandler(event);" 
-								dragDrop="dragDropHandler(event);">
-				<s:Label name="targetLabel" text="Target" />
-			</s:SkinnableContainer>
-			<s:SkinnableContainer  
-								   width="120"
-								   backgroundColor="#dddddd"
-								   styleName="dropTarget"
-								   skinClass="skins.DropTarget"
-								   dragEnter="dragEnterHandler(event);" 
-								   dragDrop="dragDropHandler(event);">
-				<s:Label name="targetLabel" text="Target" />
-			</s:SkinnableContainer>
-			<s:SkinnableContainer  
-								   width="120"
-								   backgroundColor="#dddddd"  
-								   skinClass="skins.DropTarget"
-								   styleName="dropTarget"
-								   dragEnter="dragEnterHandler(event);" 
-								   dragDrop="dragDropHandler(event);">
-				<s:Label name="targetLabel" text="Target" />
-			</s:SkinnableContainer>
-			
 		</s:HGroup>
-		
 	</s:VGroup>
 </s:View>

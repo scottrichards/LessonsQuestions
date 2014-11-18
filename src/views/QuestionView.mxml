@@ -53,7 +53,6 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import components.DragDropView;
 			import mx.collections.ArrayCollection;
 			import mx.events.CloseEvent;
 			import mx.events.FlexEvent;
@@ -63,6 +62,7 @@
 			
 			import components.BIPTitleWindow;
 			import components.Currency;
+			import components.DragDropView;
 			import components.EqualitySymbols;
 			import components.Equation;
 			import components.ImperialMeasure;
@@ -257,6 +257,10 @@
 				s.play();
 			}
 			
+			protected function dragDropContentCreationComplete(event:FlexEvent):void
+			{
+				dragDrop.setChoices(currentQuestionXML);
+			}	
 			
 			protected function updateQuestionType(question:XML):void
 			{
@@ -289,9 +293,9 @@
 					addToAnswer(equation);
 				}  else if (question.@type== "dragDrop") {
 					dragDrop = new DragDropView();
-					dragDrop.setChoices(currentQuestionXML);
-					dragDrop.setAnswer(answerContents);
+					dragDrop.addEventListener(FlexEvent.CONTENT_CREATION_COMPLETE,dragDropContentCreationComplete);
 					addToAnswer(dragDrop);
+					dragDrop.setAnswer(answerContents);
 				} else if (question.@type== "multipleChoice") {
 					multipleChoice = new MultipleChoice();
 //					multipleChoice.setAnswer(answerXMLList);
@@ -422,6 +426,8 @@
 				} else if (currentQuestionXML.@type== "equation") {
 					userAnswer = equation.response;
 					answerContents = equation.correctAnswer;
+				} else if (currentQuestionXML.@type== "dragDrop") {
+					userAnswer = dragDrop.getAnswer();
 				} else {
 					userAnswer = numericKeypad.textInputField.text;
 				}
@@ -459,6 +465,7 @@
 				goToQuestion(uint(questionToGoTo) - 1);
 			}
 			
+		
 		
 			
 //			protected function transitionTest(event:MouseEvent):void
