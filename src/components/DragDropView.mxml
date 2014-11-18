@@ -128,11 +128,15 @@
 				var answerStr : String = "";
 				var answerCount:uint = 0;
 				var firstItem :Boolean = true;
-				for (var i:int;i<dropGroup.numElements-1;i++)
+				for (var i:int;i<dropGroup.numElements;i++)
 				{
 					var dropTarget : DropTargetContainer = dropGroup.getElementAt(i) as DropTargetContainer;
-					var label : Label = dropTarget.getChildByName("targetLabel") as Label;
+					var label : Label = dropTarget.getElementAt(0) as Label;	// we should only have a single label child element
 					if (label) {
+						if (firstItem)
+							firstItem = false;
+						else
+							answerStr += " ";
 						answerStr += label.text;
 					}
 				}

@@ -476,6 +476,10 @@
 		]]>
 	</fx:Script>
 
+	<s:navigationContent>
+		<s:Button label="Lessons" click="navigator.popToFirstView();"/>
+	</s:navigationContent>
+	
 	<s:VGroup paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" horizontalAlign="center" width="100%">
 		
 

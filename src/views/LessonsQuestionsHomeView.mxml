@@ -42,6 +42,8 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
+
+	
 	<s:Label text="Select a Lesson:" />
 	<s:List id="list" width="100" height="80%" changing="list_changingHandler(event)"  dataProvider="{parentApplication.lessonsList}" />
 </s:View>
