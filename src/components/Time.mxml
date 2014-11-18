@@ -3,6 +3,19 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark"
 		 initialize="componentInitHandler(event)"
 		 >
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		
+		.labelStyle { 
+			fontSize: 30;
+			fontWeight: bold;
+		}
+		
+		.buttonStyle { 
+			fontSize: 22;
+		}
+		
+	</fx:Style>
 	<fx:Script>
 		<![CDATA[
 			protected var hoursHasFocus : Boolean;
@@ -53,7 +66,7 @@
 	</fx:Declarations>
 	<s:HGroup>
 		<s:TextInput id="hours" width="60" />
-		<s:Label>:</s:Label>
+		<s:Label styleName="labelStyle">:</s:Label>
 		<s:TextInput id="minutes" width="60"/>	
 	</s:HGroup>
 		

@@ -21,6 +21,15 @@
 		.questionContentStyle { 
 			fontSize: 20;
 		}
+		
+		.questionNoBorderContainer {
+			backgroundColor : "0xcccccc";
+			borderVisible : false;
+		}
+		
+		.questionShowBorderContainer {
+			borderVisible : true;
+		}
 	</fx:Style>
 
 	<fx:Declarations>
@@ -44,10 +53,13 @@
 	</s:states>
 	<s:transitions>
 		<s:Transition fromState="default" toState="goToQuestion" >
-			<s:Fade target="{viewContainer}" duration="1000" alphaFrom="1" alphaTo="0" repeatBehavior="reverse" />
+				<s:Fade target="{viewContainer}" duration="1000" alphaFrom="1" alphaTo="0"  /> 
 		</s:Transition>
 		<s:Transition fromState="goToQuestion" toState="default">
-			<s:Fade target="{viewContainer}" duration="1000" alphaFrom="0" alphaTo="1" />
+			<s:Sequence>
+				<!--<s:Fade target="{viewContainer}" duration="2000" alphaFrom="1" alphaTo="0" repeatBehavior="reverse" /> -->
+				<s:Fade target="{viewContainer}" duration="1500" alphaFrom="0" alphaTo="1" />
+			</s:Sequence>
 		</s:Transition>
 	</s:transitions>
 	
@@ -66,6 +78,7 @@
 			import components.EqualitySymbols;
 			import components.Equation;
 			import components.ImperialMeasure;
+			import components.MathWords;
 			import components.MultipleChoice;
 			import components.MyAlertPopUp;
 			import components.NumericKeypad;
@@ -96,6 +109,7 @@
 			protected var multipleChoice : MultipleChoice;
 			protected var equation : Equation;
 			protected var dragDrop : DragDropView;
+			protected var mathWords : MathWords;
 			
 			[Bindable]
 			private var equationData:ArrayCollection = new ArrayCollection([
@@ -143,20 +157,22 @@
 			protected function nextButton_clickHandler(event:MouseEvent):void
 			{
 				if (checkAnswer()) {
-					goToNextQuestion();
+					goToNextQuestion(true);
 				}
 			}
 			
 			protected function passClickHandler(event:MouseEvent):void
 			{
-				goToNextQuestion();
+				goToNextQuestion(false);
 			}
 			
-			protected function goToNextQuestion():void
+			protected function goToNextQuestion(displayTransition:Boolean = false):void
 			{
-				currentState = "goToQuestion";
+				if (displayTransition)
+					currentState = "goToQuestion";
 				goToQuestion(++currentQuestion);
-				currentState = "default";
+				if (displayTransition)
+					currentState = "default";
 			}
 			
 			protected function previousButton_clickHandler(event:MouseEvent):void
@@ -266,7 +282,7 @@
 			{
 				trace("type: " + question.@type);
 				currentQuestionType = question.@type;
-				var answerXMLList:XMLList = currentQuestionXML.answer;
+				
 				if (question.@type== "symbolOperators") {
 					operatorSymbols = new OperatorSymbols();
 					addToAnswer(operatorSymbols);
@@ -284,6 +300,7 @@
 					addToAnswer(currency);
 				}  else if (question.@type== "shapeNames") {
 					shapeNames = new ShapeNames();
+					var answerXMLList:XMLList = currentQuestionXML.answer;
 					var answerContents:String = answerXMLList[0];
 					shapeNames.setAnswer(answerContents);
 					addToAnswer(shapeNames);
@@ -296,11 +313,14 @@
 					dragDrop.addEventListener(FlexEvent.CONTENT_CREATION_COMPLETE,dragDropContentCreationComplete);
 					addToAnswer(dragDrop);
 					dragDrop.setAnswer(answerContents);
+				} else if (question.@type== "mathWordsAddSub") {
+					mathWords = new MathWords();
+					var answerList:XMLList = currentQuestionXML.questionContent.answer;
+					mathWords.setAnswer(answerList[0]);
+					addToAnswer(mathWords);
 				} else if (question.@type== "multipleChoice") {
 					multipleChoice = new MultipleChoice();
-//					multipleChoice.setAnswer(answerXMLList);
 					addToAnswer(multipleChoice);
-					trace("multiple choice");
 				} 
 				
 				else {
@@ -331,7 +351,7 @@
 				PopUpManager.centerPopUp(titleWindow);
 			}
 
-			// invoked when the user closes out the Title Window Modail Dialog e.g. for displaying answers
+			// invoked when the user closes out the Title Window Modal Dialog e.g. for displaying answers
 			protected function closeTitleWindowHandler(event:Event):void
 			{
 				trace("Close Title Window");
@@ -428,6 +448,9 @@
 					answerContents = equation.correctAnswer;
 				} else if (currentQuestionXML.@type== "dragDrop") {
 					userAnswer = dragDrop.getAnswer();
+				}  else if (currentQuestionXML.@type== "mathWordsAddSub") {
+					userAnswer = mathWords.getText();
+					answerContents = mathWords.getAnswer();
 				} else {
 					userAnswer = numericKeypad.textInputField.text;
 				}
@@ -496,7 +519,9 @@
 			<mx:Spacer height="15%"/>
 			
 			<s:HGroup width="100%" horizontalAlign="center">
-				<s:Label id="questionContent" text="{questionContentStr}" width="100%" styleName="questionContentStyle" paddingRight="10" />
+				<s:BorderContainer maxWidth="600" styleName="questionNoBorderContainer">
+					<s:Label id="questionContent" text="{questionContentStr}"  styleName="questionContentStyle" paddingRight="10" />
+				</s:BorderContainer>
 				<s:BitmapImage  id="questionImage" source="" fillMode="scale" scaleMode="stretch" maxWidth="400" maxHeight="300"  />
 			</s:HGroup>
 			<mx:Spacer height="10%"/>

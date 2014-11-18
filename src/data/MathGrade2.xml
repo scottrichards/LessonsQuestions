@@ -184,7 +184,7 @@
       </question>
       <question type="mathWordsAddSub">
         <questionNumber>9</questionNumber>
-        <questionContent>The difference is the answer to a(n) 	                      problem. </questionContent>
+        <questionContent>The difference is the answer to a(n) <answer type="text">subtraction</answer> problem. </questionContent>
       </question>
       <question type="currency">
         <questionNumber>10</questionNumber>
