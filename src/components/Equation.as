@@ -81,6 +81,7 @@ package components
 					var textLabel:Label = new Label();
 					textLabel.text = item.value;
 					textLabel.name = "textLabel" + _numTextLabels.toString();
+					textLabel.setStyle("fontSize",20);
 					_numTextLabels++;
 					addChild(textLabel);
 				}

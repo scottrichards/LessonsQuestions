@@ -16,7 +16,7 @@
 		<answer>2:20</answer>
 		<imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/Clock%20220.ai.png" question="2" type="question">images/Clock220.ai.png</imageInfo>
       </question>
-      <question type="keyboardEntry" numAnswers="1" answer1Type="Integer">
+      <question type="keyboardEntry">
         <questionNumber>3</questionNumber>
         <questionContent>548 − 235 =  </questionContent>
 		<answer>313</answer>
@@ -64,7 +64,7 @@
 			<answer correct="true">18 centimeters</answer>
 		</answers>
       </question>
-      <question type="multipleChoice" numAnswers="4" answer1Type="Text">
+      <question type="multipleChoice">
         <questionNumber>12</questionNumber>
         <questionContent>If you have two dollar bills, one quarter, and ten pennies, how much money do you have?</questionContent>
 		<answers>
@@ -74,7 +74,7 @@
 			<answer correct="true">$2 and 35¢</answer> 
 		</answers>
       </question>
-      <question type="keyboardEntry" numAnswers="1" answer1Type="Integer">
+      <question type="keyboardEntry">
         <questionNumber>13</questionNumber>
         <questionContent>Write the number using base-ten numerals. 15 tens</questionContent>
 		<answer>150</answer>
@@ -174,7 +174,7 @@
 			<choice>forty</choice>
 		</choices>
       </question>
-      <question>
+      <question type="multipleChoice">
         <questionNumber>8</questionNumber>
         <questionContent>Would the length of a small dog’s tail be 10 centimeters or 10 meters? </questionContent>
 		<answers>
@@ -340,7 +340,7 @@
       
     <pageName>8</pageName>
     <questions>
-      <question>
+      <question type="multiChoice">
         <questionNumber>1</questionNumber>
         <questionContent>Which is greater, 5 nickels or 3 dimes? </questionContent>
       </question>
@@ -348,9 +348,16 @@
         <questionNumber>2</questionNumber>
         <questionContent>Fill in the sign to make this sentence true.      316  163 </questionContent>
       </question>
-      <question>
+      <question type="dragDrop">
         <questionNumber>3</questionNumber>
-        <questionContent>Put these numbers in order from greatest to least.  534   216   152   333 </questionContent>
+        <questionContent>Put these numbers in order from greatest to least.</questionContent>
+		<choices>
+			<choice>534</choice> 
+			<choice>216</choice>
+			<choice>152</choice>
+			<choice>333</choice>
+		</choices>
+		<answer>152 216 333 534</answer>
       </question>
       <question>
         <questionNumber>4</questionNumber>
@@ -602,9 +609,17 @@
         <questionNumber>2</questionNumber>
         <questionContent>Look at the picture.  Is the number  of bird heads even or odd? </questionContent>
       </question>
-      <question>
+      <question type="dragDrop">
         <questionNumber>3</questionNumber>
         <questionContent>Write 797 using words. </questionContent>
+		<choices>
+			<choice>seven</choice>
+			<choice>hundred</choice>
+			<choice>ninety</choice>
+			<choice>seven</choice>
+			<choice>nine</choice>
+		</choices>
+		<answer>seven hundred ninety seven</answer>
       </question>
       <question>
         <questionNumber>4</questionNumber>
