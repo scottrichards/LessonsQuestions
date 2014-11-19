@@ -193,7 +193,7 @@
       </question>
       <question type="equation">
         <questionNumber>11</questionNumber>
-        <questionContent>42 + <answer type="numeric">12</answer> = 86 </questionContent>
+        <questionContent>42 + <answer type="numeric">44</answer> = 86 </questionContent>
       </question>
       <question type="equation">
         <questionNumber>12</questionNumber>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 initialize="componentInitHandler(event)"
+		 horizontalAlign="center">
+	<fx:Style>
+		.labelStyle { 
+			fontSize: 30;
+			fontWeight: bold;
+		}
+		
+		.buttonStyle { 
+			fontSize: 30;
+		}
+		
+	</fx:Style>
+	
+	<fx:Script>
+		<![CDATA[
+			import spark.components.Button;
+			protected const NUMBER_OF_ANSWERS:uint = 4;
+			protected var selectedButtonLabel : String;
+			protected var answer : String;
+			
+			protected function componentInitHandler(event:Event):void {
+				trace("initHandler");
+			}
+			
+			protected function addButton(id:String,label:String):void 
+			{
+				var button:Button = new Button();
+				button.id = id;
+				button.label = label;
+				button.addEventListener(MouseEvent.CLICK,clickHandler);
+				buttonGroup.addElement(button);
+			}
+			
+			public function setAnswer(answerList:XMLList):void 
+			{
+				trace("answerList.length: " + answerList.length);
+				for each (var prop:XML in answerList) 
+				{ 
+					trace("node: " + prop.answer);
+					if (prop.@correct == "true") {
+						trace("CORRECT");
+					}
+				}
+			}
+			
+			protected function clickHandler(event:MouseEvent):void
+			{
+				var buttonId : String = event.currentTarget.id;
+				trace("click on buttonID: " + buttonId);
+				var buttonLabel : String = event.currentTarget.label;
+				selectedButtonLabel = buttonLabel;
+				textLabel.text = selectedButtonLabel;
+			}
+			
+			public function getText():String
+			{
+				return selectedButtonLabel;
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Label id="textLabel" styleName="labelStyle" paddingBottom="10"  />
+	<s:HGroup id="buttonGroup" gap="30" paddingTop="10">
+	</s:HGroup>
+</s:VGroup>

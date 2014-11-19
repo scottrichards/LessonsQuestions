@@ -7,10 +7,7 @@
 		contentCreationComplete="contentCreationCompleted(event)" xmlns:components="components.*"
 		backgroundColor="0xcccccc"
 		>
-<!--	<s:layout>
-		<s:VerticalLayout paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" horizontalAlign="center" />
-	</s:layout>
-	-->
+
 	
 	<fx:Style>
 		.myHeadingStyle { 
@@ -219,7 +216,6 @@
 			
 			protected function rightSelection():void
 			{
-				trace("Yea you got it right!");	
 				displayRewardImage();
 				playCorrectSound();
 				numberCorrectAnswers++;
@@ -315,6 +311,7 @@
 					dragDrop.setAnswer(answerContents);
 				} else if (question.@type== "mathWordsAddSub") {
 					mathWords = new MathWords();
+					mathWords.addXMLData(currentQuestionXML);
 					var answerList:XMLList = currentQuestionXML.questionContent.answer;
 					mathWords.setAnswer(answerList[0]);
 					addToAnswer(mathWords);
@@ -365,7 +362,7 @@
 				currentQuestionXML = data.questions[currentQuestion];
 				if (currentQuestionXML) {
 					updateQuestionType(currentQuestionXML);
-					if (currentQuestionType == "equation") {
+					if (currentQuestionType == "equation" || currentQuestionType == "mathWordsAddSub") {
 						questionContentStr = "";
 					} else {
 						questionContentStr = currentQuestionXML.questionContent;
@@ -376,15 +373,10 @@
 					// display the image
 					if (imageUrlStr.length > 0) {
 						questionImage.visible = true;
-//						questionImage.percentWidth=50;
-//						questionContent.percentWidth=50;
 						loadImage(currentQuestionXML.imageInfo);
 						questionImage.maxHeight=300;
 						questionImage.includeInLayout = true;
 					} else {	// make the text take up all of the space
-//						questionImage.percentWidth=0;
-//						questionContent.percentWidth=100;
-//						questionImage.width=0;
 						questionImage.maxHeight=0;
 						questionImage.visible = false;
 						questionImage.includeInLayout = false;

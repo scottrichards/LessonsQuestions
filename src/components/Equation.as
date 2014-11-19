@@ -86,12 +86,6 @@ package components
 					addChild(textLabel);
 				}
 				if (item.tag == "answer") {
-/*					var uic:UIComponent = new UIComponent();
-					uic.name="answer" + _numAnswers.toString();
-					uic.width = 80;
-					uic.height = COMPONENT_HEIGHT;
-					uic.graphics.lineStyle(1,0xcccccc); 
-					addChild(uic);*/
 					var inputField:TextInput = new TextInput();
 					inputField.width = INPUT_FIELD_WIDTH;
 					inputField.name = "answer" + _numAnswers.toString();
