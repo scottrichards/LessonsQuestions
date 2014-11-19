@@ -23,7 +23,7 @@
 		}
 		
 		.questionNoBorderContainer {
-			backgroundColor : "0xcccccc";
+			alpha	: 0;
 			borderVisible : false;
 		}
 		
@@ -376,15 +376,15 @@
 					// display the image
 					if (imageUrlStr.length > 0) {
 						questionImage.visible = true;
-						questionImage.percentWidth=50;
-						questionContent.percentWidth=50;
+//						questionImage.percentWidth=50;
+//						questionContent.percentWidth=50;
 						loadImage(currentQuestionXML.imageInfo);
 						questionImage.maxHeight=300;
 						questionImage.includeInLayout = true;
 					} else {	// make the text take up all of the space
-						questionImage.percentWidth=0;
-						questionContent.percentWidth=100;
-						questionImage.width=0;
+//						questionImage.percentWidth=0;
+//						questionContent.percentWidth=100;
+//						questionImage.width=0;
 						questionImage.maxHeight=0;
 						questionImage.visible = false;
 						questionImage.includeInLayout = false;
@@ -518,12 +518,12 @@
 			
 			<mx:Spacer height="15%"/>
 			
-			<s:HGroup width="100%" horizontalAlign="center">
-				<s:BorderContainer maxWidth="600" styleName="questionNoBorderContainer">
-					<s:Label id="questionContent" text="{questionContentStr}"  styleName="questionContentStyle" paddingRight="10" />
-				</s:BorderContainer>
+			<s:VGroup width="100%" horizontalAlign="center">
+				<!-- <s:BorderContainer styleName="questionNoBorderContainer"> -->
+					<s:Label id="questionContent" text="{questionContentStr}"  styleName="questionContentStyle" paddingRight="10" maxWidth="700" />
+				<!-- </s:BorderContainer> -->
 				<s:BitmapImage  id="questionImage" source="" fillMode="scale" scaleMode="stretch" maxWidth="400" maxHeight="300"  />
-			</s:HGroup>
+			</s:VGroup>
 			<mx:Spacer height="10%"/>
 			<s:HGroup id="answerSection" width="100%" gap="40" horizontalAlign="center">	
 			</s:HGroup>

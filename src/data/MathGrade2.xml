@@ -189,6 +189,7 @@
       <question type="currency">
         <questionNumber>10</questionNumber>
         <questionContent>How many cents do you have if you have two quarters, three dimes, and three pennies? </questionContent>
+		<answer>.83</answer>
       </question>
       <question type="equation">
         <questionNumber>11</questionNumber>
@@ -198,9 +199,12 @@
         <questionNumber>12</questionNumber>
         <questionContent>964 − 533 = <answer type="numeric">431</answer> </questionContent>
       </question>
-      <question>
+      <question type="equation">
         <questionNumber>13</questionNumber>
-        <questionContent>Count the objects in the array.  Write an addition  statement to show the sum. </questionContent>
+        <questionContent>Count the objects in the array.  Fill in the addition statement to show the sum. 
+		<answer type="numeric">3</answer> + <answer type="numeric">3</answer> = <answer type="numeric">6</answer>
+		</questionContent>
+		<imageInfo>images/3 x 2.ai.png</imageInfo>
       </question>
       <question>
         <questionNumber>14</questionNumber>
@@ -209,8 +213,8 @@
       </question>
       <question type="measurementImperial">
         <questionNumber>15</questionNumber>
-        <questionContent>Write your answers in inches. 
-		How much longer is Y than Z?</questionContent>
+        <questionContent>How much longer is Y than Z?</questionContent>
+		<imageInfo>images/L24 Ruler.ai.png</imageInfo>
       </question>
     </questions>
     <graphic>
