@@ -63,12 +63,9 @@
 	<fx:Script>
 		<![CDATA[
 			import mx.collections.ArrayCollection;
-			import mx.events.CloseEvent;
 			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
-			
-			import spark.components.TitleWindow;
-			
+						
 			import components.BIPTitleWindow;
 			import components.Currency;
 			import components.DragDropView;
@@ -431,9 +428,6 @@
 					userAnswer = shapeNames.getText();
 				} else if (currentQuestionXML.@type== "multipleChoice") {
 					showTitleWindow("Select one of the multiple choices");
-// Display Pop Up (can't drag it lighter weight) need to figure out how to center it
-//					alertPopUp.open(viewContainer,true);
-//					alertPopUp.setAlert("Select one of the multiple choices");
 					return false;
 				} else if (currentQuestionXML.@type== "equation") {
 					userAnswer = equation.response;
@@ -480,13 +474,6 @@
 				goToQuestion(uint(questionToGoTo) - 1);
 			}
 			
-		
-		
-			
-//			protected function transitionTest(event:MouseEvent):void
-//			{
-//				currentState="goToQuestion";
-//			}
 			
 		]]>
 	</fx:Script>
