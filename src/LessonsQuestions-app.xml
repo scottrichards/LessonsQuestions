@@ -22,7 +22,7 @@
 
 	<!-- The name that is displayed in the AIR application installer. 
 	May have multiple values for each language. See samples or xsd schema file. Optional. -->
-	<name>SmartEZ</name>
+	<name><text xml:lang="en">SmartEZ</text></name>
 	
 	<!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade. 
 	Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -111,7 +111,7 @@
 
 		<!-- Display Resolution for the app (either "standard" or "high"). Optional, OSX-only. Default "standard" -->
 		<!-- <requestedDisplayResolution></requestedDisplayResolution> -->
-	<autoOrients>true</autoOrients>
+		<autoOrients>true</autoOrients>
         <fullScreen>false</fullScreen>
         <visible>true</visible>
         <softKeyboardBehavior>none</softKeyboardBehavior>
@@ -134,6 +134,8 @@
 	<!-- The subpath of the Programs menu to use. (Ignored on operating systems without a Programs menu.) Optional. -->
 	<!-- <programMenuFolder></programMenuFolder> -->
 
+	<supportedLanguages>en</supportedLanguages>
+	
 	<!-- The icon the system uses for the application. For at least one resolution,
 	specify the path to a PNG file included in the AIR package. Optional. -->
 	<!-- <icon>
@@ -167,6 +169,8 @@
 		<image732x412></image732x412>
 		<image1024x1024></image1024x1024>
 	</icon> -->
+	
+	
 
 	<!-- Whether the application handles the update when a user double-clicks an update version
 	of the AIR file (true), or the default AIR application installer handles the update (false).

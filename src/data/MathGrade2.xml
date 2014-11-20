@@ -217,6 +217,7 @@
         <questionNumber>15</questionNumber>
         <questionContent>How much longer is Y than Z?</questionContent>
 		<imageInfo>images/L24 Ruler.ai.png</imageInfo>
+		<answer>2"</answer>
       </question>
     </questions>
     <graphic>
