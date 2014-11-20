@@ -52,8 +52,10 @@
       </question>
       <question type="multipleChoiceImage">
         <questionNumber>10</questionNumber>
-        <questionContent>Circle the rectangle that has 10 square units. </questionContent>
+        <questionContent>Select the rectangle that has 10 square units. </questionContent>
 		<choices>
+			<choice correct="true"><image>images/2 x 5.ai.png</image></choice>
+			<choice><image>images/2 x 4.ai.png</image></choice>
 		</choices>
       </question>
       <question type="multipleChoice">

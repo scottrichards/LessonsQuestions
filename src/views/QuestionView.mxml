@@ -438,9 +438,12 @@
 					answerContents = equation.correctAnswer;
 				} else if (currentQuestionXML.@type== "dragDrop") {
 					userAnswer = dragDrop.getAnswer();
-				}  else if (currentQuestionXML.@type== "mathWordsAddSub") {
+				}  else if (currentQuestionXML.@type == "mathWordsAddSub") {
 					userAnswer = mathWords.getText();
 					answerContents = mathWords.getAnswer();
+				}  else if (currentQuestionXML.@type == "multipleChoiceImage") {
+					userAnswer = multipleChoiceImage.getText();
+					answerContents = multipleChoiceImage.getAnswer();
 				} else {
 					userAnswer = numericKeypad.textInputField.text;
 				}

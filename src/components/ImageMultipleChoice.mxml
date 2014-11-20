@@ -21,18 +21,18 @@
 		<![CDATA[
 			
 			import spark.components.Label;
-			import spark.components.ToggleButton;
-					
 			
-			protected var selectedButtonLabel : String;
-			protected var answer : String;
+			protected var _answer : String;
+			
+			[Bindable]
+			protected var _response : String;
 			private var _buttonArray : Array;
 			private var _numTextLabels:uint;
 			private var _numAnswers:uint;
 			private var _choices:XML;
 			
-			[Bindable]
-			private var _answerStr:String;
+//			[Bindable]
+//			private var _answerStr:String;
 					
 			protected function componentInitHandler(event:Event):void {		
 			}
@@ -47,7 +47,11 @@
 				for each (var choiceNode:XML in choiceList) {
 					var imageList : XMLList = choiceNode.image;
 					var imageNode : XML = imageList[0];
-					addButton(imageNode.toString(),uniqueId.toString());
+					var correctAttribute : String = choiceNode.attribute("correct");
+					var isCorrect : Boolean = correctAttribute == "true";
+					if (isCorrect)
+						_answer = uniqueId.toString();
+					addButton(imageNode.toString(),uniqueId.toString(),isCorrect);
 					uniqueId++;
 				}			
 			}
@@ -62,13 +66,14 @@
 			// -----------------
 		
 			
-			protected function addButton(imageName:String,id:String):void 
+			protected function addButton(imageName:String,id:String,correct:Boolean):void 
 			{
 				var imageButton:ImageToggleButton = new ImageToggleButton();
 				_buttonArray.push(imageButton);
 				
 				imageButton.setImage(imageName);
 				imageButton.id = id;
+				imageButton.correct = correct;
 				imageButton.addEventListener(MouseEvent.CLICK,clickHandler);
 				buttonGroup.addElement(imageButton);
 				imageButton.label = id;
@@ -89,14 +94,14 @@
 				//image1.icon = bmp;
 			}
 			
-			public function setAnswer(answerStr:String):void 
-			{
-				this.answer = answerStr;
-			}
-			
 			public function getAnswer():String
 			{
-				return this.answer;	
+				return _answer;	
+			}
+			
+			public function getText():String
+			{
+				return _response;	
 			}
 			
 			protected function clickHandler(event:MouseEvent):void
@@ -105,7 +110,7 @@
 				trace("click on buttonID: " + buttonId);
 				var imageButton : ImageToggleButton = event.currentTarget as ImageToggleButton;
 
-				_answerStr = imageButton.label;
+				_response = imageButton.label;
 				disableOtherButtons(buttonId);
 			}
 			
@@ -122,10 +127,7 @@
 				}
 			}
 			
-			public function getText():String
-			{
-				return selectedButtonLabel;
-			}
+
 		]]>
 	</fx:Script>
 	<fx:Declarations>
@@ -134,7 +136,7 @@
 	<s:HGroup id="questionGroup">
 		
 	</s:HGroup>
-	<s:Label id="answerLabel" text="{_answerStr}" />
+	<s:Label id="answerLabel" text="{_response}" />
 	<s:HGroup id="buttonGroup" gap="30" paddingTop="10">
 	</s:HGroup>
 </s:VGroup>
