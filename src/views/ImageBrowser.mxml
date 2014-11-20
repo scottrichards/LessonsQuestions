@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		title="ImageBrowser"
+		contentCreationComplete="onContentCreationComplete(event)" xmlns:mx="library://ns.adobe.com/flex/mx"
+		>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			private var _imagePaths : Array;
+			private var _imageFileNames : Array;
+			private var _currentImageIndex : uint;
+			
+			protected function onContentCreationComplete(event:FlexEvent):void
+			{
+				var imagesDirectory:File = new File(File.applicationDirectory.nativePath + File.separator + "images");
+				_imageFileNames = new Array();
+				_imagePaths = imagesDirectory.getDirectoryListing();
+				for (var i:uint = 0; i < _imagePaths.length; i++) {
+					_imageFileNames.push(_imagePaths[i].name);
+					trace(_imagePaths[i].nativePath);
+				}
+				loadImageAtIndex(_currentImageIndex);
+			}
+			
+			private function loadImageAtIndex(imageIndex:uint):void
+			{
+				var filePath:String = "/images/" + _imageFileNames[imageIndex];
+				fileName.text = _imageFileNames[imageIndex];
+				var loader:Loader = new Loader();
+				loader.contentLoaderInfo.addEventListener(Event.COMPLETE,
+					handleLoadComplete);
+				/*				loader.load( new URLRequest(
+				'http://covers.oreilly.com/images/9780596529857/bkt.gif' ) ); */
+				
+				loader.load( new URLRequest(
+					filePath ) );
+			}
+			
+			private function handleLoadComplete( evt:Event ):void
+			{
+				var bmp:Bitmap = ( evt.target as LoaderInfo ).content as Bitmap;
+				trace("w: " + bmp.width + " h: " + bmp.height);
+				widthLabel.text = bmp.width.toString();
+				heightLabel.text = bmp.height.toString();
+				image1.source = bmp;
+			}
+			
+			protected function previousImage(event:MouseEvent):void
+			{
+				if (_currentImageIndex > 0) {
+					loadImageAtIndex(--_currentImageIndex);
+				} 
+				if (_currentImageIndex == 0)
+					previousButton.enabled = false;
+				nextButton.enabled = true;
+			}
+			
+			protected function nextImage(event:MouseEvent):void
+			{
+				if (_currentImageIndex < _imagePaths.length) {
+					loadImageAtIndex(++_currentImageIndex);
+				} 
+				if (_currentImageIndex == _imagePaths.length)
+					nextButton.enabled = false;
+				previousButton.enabled = true;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		
+		.imageBorderContainer {
+			cornerRadius : 16;
+		}
+		
+		.imageStyle {
+			paddingLeft : 10;
+			paddingRight : 10;
+			paddingBottom : 10;
+			paddingTop : 10;
+		}
+		
+		.imageGroup {
+			paddingTop : 10;
+			paddingLeft : 10;
+			paddingRight : 10;
+			paddingBottom : 40;
+		}
+	</fx:Style>
+	<s:navigationContent>
+		<s:Button label="Lessons" click="navigator.popToFirstView();"/>
+	</s:navigationContent>
+	<s:Group left="10" top="10" right="10" bottom="10">	
+		<s:layout>
+			<s:VerticalLayout />
+		</s:layout>
+		<s:HGroup width="300" >
+			<s:Button id="previousButton" label="&lt; Previous" click="previousImage(event)" />
+			<mx:Spacer width="100%" />
+			<s:Button id="nextButton" label="Next >" click="nextImage(event)"/>
+		</s:HGroup>
+		<s:HGroup verticalAlign="middle">
+			<s:TextInput id="fileName" /><s:Label text="  Width: " /><s:Label id="widthLabel" /><s:Label text="  Height: " /><s:Label id="heightLabel" />			
+		</s:HGroup>
+		<s:BorderContainer styleName="imageBorderContainer" >
+			<s:backgroundFill> 
+				<s:SolidColor 
+					color="#F0F8FF" 
+					alpha="1"/> 
+			</s:backgroundFill> 
+			<s:VGroup paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="40">
+				<s:Image id="image1" maxWidth="300" maxHeight="300" styleName="imageStyle" />	
+			</s:VGroup>
+			
+		</s:BorderContainer>		
+	</s:Group>
+		
+</s:View>

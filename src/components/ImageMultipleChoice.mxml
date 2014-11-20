@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 initialize="componentInitHandler(event)"
+		 creationComplete="creationCompleteHandler(event)"
+		 horizontalAlign="center">
+	<fx:Style>
+		.answerStyle { 
+			fontSize: 20;
+			fontWeight: bold;
+			horizontalCenter : 0;
+		}
+		
+		.buttonStyle { 
+			fontSize: 30;
+		}
+		
+	</fx:Style>
+	
+	<fx:Script>
+		<![CDATA[
+			
+			import spark.components.Label;
+			import spark.components.ToggleButton;
+					
+			
+			protected var selectedButtonLabel : String;
+			protected var answer : String;
+			private var _buttonArray : Array;
+			private var _numTextLabels:uint;
+			private var _numAnswers:uint;
+			private var _choices:XML;
+			
+			[Bindable]
+			private var _answerStr:String;
+					
+			protected function componentInitHandler(event:Event):void {		
+			}
+			
+			protected function creationCompleteHandler(event:Event):void {
+				var choiceList : XMLList = _choices.choice;
+				var numItems:uint = choiceList.length();
+				trace("# items: " + numItems);
+				var maxWidth : Number;
+				_buttonArray = new Array();
+				var uniqueId:uint=0;
+				for each (var choiceNode:XML in choiceList) {
+					var imageList : XMLList = choiceNode.image;
+					var imageNode : XML = imageList[0];
+					addButton(imageNode.toString(),uniqueId.toString());
+					uniqueId++;
+				}			
+			}
+			
+			
+			public function set choices(choices:XML):void{
+				_choices = choices;
+			}
+			
+			// -----------------
+			// overrides
+			// -----------------
+		
+			
+			protected function addButton(imageName:String,id:String):void 
+			{
+				var imageButton:ImageToggleButton = new ImageToggleButton();
+				_buttonArray.push(imageButton);
+				
+				imageButton.setImage(imageName);
+				imageButton.id = id;
+				imageButton.addEventListener(MouseEvent.CLICK,clickHandler);
+				buttonGroup.addElement(imageButton);
+				imageButton.label = id;
+			}
+			
+			private function loadImageAt(imagePath:String):void
+			{
+				var loader:Loader = new Loader();
+				loader.contentLoaderInfo.addEventListener(Event.COMPLETE,handleLoadComplete);
+				
+				loader.load( new URLRequest(imagePath ) );
+			}
+			
+			private function handleLoadComplete( evt:Event ):void
+			{
+				var bmp:Bitmap = ( evt.target as LoaderInfo ).content as Bitmap;
+				trace("w: " + bmp.width + " h: " + bmp.height);
+				//image1.icon = bmp;
+			}
+			
+			public function setAnswer(answerStr:String):void 
+			{
+				this.answer = answerStr;
+			}
+			
+			public function getAnswer():String
+			{
+				return this.answer;	
+			}
+			
+			protected function clickHandler(event:MouseEvent):void
+			{
+				var buttonId : String = event.currentTarget.id;
+				trace("click on buttonID: " + buttonId);
+				var imageButton : ImageToggleButton = event.currentTarget as ImageToggleButton;
+
+				_answerStr = imageButton.label;
+				disableOtherButtons(buttonId);
+			}
+			
+			// when we click on a toggle button we want to deselect all the other buttons
+			protected function disableOtherButtons(selectedButtonId:String):void
+			{
+				for (var i : int; i < _buttonArray.length; i++) 	
+				{
+					var tb:ImageToggleButton = _buttonArray[i];
+					if (tb.id != selectedButtonId) { 
+						// TO DO figure out how to deselect the button
+						//tb.selected = false;
+					}
+				}
+			}
+			
+			public function getText():String
+			{
+				return selectedButtonLabel;
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:HGroup id="questionGroup">
+		
+	</s:HGroup>
+	<s:Label id="answerLabel" text="{_answerStr}" />
+	<s:HGroup id="buttonGroup" gap="30" paddingTop="10">
+	</s:HGroup>
+</s:VGroup>

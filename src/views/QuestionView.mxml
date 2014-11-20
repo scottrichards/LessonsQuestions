@@ -62,6 +62,7 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import components.ImageMultipleChoice;
 			import mx.collections.ArrayCollection;
 			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
@@ -104,6 +105,7 @@
 			protected var equation : Equation;
 			protected var dragDrop : DragDropView;
 			protected var mathWords : MathWords;
+			protected var multipleChoiceImage : ImageMultipleChoice;
 			
 			[Bindable]
 			private var equationData:ArrayCollection = new ArrayCollection([
@@ -315,9 +317,11 @@
 				} else if (question.@type== "multipleChoice") {
 					multipleChoice = new MultipleChoice();
 					addToAnswer(multipleChoice);
-				} 
-				
-				else {
+				} else if (question.@type== "multipleChoiceImage") {
+					multipleChoiceImage = new ImageMultipleChoice();
+					multipleChoiceImage.choices = currentQuestionXML.choices[0];
+					addToAnswer(multipleChoiceImage);
+				} else {
 					numericKeypad = new NumericKeypad();
 					addToAnswer(numericKeypad);
 				}

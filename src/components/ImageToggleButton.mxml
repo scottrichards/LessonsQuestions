@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					  xmlns:s="library://ns.adobe.com/flex/spark">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			private var _imagePath:String;
+			private var _loader:Loader;
+			private var _correct:Boolean;
+			
+			public function setImage(imagePath:String):void {
+				_imagePath = imagePath;	
+				loadImage(_imagePath);
+			}
+			
+			public function get label():String {
+				return imageLabelId.text;
+			}
+			
+			public function set label(label:String):void {
+				imageLabelId.text = label;
+			}
+			
+			public function get correct():Boolean {
+				return _correct;
+			}
+			
+			public function set correct(correct:Boolean):void {
+				_correct = correct;
+			}
+			
+			private function loadImage(filePath:String):void
+			{
+				if (!_loader)
+					_loader = new Loader();
+				_loader.contentLoaderInfo.addEventListener(Event.COMPLETE,handleLoadComplete);				
+				_loader.load( new URLRequest(filePath ) );
+			}
+			
+			private function handleLoadComplete( evt:Event ):void
+			{
+				var bmp:Bitmap = ( evt.target as LoaderInfo ).content as Bitmap;
+				imageId.source = bmp;
+			}
+		]]>
+	</fx:Script>
+	<s:VGroup>
+		<s:Rect width="100%" height="100%">
+			<s:fill><s:SolidColor color="#B0E0E6" /></s:fill>
+		</s:Rect>
+		<s:VGroup paddingTop="10" paddingBottom="40" paddingLeft="10" paddingRight="10">
+			<s:Image id="imageId" width="300" height="300">
+				
+			</s:Image>
+			<s:Label id="imageLabelId" text=""/>
+		</s:VGroup>
+	</s:VGroup>
+</s:SkinnableContainer>
