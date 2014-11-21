@@ -281,7 +281,7 @@
 				if (question.@type== "symbolOperators") {
 					operatorSymbols = new OperatorSymbols();
 					addToAnswer(operatorSymbols);
-				} else if (question.@type== "symbolEquality") {
+				} else if (question.@type== "equality") {
 					equalitySymbols = new EqualitySymbols();
 					equalitySymbols.addXMLData(currentQuestionXML);
 					addToAnswer(equalitySymbols);
@@ -365,7 +365,7 @@
 				switch (answerType) {
 					case "equation" :
 					case "mathWordsAddSub" :
-					case "symbolEquality" :
+					case "equality" :
 						return true;
 					default:
 						return false;
@@ -431,11 +431,11 @@
 				var userAnswer:String;
 				answerNode = currentQuestionXML.answer;
 				answerContents = answerNode[0];
-				if (currentQuestionXML.@type== "keyboardEntry") {
+				if (currentQuestionXML.@type== "numeric") {
 					userAnswer = numericKeypad.textInputField.text;
 				} else if (currentQuestionXML.@type== "symbolOperators") {
 					userAnswer = operatorSymbols.getText();
-				} else if (currentQuestionXML.@type== "symbolEquality") {
+				} else if (currentQuestionXML.@type== "equality") {
 					userAnswer = equalitySymbols.getText();
 					answerContents = equalitySymbols.getAnswer();
 				} else if (currentQuestionXML.@type== "time") {

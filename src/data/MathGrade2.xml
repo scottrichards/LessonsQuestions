@@ -5,7 +5,7 @@
       
     <pageName>2</pageName>
     <questions>
-      <question type="keyboardEntry">
+      <question type="numeric">
         <number>1</number>
         <content>456 + 213 =  </content>
 		<answer>669</answer>
@@ -16,7 +16,7 @@
 		<answer>2:20</answer>
 		<image>images/Clock220.ai.png</image>
       </question>
-      <question type="keyboardEntry">
+      <question type="numeric">
         <number>3</number>
         <content>548 − 235 =  </content>
 		<answer>313</answer>
@@ -36,11 +36,11 @@
         <content>Count the objects in the array.  Write an addition sentence to show the sum. <answer type="numeric">4</answer> + <answer type="numeric">4</answer> + <answer type="numeric">4</answer> = <answer type="numeric">12</answer></content>
 		<image type="question">images/3 x 4 ARRAY.ai.png</image>
       </question>
-      <question type="symbolEquality">
+      <question type="equality">
         <number>7</number>
         <content>434 ( <answer>&lt;</answer> ) 443</content>
       </question>
-      <question type="keyboardEntry">
+      <question type="numeric">
         <number>8</number>
         <content>14 + 12 + 15 =  </content>
 		<answer>41</answer>
@@ -75,7 +75,7 @@
 			<answer correct="true">$2 and 35¢</answer> 
 		</answers>
       </question>
-      <question type="keyboardEntry">
+      <question type="numeric">
         <number>13</number>
         <content>Write the number using base-ten numerals. 15 tens</content>
 		<answer>150</answer>
