@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 creationComplete="onCreationComplete(event)"
 		 horizontalAlign="center">
 	<fx:Style>
 		.labelStyle { 
@@ -16,6 +17,49 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			
+			
+			import model.EquationData;
+			
+			private var _data:ArrayCollection;
+			private var _numTextLabels:uint;
+			private var _numAnswers:uint;
+			private var _answer:String = "";
+			
+			private static const FIELD_WIDTH :uint = 50;
+			private static const FIELD_HEIGHT :uint = 35;
+			
+			protected function onCreationComplete(event:FlexEvent):void
+			{
+				super.createChildren();
+				_numTextLabels = 0;
+				_numAnswers = 0;
+				for each(var item:Object in _data)
+				{
+					if (item.tag == "text") {
+						var textLabel:Label = new Label();
+						textLabel.text = item.value;
+						textLabel.name = "textLabel" + _numTextLabels.toString();
+						textLabel.setStyle("fontSize",20);
+						_numTextLabels++;
+						questionGroup.addElement(textLabel);
+					}
+					if (item.tag == "answer") {		// Do we only need to support a single Answer?
+						var labelField:Label = new Label();
+						labelField.width = FIELD_WIDTH;
+						labelField.name = "answer" + _numAnswers.toString();
+						trace("add ANSWER: " + labelField.name);
+						labelField.height = FIELD_HEIGHT;
+						if (_numAnswers > 0)	// if not the first answer add a separator
+							_answer += " ";
+						_answer += item.value;
+						_numAnswers++;
+						questionGroup.addElement(labelField);
+					}
+				}
+			}
 			
 			protected function clickHandler(event:MouseEvent):void
 			{
@@ -23,15 +67,57 @@
 				textLabel.text = inputCharacter;
 			}
 			
+			// return the response that the user entered
 			public function getText():String
 			{
 				return textLabel.text;
 			}
+
+			// return the correct answer this is parsed out from <answer> tag within the question <content> node 
+			public function getAnswer():String
+			{
+				return _answer;
+			}
+			
+			// From the question node it finds questionContent and traverses all subnodes looking for <answer> tags
+			public function addXMLData(question:XML):void
+			{
+				_data = new ArrayCollection();
+				
+				var questionContentList : XMLList = question.content;
+				var numItems:uint = questionContentList.length();
+				if (numItems > 0) {
+					var questionContentNode : XML = questionContentList[0];
+					var childrenList : XMLList = questionContentNode.children();
+					for each (var childNode:XML in childrenList) {
+						var tag:String = "text";
+						var type:String="";
+						var value:String ="";
+						var nodeKind : String = childNode.nodeKind(); 
+						if (nodeKind == "text") {
+							value = childNode.toString();
+						} else if (nodeKind == "element") {
+							var localName :String = childNode.name().localName;
+							if (localName == "answer") {
+								tag = "answer";
+								value = childNode.toString();
+								
+							}
+						} 
+						var eqData:EquationData = new EquationData(tag,value);
+						_data.addItem(eqData);
+					}
+				}
+			}
+
 		]]>
 	</fx:Script>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
+	<s:HGroup id="questionGroup">
+	</s:HGroup>
+		
 	<s:Label id="textLabel" styleName="labelStyle" paddingBottom="10"  />
 	<s:HGroup gap="30" paddingTop="10">
 		<s:Button label="&lt;" click="clickHandler(event)" width="45"/>

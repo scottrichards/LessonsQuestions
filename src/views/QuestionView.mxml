@@ -62,16 +62,16 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import components.ImageMultipleChoice;
 			import mx.collections.ArrayCollection;
 			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
-						
+			
 			import components.BIPTitleWindow;
 			import components.Currency;
 			import components.DragDropView;
 			import components.EqualitySymbols;
 			import components.Equation;
+			import components.ImageMultipleChoice;
 			import components.ImperialMeasure;
 			import components.MathWords;
 			import components.MultipleChoice;
@@ -283,6 +283,7 @@
 					addToAnswer(operatorSymbols);
 				} else if (question.@type== "symbolEquality") {
 					equalitySymbols = new EqualitySymbols();
+					equalitySymbols.addXMLData(currentQuestionXML);
 					addToAnswer(equalitySymbols);
 				}  else if (question.@type== "time") {
 					timeInput = new Time();
@@ -358,23 +359,37 @@
 				goToNextQuestion();
 			}
 
+			// returns true if this answer type contains the question content otherwise we add it separately from the answer
+			private function answerContainsQuestionContent(answerType:String):Boolean 
+			{
+				switch (answerType) {
+					case "equation" :
+					case "mathWordsAddSub" :
+					case "symbolEquality" :
+						return true;
+					default:
+						return false;
+				}
+				return false;
+			}
+			
 			protected function updateQuestionInfo():void 
 			{
 				currentQuestionXML = data.questions[currentQuestion];
 				if (currentQuestionXML) {
 					updateQuestionType(currentQuestionXML);
-					if (currentQuestionType == "equation" || currentQuestionType == "mathWordsAddSub") {
+					if (answerContainsQuestionContent(currentQuestionType)) {
 						questionContentStr = "";
 					} else {
 						questionContentStr = currentQuestionXML.content;
 					}
 					
-					var imageUrlStr : String = String(currentQuestionXML.imageInfo);
+					var imageUrlStr : String = String(currentQuestionXML.image);
 					var answers: XMLList = currentQuestionXML.answers.answer;
 					// display the image
 					if (imageUrlStr.length > 0) {
 						questionImage.visible = true;
-						loadImage(currentQuestionXML.imageInfo);
+						loadImage(currentQuestionXML.image);
 						questionImage.maxHeight=300;
 						questionImage.includeInLayout = true;
 					} else {	// make the text take up all of the space
@@ -422,6 +437,7 @@
 					userAnswer = operatorSymbols.getText();
 				} else if (currentQuestionXML.@type== "symbolEquality") {
 					userAnswer = equalitySymbols.getText();
+					answerContents = equalitySymbols.getAnswer();
 				} else if (currentQuestionXML.@type== "time") {
 					userAnswer = timeInput.getText();
 				} else if (currentQuestionXML.@type== "measurementImperial") {

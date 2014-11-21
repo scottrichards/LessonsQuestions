@@ -6,69 +6,68 @@
     <pageName>2</pageName>
     <questions>
       <question type="keyboardEntry">
-        <questionNumber>1</questionNumber>
-        <questionContent>456 + 213 =  </questionContent>
+        <number>1</number>
+        <content>456 + 213 =  </content>
 		<answer>669</answer>
       </question>
       <question type="time">
-        <questionNumber>2</questionNumber>
-        <questionContent>What time is it</questionContent>
+        <number>2</number>
+        <content>What time is it</content>
 		<answer>2:20</answer>
-		<imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/Clock%20220.ai.png" question="2" type="question">images/Clock220.ai.png</imageInfo>
+		<image>images/Clock220.ai.png</image>
       </question>
       <question type="keyboardEntry">
-        <questionNumber>3</questionNumber>
-        <questionContent>548 − 235 =  </questionContent>
+        <number>3</number>
+        <content>548 − 235 =  </content>
 		<answer>313</answer>
       </question>
       <question type="shapeNames">
-        <questionNumber>4</questionNumber>
-        <questionContent>Name a shape with 5 sides and 5 angles.</questionContent>
+        <number>4</number>
+        <content>Name a shape with 5 sides and 5 angles.</content>
 		<answer>Pentagon</answer>
       </question>
       <question type="symbolOperators">
-        <questionNumber>5</questionNumber>
-        <questionContent>Select the symbol that tells you to add.</questionContent>
+        <number>5</number>
+        <content>Select the symbol that tells you to add.</content>
 		<answer>+</answer>
       </question>
       <question type="equation">
-        <questionNumber>6</questionNumber>
-        <questionContent>Count the objects in the array.  Write an addition sentence to show the sum. <answer type="numeric">4</answer> + <answer type="numeric">4</answer> + <answer type="numeric">4</answer> = <answer type="numeric">12</answer></questionContent>
-		<imageInfo type="question">images/3 x 4 ARRAY.ai.png</imageInfo>
+        <number>6</number>
+        <content>Count the objects in the array.  Write an addition sentence to show the sum. <answer type="numeric">4</answer> + <answer type="numeric">4</answer> + <answer type="numeric">4</answer> = <answer type="numeric">12</answer></content>
+		<image type="question">images/3 x 4 ARRAY.ai.png</image>
       </question>
       <question type="symbolEquality">
-        <questionNumber>7</questionNumber>
-        <questionContent>434 ( ) 443</questionContent>
-		<answer>&lt;</answer>
+        <number>7</number>
+        <content>434 ( <answer>&lt;</answer> ) 443</content>
       </question>
       <question type="keyboardEntry">
-        <questionNumber>8</questionNumber>
-        <questionContent>14 + 12 + 15 =  </questionContent>
+        <number>8</number>
+        <content>14 + 12 + 15 =  </content>
 		<answer>41</answer>
       </question>
       <question type="equation">
-        <questionNumber>9</questionNumber>
-        <questionContent>Count by tens. 50, 60,<answer type="numeric">70</answer>, <answer type="numeric">80</answer>, <answer type="numeric">90</answer>, 100 </questionContent>
+        <number>9</number>
+        <content>Count by tens. 50, 60,<answer type="numeric">70</answer>, <answer type="numeric">80</answer>, <answer type="numeric">90</answer>, 100 </content>
       </question>
       <question type="multipleChoiceImage">
-        <questionNumber>10</questionNumber>
-        <questionContent>Select the rectangle that has 10 square units. </questionContent>
+        <number>10</number>
+        <content>Select the rectangle that has 10 square units. </content>
 		<choices>
 			<choice correct="true"><image>images/2 x 5.ai.png</image></choice>
 			<choice><image>images/2 x 4.ai.png</image></choice>
 		</choices>
       </question>
       <question type="multipleChoice">
-        <questionNumber>11</questionNumber>
-        <questionContent>Would Sari’s foot print be 18 meters long or 18 centimeters? </questionContent>
+        <number>11</number>
+        <content>Would Sari’s foot print be 18 meters long or 18 centimeters? </content>
 		<answers>
 			<answer>18 meters</answer>
 			<answer correct="true">18 centimeters</answer>
 		</answers>
       </question>
       <question type="multipleChoice">
-        <questionNumber>12</questionNumber>
-        <questionContent>If you have two dollar bills, one quarter, and ten pennies, how much money do you have?</questionContent>
+        <number>12</number>
+        <content>If you have two dollar bills, one quarter, and ten pennies, how much money do you have?</content>
 		<answers>
 			<answer>$2 and 42¢</answer>
 			<answer>$2 and 60¢</answer>
@@ -77,25 +76,25 @@
 		</answers>
       </question>
       <question type="keyboardEntry">
-        <questionNumber>13</questionNumber>
-        <questionContent>Write the number using base-ten numerals. 15 tens</questionContent>
+        <number>13</number>
+        <content>Write the number using base-ten numerals. 15 tens</content>
 		<answer>150</answer>
       </question>
       <question type="currency">
-        <questionNumber>14</questionNumber>
-        <questionContent>Ellen bought a pen for $1.50 and a tablet for $1.35.  How much money did Ellen spend on these supplies? </questionContent>
+        <number>14</number>
+        <content>Ellen bought a pen for $1.50 and a tablet for $1.35.  How much money did Ellen spend on these supplies? </content>
 		<answer>2.85</answer>
       </question>
       <question type="measurementImperial">
-        <questionNumber>15</questionNumber>
-        <questionContent>How long is the pencil?</questionContent>
-		<imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/ruler.ai.png" question="15" type="question">images/ruler.ai.png</imageInfo>
+        <number>15</number>
+        <content>How long is the pencil?</content>
+		<image>images/ruler.ai.png</image>
 		<answer>5"</answer>
       </question>
 
-      <imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/102%20Pencil.eps.png" question="15" type="question"></imageInfo>
-      <imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/Clock%20220.ai.png" question="2" type="question"></imageInfo>
-      <imageInfo href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/3%20x%204%20ARRAY.ai.png" question="6" type="question"></imageInfo>
+      <image href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/102%20Pencil.eps.png" question="15" type="question"></image>
+      <image href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/Clock%20220.ai.png" question="2" type="question"></image>
+      <image href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/3%20x%204%20ARRAY.ai.png" question="6" type="question"></image>
     </questions>
     <graphic>
       <graphicName>ruler.ai</graphicName>
@@ -135,39 +134,39 @@
     <pageName>4</pageName>
     <questions>
       <question type="time">
-        <questionNumber>1</questionNumber>
-        <questionContent>What time is shown on the clock? </questionContent>
-		<imageInfo>images/Clock935.ai.png</imageInfo>
+        <number>1</number>
+        <content>What time is shown on the clock? </content>
+		<image>images/Clock935.ai.png</image>
 		<answer>9:35</answer>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>77 + 35 = ?</questionContent>
+        <number>2</number>
+        <content>77 + 35 = ?</content>
 		<answer>112</answer>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Of the 59 students in the second grade, 26 are in Room 2A. How many students are in Room 2B?</questionContent>
+        <number>3</number>
+        <content>Of the 59 students in the second grade, 26 are in Room 2A. How many students are in Room 2B?</content>
 		<answer>33</answer>
       </question>
       <question type="equation">
-        <questionNumber>4</questionNumber>
-        <questionContent>Count by fives.  70, 75, <answer type="numeric">80</answer>, <answer type="numeric">85</answer>, <answer type="numeric">90</answer>, 95 </questionContent>
+        <number>4</number>
+        <content>Count by fives.  70, 75, <answer type="numeric">80</answer>, <answer type="numeric">85</answer>, <answer type="numeric">90</answer>, 95 </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>What number is 100 more than 629? </questionContent>
+        <number>5</number>
+        <content>What number is 100 more than 629? </content>
 		<answer>729</answer>
       </question>
       <question type="shapeNames">
-        <questionNumber>6</questionNumber>
-        <questionContent>What is the name of the shape? </questionContent>
+        <number>6</number>
+        <content>What is the name of the shape? </content>
 		<answer>Cube</answer>
-		<imageInfo>images/cube (solid).ai.png</imageInfo>
+		<image>images/cube (solid).ai.png</image>
       </question>
       <question type="dragDrop">
-        <questionNumber>7</questionNumber>
-        <questionContent>Write 341 using words. </questionContent>
+        <number>7</number>
+        <content>Write 341 using words. </content>
 		<answer>three hundred forty one</answer>
 		<choices>
 			<choice>one</choice> 
@@ -177,46 +176,46 @@
 		</choices>
       </question>
       <question type="multipleChoice">
-        <questionNumber>8</questionNumber>
-        <questionContent>Would the length of a small dog’s tail be 10 centimeters or 10 meters? </questionContent>
+        <number>8</number>
+        <content>Would the length of a small dog’s tail be 10 centimeters or 10 meters? </content>
 		<answers>
 			<answer correct="true">10 centimeters</answer>
 			<answer>10 meters</answer>
 		</answers>
       </question>
       <question type="mathWordsAddSub">
-        <questionNumber>9</questionNumber>
-        <questionContent>The difference is the answer to a(n) <answer type="text">subtraction</answer> problem. </questionContent>
+        <number>9</number>
+        <content>The difference is the answer to a(n) <answer type="text">subtraction</answer> problem. </content>
       </question>
       <question type="currency">
-        <questionNumber>10</questionNumber>
-        <questionContent>How many cents do you have if you have two quarters, three dimes, and three pennies? </questionContent>
+        <number>10</number>
+        <content>How many cents do you have if you have two quarters, three dimes, and three pennies? </content>
 		<answer>.83</answer>
       </question>
       <question type="equation">
-        <questionNumber>11</questionNumber>
-        <questionContent>42 + <answer type="numeric">44</answer> = 86 </questionContent>
+        <number>11</number>
+        <content>42 + <answer type="numeric">44</answer> = 86 </content>
       </question>
       <question type="equation">
-        <questionNumber>12</questionNumber>
-        <questionContent>964 − 533 = <answer type="numeric">431</answer> </questionContent>
+        <number>12</number>
+        <content>964 − 533 = <answer type="numeric">431</answer> </content>
       </question>
       <question type="equation">
-        <questionNumber>13</questionNumber>
-        <questionContent>Count the objects in the array.  Fill in the addition statement to show the sum. 
+        <number>13</number>
+        <content>Count the objects in the array.  Fill in the addition statement to show the sum. 
 		<answer type="numeric">3</answer> + <answer type="numeric">3</answer> = <answer type="numeric">6</answer>
-		</questionContent>
-		<imageInfo>images/3 x 2.ai.png</imageInfo>
+		</content>
+		<image>images/3 x 2.ai.png</image>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Write this as a base-ten numeral.  2 tens, 1 one, and 6 hundreds </questionContent>
+        <number>14</number>
+        <content>Write this as a base-ten numeral.  2 tens, 1 one, and 6 hundreds </content>
 		<answer>621</answer>
       </question>
       <question type="measurementImperial">
-        <questionNumber>15</questionNumber>
-        <questionContent>How much longer is Y than Z?</questionContent>
-		<imageInfo>images/L24 Ruler.ai.png</imageInfo>
+        <number>15</number>
+        <content>How much longer is Y than Z?</content>
+		<image>images/L24 Ruler.ai.png</image>
 		<answer>2"</answer>
       </question>
     </questions>
@@ -245,65 +244,65 @@
     <pageName>6</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>15 + 23 + 12 + 10 = ? </questionContent>
+        <number>1</number>
+        <content>15 + 23 + 12 + 10 = ? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Look at the picture.  Is the number of trees even or odd ?</questionContent>
+        <number>2</number>
+        <content>Look at the picture.  Is the number of trees even or odd ?</content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>554 + 223 = ? </questionContent>
+        <number>3</number>
+        <content>554 + 223 = ? </content>
       </question>
       <question type="symbol">
-        <questionNumber>4</questionNumber>
-        <questionContent>Write the symbol that tells you to subtract.</questionContent>
+        <number>4</number>
+        <content>Write the symbol that tells you to subtract.</content>
 		<answer>-</answer>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Paul baked 24 cupcakes for the class bake sale.  Maura baked 12 cupcakes.  How many more cupcakes did Paul bake? 24 − 12 =  </questionContent>
+        <number>5</number>
+        <content>Paul baked 24 cupcakes for the class bake sale.  Maura baked 12 cupcakes.  How many more cupcakes did Paul bake? 24 − 12 =  </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Count by tens.   50, 60,           ,           , 90,           , 110,            </questionContent>
+        <number>6</number>
+        <content>Count by tens.   50, 60,           ,           , 90,           , 110,            </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Draw 2 quadrilaterals.</questionContent>
+        <number>7</number>
+        <content>Draw 2 quadrilaterals.</content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Is 41 closer to 40 or 50?</questionContent>
+        <number>8</number>
+        <content>Is 41 closer to 40 or 50?</content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Write the name of each shape. 				A)            B)            C)   </questionContent>
+        <number>9</number>
+        <content>Write the name of each shape. 				A)            B)            C)   </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>If you have three quarters and two dimes, do you have more or less than one dollar? </questionContent>
+        <number>10</number>
+        <content>If you have three quarters and two dimes, do you have more or less than one dollar? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>How much time has passed from  one clock to the next? </questionContent>
+        <number>11</number>
+        <content>How much time has passed from  one clock to the next? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>15 +            = 40 </questionContent>
+        <number>12</number>
+        <content>15 +            = 40 </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>94 − 29 = ? </questionContent>
+        <number>13</number>
+        <content>94 − 29 = ? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Jeff ate lunch at 12:00 a.m. or 12:00 p.m? </questionContent>
+        <number>14</number>
+        <content>Jeff ate lunch at 12:00 a.m. or 12:00 p.m? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>How long, in inches, is the pen?</questionContent>
+        <number>15</number>
+        <content>How long, in inches, is the pen?</content>
       </question>
     </questions>
     <graphic>
@@ -348,16 +347,16 @@
     <pageName>8</pageName>
     <questions>
       <question type="multiChoice">
-        <questionNumber>1</questionNumber>
-        <questionContent>Which is greater, 5 nickels or 3 dimes? </questionContent>
+        <number>1</number>
+        <content>Which is greater, 5 nickels or 3 dimes? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.      316  163 </questionContent>
+        <number>2</number>
+        <content>Fill in the sign to make this sentence true.      316  163 </content>
       </question>
       <question type="dragDrop">
-        <questionNumber>3</questionNumber>
-        <questionContent>Put these numbers in order from greatest to least.</questionContent>
+        <number>3</number>
+        <content>Put these numbers in order from greatest to least.</content>
 		<choices>
 			<choice>534</choice> 
 			<choice>216</choice>
@@ -367,52 +366,52 @@
 		<answer>152 216 333 534</answer>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>716 + 253 = ? </questionContent>
+        <number>4</number>
+        <content>716 + 253 = ? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>How much money do you have if you have 8 nickels? </questionContent>
+        <number>5</number>
+        <content>How much money do you have if you have 8 nickels? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>The answer to an addition problem is  called the                . </questionContent>
+        <number>6</number>
+        <content>The answer to an addition problem is  called the                . </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>What base-ten number is this?   700 + 90 + 8 </questionContent>
+        <number>7</number>
+        <content>What base-ten number is this?   700 + 90 + 8 </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Is Michael’s favorite bat  36 inches or 48 feet long? </questionContent>
+        <number>8</number>
+        <content>Is Michael’s favorite bat  36 inches or 48 feet long? </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>I have 6 thousands, 4 hundreds, 2 tens, and 8 ones.   What number am I?  </questionContent>
+        <number>9</number>
+        <content>I have 6 thousands, 4 hundreds, 2 tens, and 8 ones.   What number am I?  </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Write the time shown on the clock. </questionContent>
+        <number>10</number>
+        <content>Write the time shown on the clock. </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>What number is 100 less than 378? </questionContent>
+        <number>11</number>
+        <content>What number is 100 less than 378? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Draw a shape that has 6 sides and 6 angles. </questionContent>
+        <number>12</number>
+        <content>Draw a shape that has 6 sides and 6 angles. </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Choose the number that comes between 135 and 230. A)  415        B)  121      C)  205 </questionContent>
+        <number>13</number>
+        <content>Choose the number that comes between 135 and 230. A)  415        B)  121      C)  205 </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>659 − 114 = ? </questionContent>
+        <number>14</number>
+        <content>659 − 114 = ? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>How many fish are in the lake?  		How many more catfish than  bass are in the lake? </questionContent>
+        <number>15</number>
+        <content>How many fish are in the lake?  		How many more catfish than  bass are in the lake? </content>
       </question>
     </questions>
     <graphic>
@@ -437,64 +436,64 @@
     <pageName>10</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Draw a rectangle that has three equal columns and two equal rows. </questionContent>
+        <number>1</number>
+        <content>Draw a rectangle that has three equal columns and two equal rows. </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>34 + 12 + 25 = ?  </questionContent>
+        <number>2</number>
+        <content>34 + 12 + 25 = ?  </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>What is the name of the shape? 		A)  cone        B)  cube     C)  cylinder </questionContent>
+        <number>3</number>
+        <content>What is the name of the shape? 		A)  cone        B)  cube     C)  cylinder </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.       356  735 </questionContent>
+        <number>4</number>
+        <content>Fill in the sign to make this sentence true.       356  735 </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Count the objects in the array.  Write two  addition statements to show the sum. </questionContent>
+        <number>5</number>
+        <content>Count the objects in the array.  Write two  addition statements to show the sum. </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Write your answers in centimeters.   How long is A?   How long is B?   How much shorter is  B than A? </questionContent>
+        <number>6</number>
+        <content>Write your answers in centimeters.   How long is A?   How long is B?   How much shorter is  B than A? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Draw a circle in your answer box.  Divide the circle into halves.  Color half of the circle.	 </questionContent>
+        <number>7</number>
+        <content>Draw a circle in your answer box.  Divide the circle into halves.  Color half of the circle.	 </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Write the time shown on the clock. </questionContent>
+        <number>8</number>
+        <content>Write the time shown on the clock. </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>755 − 431 = ? </questionContent>
+        <number>9</number>
+        <content>755 − 431 = ? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Write the number using base-ten numerals.  30 + 9 + 900 </questionContent>
+        <number>10</number>
+        <content>Write the number using base-ten numerals.  30 + 9 + 900 </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>How many thirds of the rectangle are shaded? </questionContent>
+        <number>11</number>
+        <content>How many thirds of the rectangle are shaded? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>What number is 10 less than 35? </questionContent>
+        <number>12</number>
+        <content>What number is 10 less than 35? </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>If you have ten nickels and ten dimes, do you have more or less than one dollar? </questionContent>
+        <number>13</number>
+        <content>If you have ten nickels and ten dimes, do you have more or less than one dollar? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>24 + ? = 46 </questionContent>
+        <number>14</number>
+        <content>24 + ? = 46 </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Mrs. Cooper’s house has three floors.  There are 6 rooms on the first floor, 4 rooms on the second floor and 5 rooms on the third floor.   How many rooms are in Mrs. Cooper’s house?</questionContent>
+        <number>15</number>
+        <content>Mrs. Cooper’s house has three floors.  There are 6 rooms on the first floor, 4 rooms on the second floor and 5 rooms on the third floor.   How many rooms are in Mrs. Cooper’s house?</content>
       </question>
     </questions>
     <graphic>
@@ -529,64 +528,64 @@
     <pageName>12</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>89¢ – 57¢ = ? </questionContent>
+        <number>1</number>
+        <content>89¢ – 57¢ = ? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Count by fives.  65,           , 75,           ,           , 90,            </questionContent>
+        <number>2</number>
+        <content>Count by fives.  65,           , 75,           ,           , 90,            </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Write a fact family for 4, 5, and 9. </questionContent>
+        <number>3</number>
+        <content>Write a fact family for 4, 5, and 9. </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Look at the picture.  Is the number of  clouds even or odd? </questionContent>
+        <number>4</number>
+        <content>Look at the picture.  Is the number of  clouds even or odd? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>664 + 225 = ? </questionContent>
+        <number>5</number>
+        <content>664 + 225 = ? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>224 + 13 + 32 = ? </questionContent>
+        <number>6</number>
+        <content>224 + 13 + 32 = ? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Draw the shape that is divided  into two equal parts. </questionContent>
+        <number>7</number>
+        <content>Draw the shape that is divided  into two equal parts. </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Write this as a base-ten numeral.  4 ones, 4 tens, and 2 hundreds </questionContent>
+        <number>8</number>
+        <content>Write this as a base-ten numeral.  4 ones, 4 tens, and 2 hundreds </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.     938  641 </questionContent>
+        <number>9</number>
+        <content>Fill in the sign to make this sentence true.     938  641 </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>What part of the rectangle is not shaded? </questionContent>
+        <number>10</number>
+        <content>What part of the rectangle is not shaded? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Is a couch about 6 inches long or 6 feet long? </questionContent>
+        <number>11</number>
+        <content>Is a couch about 6 inches long or 6 feet long? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Fill in the missing numbers.   260, 270,           , 290,            </questionContent>
+        <number>12</number>
+        <content>Fill in the missing numbers.   260, 270,           , 290,            </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>400 + 50 + 9 is what number? </questionContent>
+        <number>13</number>
+        <content>400 + 50 + 9 is what number? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>What number is 10 less than 23? </questionContent>
+        <number>14</number>
+        <content>What number is 10 less than 23? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Use the graph for both questions. How many students in all voted  for a color? How many more students voted  for pink than purple?</questionContent>
+        <number>15</number>
+        <content>Use the graph for both questions. How many students in all voted  for a color? How many more students voted  for pink than purple?</content>
       </question>
     </questions>
     <graphic>
@@ -609,16 +608,16 @@
     <pageName>14</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Molly ate dinner at 6:00 a.m. or 6:00 p.m.? </questionContent>
+        <number>1</number>
+        <content>Molly ate dinner at 6:00 a.m. or 6:00 p.m.? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Look at the picture.  Is the number  of bird heads even or odd? </questionContent>
+        <number>2</number>
+        <content>Look at the picture.  Is the number  of bird heads even or odd? </content>
       </question>
       <question type="dragDrop">
-        <questionNumber>3</questionNumber>
-        <questionContent>Write 797 using words. </questionContent>
+        <number>3</number>
+        <content>Write 797 using words. </content>
 		<choices>
 			<choice>seven</choice>
 			<choice>hundred</choice>
@@ -629,52 +628,52 @@
 		<answer>seven hundred ninety seven</answer>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Tina wanted to ride her bike 50 miles by the end of the week.  She rode 20 miles on Sunday, 15 miles on Tuesday, and 10 miles on Thursday.  How many miles will she need to ride on Saturday to reach her goal of 50 miles? </questionContent>
+        <number>4</number>
+        <content>Tina wanted to ride her bike 50 miles by the end of the week.  She rode 20 miles on Sunday, 15 miles on Tuesday, and 10 miles on Thursday.  How many miles will she need to ride on Saturday to reach her goal of 50 miles? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>656 − 334 = ? </questionContent>
+        <number>5</number>
+        <content>656 − 334 = ? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Write the time shown on the clock. </questionContent>
+        <number>6</number>
+        <content>Write the time shown on the clock. </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>53 + 98 = ? </questionContent>
+        <number>7</number>
+        <content>53 + 98 = ? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>What number is 100 more than 899? </questionContent>
+        <number>8</number>
+        <content>What number is 100 more than 899? </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>A shape with 4 sides and 4 angles is called a                     . </questionContent>
+        <number>9</number>
+        <content>A shape with 4 sides and 4 angles is called a                     . </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Count by tens.  40, 50,           ,           , 80,           ,            </questionContent>
+        <number>10</number>
+        <content>Count by tens.  40, 50,           ,           , 80,           ,            </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>The answer to a subtraction problem is the                        . </questionContent>
+        <number>11</number>
+        <content>The answer to a subtraction problem is the                        . </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.  516  508 </questionContent>
+        <number>12</number>
+        <content>Fill in the sign to make this sentence true.  516  508 </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Which number comes just before 1,000? </questionContent>
+        <number>13</number>
+        <content>Which number comes just before 1,000? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Drake has four quarters and ten dimes.  Lisa has a dollar bill and  three quarters.  Who has more money, Drake or Lisa? </questionContent>
+        <number>14</number>
+        <content>Drake has four quarters and ten dimes.  Lisa has a dollar bill and  three quarters.  Who has more money, Drake or Lisa? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>There were 482 people at the water park  on Thursday.  On Friday, 875 people visited  the park.  How many more people were at  the water park on Friday than on Thursday? </questionContent>
+        <number>15</number>
+        <content>There were 482 people at the water park  on Thursday.  On Friday, 875 people visited  the park.  How many more people were at  the water park on Friday than on Thursday? </content>
       </question>
     </questions>
     <graphic>
@@ -699,64 +698,64 @@
     <pageName>16</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>What part of the square is shaded?  </questionContent>
+        <number>1</number>
+        <content>What part of the square is shaded?  </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>536 − 312 = ? </questionContent>
+        <number>2</number>
+        <content>536 − 312 = ? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>12 + 24 + 16 = ? </questionContent>
+        <number>3</number>
+        <content>12 + 24 + 16 = ? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Write the name of the shape. </questionContent>
+        <number>4</number>
+        <content>Write the name of the shape. </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Chris had 24 pepper plants. He gave two plants to his neighbor.  Then he got five more.  How many pepper plants does Chris have now?  </questionContent>
+        <number>5</number>
+        <content>Chris had 24 pepper plants. He gave two plants to his neighbor.  Then he got five more.  How many pepper plants does Chris have now?  </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>What time is shown? </questionContent>
+        <number>6</number>
+        <content>What time is shown? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>642 + 353 = ? </questionContent>
+        <number>7</number>
+        <content>642 + 353 = ? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.   488  502 </questionContent>
+        <number>8</number>
+        <content>Fill in the sign to make this sentence true.   488  502 </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Look at the picture.  Is the number  of planets even or odd? </questionContent>
+        <number>9</number>
+        <content>Look at the picture.  Is the number  of planets even or odd? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Write the number using base-ten numerals.  57 tens  </questionContent>
+        <number>10</number>
+        <content>Write the number using base-ten numerals.  57 tens  </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Which of these is the best tool for measuring lines on your art paper? A)  meter stick     B)  tape measure     C)  ruler      D)  air pump  </questionContent>
+        <number>11</number>
+        <content>Which of these is the best tool for measuring lines on your art paper? A)  meter stick     B)  tape measure     C)  ruler      D)  air pump  </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Count the objects in the array.  Write two  addition statements to show the sum.  </questionContent>
+        <number>12</number>
+        <content>Count the objects in the array.  Write two  addition statements to show the sum.  </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Write your answers in centimeters.   How long is A?   How long is B?   How much longer  is A than B? </questionContent>
+        <number>13</number>
+        <content>Write your answers in centimeters.   How long is A?   How long is B?   How much longer  is A than B? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>How much money is 8 quarters? </questionContent>
+        <number>14</number>
+        <content>How much money is 8 quarters? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Which class is the longest?  How  long is it? 		What time does math class start? </questionContent>
+        <number>15</number>
+        <content>Which class is the longest?  How  long is it? 		What time does math class start? </content>
       </question>
     </questions>
     <graphic>
@@ -796,64 +795,64 @@
     <pageName>18</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>What number is 100 more than 342? </questionContent>
+        <number>1</number>
+        <content>What number is 100 more than 342? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Write the time shown on the clock. </questionContent>
+        <number>2</number>
+        <content>Write the time shown on the clock. </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Circle the rectangle that has 15 square units. </questionContent>
+        <number>3</number>
+        <content>Circle the rectangle that has 15 square units. </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.     988  1,000 </questionContent>
+        <number>4</number>
+        <content>Fill in the sign to make this sentence true.     988  1,000 </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>What number follows 476?  </questionContent>
+        <number>5</number>
+        <content>What number follows 476?  </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Would Mandy’s shoes fit better in a  3 centimeters or 25 centimeters box? </questionContent>
+        <number>6</number>
+        <content>Would Mandy’s shoes fit better in a  3 centimeters or 25 centimeters box? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>What base-ten number is this?      400 + 40 + 8 </questionContent>
+        <number>7</number>
+        <content>What base-ten number is this?      400 + 40 + 8 </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Is 58 closer to 50 or 60?  </questionContent>
+        <number>8</number>
+        <content>Is 58 closer to 50 or 60?  </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>How much money is ten dimes? </questionContent>
+        <number>9</number>
+        <content>How much money is ten dimes? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>16 +            = 48 </questionContent>
+        <number>10</number>
+        <content>16 +            = 48 </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Find the egg on page 76 of your Hands-On pages.  Measure its height to the nearest inch. </questionContent>
+        <number>11</number>
+        <content>Find the egg on page 76 of your Hands-On pages.  Measure its height to the nearest inch. </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Is the number of hearts even or odd?   </questionContent>
+        <number>12</number>
+        <content>Is the number of hearts even or odd?   </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>A telephone is about 8 inches long or 8 feet long? </questionContent>
+        <number>13</number>
+        <content>A telephone is about 8 inches long or 8 feet long? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Draw a rectangle and shade  of it. </questionContent>
+        <number>14</number>
+        <content>Draw a rectangle and shade  of it. </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Which shape is divided into  halves?  Draw it.  </questionContent>
+        <number>15</number>
+        <content>Which shape is divided into  halves?  Draw it.  </content>
       </question>
     </questions>
     <graphic>
@@ -918,64 +917,64 @@
     <pageName>20</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Nora, Poly, and Lacey each have a sleeping bag that is 33 inches wide. If they put the sleeping bags side by side, will all three fit in a space that is 100 inches wide?  Write a number sentence and solve it. </questionContent>
+        <number>1</number>
+        <content>Nora, Poly, and Lacey each have a sleeping bag that is 33 inches wide. If they put the sleeping bags side by side, will all three fit in a space that is 100 inches wide?  Write a number sentence and solve it. </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.  324  254 </questionContent>
+        <number>2</number>
+        <content>Fill in the sign to make this sentence true.  324  254 </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>26 + 31 + 14 + 42 = ? </questionContent>
+        <number>3</number>
+        <content>26 + 31 + 14 + 42 = ? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Is 98 closer to 90 or 100?   </questionContent>
+        <number>4</number>
+        <content>Is 98 closer to 90 or 100?   </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Count by fives.  75, 80,           ,           ,            , 100 </questionContent>
+        <number>5</number>
+        <content>Count by fives.  75, 80,           ,           ,            , 100 </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Jen has a dollar and twenty-seven pennies.  Paul has six quarters.  Who has more money, Jen or Paul? </questionContent>
+        <number>6</number>
+        <content>Jen has a dollar and twenty-seven pennies.  Paul has six quarters.  Who has more money, Jen or Paul? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>828 − 414 = ? </questionContent>
+        <number>7</number>
+        <content>828 − 414 = ? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>What time is it? </questionContent>
+        <number>8</number>
+        <content>What time is it? </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>504 + 293 = ? </questionContent>
+        <number>9</number>
+        <content>504 + 293 = ? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Which shape is divided into  three equal thirds?  Draw it.  </questionContent>
+        <number>10</number>
+        <content>Which shape is divided into  three equal thirds?  Draw it.  </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Write this as a base-ten numeral.   3 hundreds, 1 one, and 9 tens </questionContent>
+        <number>11</number>
+        <content>Write this as a base-ten numeral.   3 hundreds, 1 one, and 9 tens </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Put the numbers in order from least to greatest.  465   254   787   325 </questionContent>
+        <number>12</number>
+        <content>Put the numbers in order from least to greatest.  465   254   787   325 </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>How many thirds are shaded? </questionContent>
+        <number>13</number>
+        <content>How many thirds are shaded? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>341 + 428 = ? </questionContent>
+        <number>14</number>
+        <content>341 + 428 = ? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>How many children chose dogs? 		How many more children chose  hamsters than cats?</questionContent>
+        <number>15</number>
+        <content>How many children chose dogs? 		How many more children chose  hamsters than cats?</content>
       </question>
     </questions>
     <graphic>
@@ -1010,64 +1009,64 @@
     <pageName>22</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Draw a shape that has 6 sides and 6 angles. </questionContent>
+        <number>1</number>
+        <content>Draw a shape that has 6 sides and 6 angles. </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>643 + 125 = ? </questionContent>
+        <number>2</number>
+        <content>643 + 125 = ? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Write the name of the shape.   </questionContent>
+        <number>3</number>
+        <content>Write the name of the shape.   </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>69¢ + 53¢ = ? </questionContent>
+        <number>4</number>
+        <content>69¢ + 53¢ = ? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Write two equal addends.             +            = 10 </questionContent>
+        <number>5</number>
+        <content>Write two equal addends.             +            = 10 </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Mentally add 100.  520, 620,           ,           ,            </questionContent>
+        <number>6</number>
+        <content>Mentally add 100.  520, 620,           ,           ,            </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.    816  799 </questionContent>
+        <number>7</number>
+        <content>Fill in the sign to make this sentence true.    816  799 </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Draw a circle in your answer box.  Divide the circle into thirds.   Color a third of the circle. </questionContent>
+        <number>8</number>
+        <content>Draw a circle in your answer box.  Divide the circle into thirds.   Color a third of the circle. </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>959 – 239 = ? </questionContent>
+        <number>9</number>
+        <content>959 – 239 = ? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Write this as a base-ten numeral.  Seven hundred sixty-three </questionContent>
+        <number>10</number>
+        <content>Write this as a base-ten numeral.  Seven hundred sixty-three </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Write your answers in centimeters.   How long is A?   How long is B?   How much shorter  is A than B? </questionContent>
+        <number>11</number>
+        <content>Write your answers in centimeters.   How long is A?   How long is B?   How much shorter  is A than B? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Count by fives.   45,           , 55,           ,           , 70 </questionContent>
+        <number>12</number>
+        <content>Count by fives.   45,           , 55,           ,           , 70 </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>What is the time shown on the clock? </questionContent>
+        <number>13</number>
+        <content>What is the time shown on the clock? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>800 + 90 + 7 is what number? </questionContent>
+        <number>14</number>
+        <content>800 + 90 + 7 is what number? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Leon ate 9 cookies on Monday.  He ate 11 cookies on Tuesday and 13 more cookies on Wednesday.  How many cookies did Leon eat during the three days? </questionContent>
+        <number>15</number>
+        <content>Leon ate 9 cookies on Monday.  He ate 11 cookies on Tuesday and 13 more cookies on Wednesday.  How many cookies did Leon eat during the three days? </content>
       </question>
     </questions>
     <graphic>
@@ -1095,64 +1094,64 @@
     <pageName>24</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Count the number of squares in the rows  and columns.  How many squares are there? </questionContent>
+        <number>1</number>
+        <content>Count the number of squares in the rows  and columns.  How many squares are there? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>What number is 10 more than 25? </questionContent>
+        <number>2</number>
+        <content>What number is 10 more than 25? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>How much money is 6 quarters? </questionContent>
+        <number>3</number>
+        <content>How much money is 6 quarters? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>3 + 8 = ? </questionContent>
+        <number>4</number>
+        <content>3 + 8 = ? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>How much time has passed  from one clock to the other? </questionContent>
+        <number>5</number>
+        <content>How much time has passed  from one clock to the other? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>518 + 231 = ? </questionContent>
+        <number>6</number>
+        <content>518 + 231 = ? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Mrs. Smith bought fifty erasers.  She has 33 students in her class.  If she gives an eraser to each student, how many will be left over? </questionContent>
+        <number>7</number>
+        <content>Mrs. Smith bought fifty erasers.  She has 33 students in her class.  If she gives an eraser to each student, how many will be left over? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>The sum is the answer to a(n) 			 problem. </questionContent>
+        <number>8</number>
+        <content>The sum is the answer to a(n) 			 problem. </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Fill in the sign to make this true.     899  946 </questionContent>
+        <number>9</number>
+        <content>Fill in the sign to make this true.     899  946 </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>835 − 402 = ? </questionContent>
+        <number>10</number>
+        <content>835 − 402 = ? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Write the name of this shape. 	 </questionContent>
+        <number>11</number>
+        <content>Write the name of this shape. 	 </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Draw a rectangle and divide it into 3 equal parts.  Shade two parts. </questionContent>
+        <number>12</number>
+        <content>Draw a rectangle and divide it into 3 equal parts.  Shade two parts. </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>18 − ? = 12 </questionContent>
+        <number>13</number>
+        <content>18 − ? = 12 </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Bonnie has one dollar and 32¢.  Jimmy has three quarters and two dimes.  Who has more money, Bonnie or Jimmy? </questionContent>
+        <number>14</number>
+        <content>Bonnie has one dollar and 32¢.  Jimmy has three quarters and two dimes.  Who has more money, Bonnie or Jimmy? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Write your answers in centimeters. How long is A?   How long is B?   How much longer  is B than A?  </questionContent>
+        <number>15</number>
+        <content>Write your answers in centimeters. How long is A?   How long is B?   How much longer  is B than A?  </content>
       </question>
     </questions>
     <graphic>
@@ -1182,64 +1181,64 @@
     <pageName>26</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Which shape shows two equal halves?  </questionContent>
+        <number>1</number>
+        <content>Which shape shows two equal halves?  </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>518 + 361 = ? </questionContent>
+        <number>2</number>
+        <content>518 + 361 = ? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.     943  699 </questionContent>
+        <number>3</number>
+        <content>Fill in the sign to make this sentence true.     943  699 </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Count by tens.          70,   80,            ,           , 110,           ,            </questionContent>
+        <number>4</number>
+        <content>Count by tens.          70,   80,            ,           , 110,           ,            </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>What number is 10 less than 29? </questionContent>
+        <number>5</number>
+        <content>What number is 10 less than 29? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Count the objects in the array.   Write an addition statement to  show the sum. </questionContent>
+        <number>6</number>
+        <content>Count the objects in the array.   Write an addition statement to  show the sum. </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>946 − 323 = ? </questionContent>
+        <number>7</number>
+        <content>946 − 323 = ? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Write this as a base-ten numeral.   72 tens and 2 ones </questionContent>
+        <number>8</number>
+        <content>Write this as a base-ten numeral.   72 tens and 2 ones </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>I have 4 hundreds, 7 tens, and 3 ones.  What number am I? </questionContent>
+        <number>9</number>
+        <content>I have 4 hundreds, 7 tens, and 3 ones.  What number am I? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Tina invited six friends to her birthday party.  Tina’s brother and  sister also came to the party.  How many children were at the party  altogether? </questionContent>
+        <number>10</number>
+        <content>Tina invited six friends to her birthday party.  Tina’s brother and  sister also came to the party.  How many children were at the party  altogether? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Is your desk 3 inches tall  or 3 feet tall? </questionContent>
+        <number>11</number>
+        <content>Is your desk 3 inches tall  or 3 feet tall? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>What time is it?  </questionContent>
+        <number>12</number>
+        <content>What time is it?  </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Arrange these numbers from greatest to least.     917, 670, 232, 435 </questionContent>
+        <number>13</number>
+        <content>Arrange these numbers from greatest to least.     917, 670, 232, 435 </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Write the base-ten number for five hundred sixty-three. </questionContent>
+        <number>14</number>
+        <content>Write the base-ten number for five hundred sixty-three. </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>If you have twenty-three nickels, do you have more or less than one dollar? </questionContent>
+        <number>15</number>
+        <content>If you have twenty-three nickels, do you have more or less than one dollar? </content>
       </question>
     </questions>
     <graphic>
@@ -1264,64 +1263,64 @@
     <pageName>28</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Mom had breakfast ready at 7:30 a.m. or 7:30 p.m.? </questionContent>
+        <number>1</number>
+        <content>Mom had breakfast ready at 7:30 a.m. or 7:30 p.m.? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>The answer to a subtraction problem is the 			. </questionContent>
+        <number>2</number>
+        <content>The answer to a subtraction problem is the 			. </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>145 + 634 = ? </questionContent>
+        <number>3</number>
+        <content>145 + 634 = ? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Is 61 closer to 60 or 70? </questionContent>
+        <number>4</number>
+        <content>Is 61 closer to 60 or 70? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>How much money do you have if you have 4 quarters? </questionContent>
+        <number>5</number>
+        <content>How much money do you have if you have 4 quarters? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>You would use a tape measure to find 		. A) how tall a doorway is   		C) how much food a worm eats B) how heavy a grocery bag is   	D) all of these </questionContent>
+        <number>6</number>
+        <content>You would use a tape measure to find 		. A) how tall a doorway is   		C) how much food a worm eats B) how heavy a grocery bag is   	D) all of these </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>716 − 306 = ? </questionContent>
+        <number>7</number>
+        <content>716 − 306 = ? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>How much time has passed  between the two clocks? </questionContent>
+        <number>8</number>
+        <content>How much time has passed  between the two clocks? </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Which digit is in the ones place in 239?  </questionContent>
+        <number>9</number>
+        <content>Which digit is in the ones place in 239?  </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>22 + 34 + 19 = ? </questionContent>
+        <number>10</number>
+        <content>22 + 34 + 19 = ? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>What part is shaded?  </questionContent>
+        <number>11</number>
+        <content>What part is shaded?  </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Count the objects in the array.  Write  two addition statements to show the sum.  </questionContent>
+        <number>12</number>
+        <content>Count the objects in the array.  Write  two addition statements to show the sum.  </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.     375  257  </questionContent>
+        <number>13</number>
+        <content>Fill in the sign to make this sentence true.     375  257  </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Count by tens.         260, 270,        ,        , 300, 310,          </questionContent>
+        <number>14</number>
+        <content>Count by tens.         260, 270,        ,        , 300, 310,          </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Write your answers in centimeters. How long is A?   How long is B?   How much longer is B than A? </questionContent>
+        <number>15</number>
+        <content>Write your answers in centimeters. How long is A?   How long is B?   How much longer is B than A? </content>
       </question>
     </questions>
     <graphic>
@@ -1356,64 +1355,64 @@
     <pageName>30</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Write your answers in centimeters. How long is A?   How long is B?   How much shorter is A than B? </questionContent>
+        <number>1</number>
+        <content>Write your answers in centimeters. How long is A?   How long is B?   How much shorter is A than B? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>8 + 7 = ? </questionContent>
+        <number>2</number>
+        <content>8 + 7 = ? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>25 + 10 + 35 = ? </questionContent>
+        <number>3</number>
+        <content>25 + 10 + 35 = ? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>20 + 400 + 6 is what number? </questionContent>
+        <number>4</number>
+        <content>20 + 400 + 6 is what number? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Write the time shown on the clock. </questionContent>
+        <number>5</number>
+        <content>Write the time shown on the clock. </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Write the base-ten number for four hundred twenty-five.  </questionContent>
+        <number>6</number>
+        <content>Write the base-ten number for four hundred twenty-five.  </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>836 − 216 = ? </questionContent>
+        <number>7</number>
+        <content>836 − 216 = ? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Look at the picture.  Is the  number of dogs even or odd?   </questionContent>
+        <number>8</number>
+        <content>Look at the picture.  Is the  number of dogs even or odd?   </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Find the nail on page 76 of your Hands-On pages.  Measure it to the nearest inch.  </questionContent>
+        <number>9</number>
+        <content>Find the nail on page 76 of your Hands-On pages.  Measure it to the nearest inch.  </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.    875  688 </questionContent>
+        <number>10</number>
+        <content>Fill in the sign to make this sentence true.    875  688 </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Write this as a base-ten numeral.        88 tens and 7 ones </questionContent>
+        <number>11</number>
+        <content>Write this as a base-ten numeral.        88 tens and 7 ones </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Would the length of a computer screen be 40 meters or 40 centimeters? </questionContent>
+        <number>12</number>
+        <content>Would the length of a computer screen be 40 meters or 40 centimeters? </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>What is the name of the shape?  </questionContent>
+        <number>13</number>
+        <content>What is the name of the shape?  </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Jason planted 19 seeds in one carton and 16 seeds in another carton.  How many seeds did Jason plant in all? </questionContent>
+        <number>14</number>
+        <content>Jason planted 19 seeds in one carton and 16 seeds in another carton.  How many seeds did Jason plant in all? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Count the objects in the array.  Write two  addition statements to show the sum. </questionContent>
+        <number>15</number>
+        <content>Count the objects in the array.  Write two  addition statements to show the sum. </content>
       </question>
     </questions>
     <graphic>
@@ -1448,64 +1447,64 @@
     <pageName>32</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Would Robyn be 100 centimeters tall or 100 meters tall? </questionContent>
+        <number>1</number>
+        <content>Would Robyn be 100 centimeters tall or 100 meters tall? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>If you have five quarters, do you have more or less than a dollar? </questionContent>
+        <number>2</number>
+        <content>If you have five quarters, do you have more or less than a dollar? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Put the numbers in order from least to greatest.     57, 10, 29, 19, 41  </questionContent>
+        <number>3</number>
+        <content>Put the numbers in order from least to greatest.     57, 10, 29, 19, 41  </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>446 + 312 = ? </questionContent>
+        <number>4</number>
+        <content>446 + 312 = ? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Is this shape divided into two equal parts? </questionContent>
+        <number>5</number>
+        <content>Is this shape divided into two equal parts? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Marsha rode her bike 25 miles on Monday, 30 miles on Tuesday,  and 18 miles on Wednesday.  How many miles did Marsha ride in all?  Write a number sentence and solve it. </questionContent>
+        <number>6</number>
+        <content>Marsha rode her bike 25 miles on Monday, 30 miles on Tuesday,  and 18 miles on Wednesday.  How many miles did Marsha ride in all?  Write a number sentence and solve it. </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Write this as a base-ten numeral.     8 tens, 7 ones, and 9 hundreds </questionContent>
+        <number>7</number>
+        <content>Write this as a base-ten numeral.     8 tens, 7 ones, and 9 hundreds </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Draw a rectangle that has two equal rows and four equal columns.  How many small squares are in the rectangle?  </questionContent>
+        <number>8</number>
+        <content>Draw a rectangle that has two equal rows and four equal columns.  How many small squares are in the rectangle?  </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>574 − 322 = ? </questionContent>
+        <number>9</number>
+        <content>574 − 322 = ? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Is this figure a cube? </questionContent>
+        <number>10</number>
+        <content>Is this figure a cube? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>What number does the symbol stand for?      ☻ + 13 = 20 </questionContent>
+        <number>11</number>
+        <content>What number does the symbol stand for?      ☻ + 13 = 20 </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>The 		 is the answer to a subtraction problem. </questionContent>
+        <number>12</number>
+        <content>The 		 is the answer to a subtraction problem. </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Tommy picked 36 pears on Wednesday and 15 pears on Thursday.  How many more pears did he pick on Wednesday? </questionContent>
+        <number>13</number>
+        <content>Tommy picked 36 pears on Wednesday and 15 pears on Thursday.  How many more pears did he pick on Wednesday? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>What number is 10 more than 66? </questionContent>
+        <number>14</number>
+        <content>What number is 10 more than 66? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>How many boats were on the  lake in all? 		How many more paddleboats  than canoes were on the lake? </questionContent>
+        <number>15</number>
+        <content>How many boats were on the  lake in all? 		How many more paddleboats  than canoes were on the lake? </content>
       </question>
     </questions>
     <graphic>
@@ -1530,64 +1529,64 @@
     <pageName>34</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Fill in the missing numbers.   425, 	     , 445, 	     , 	        , 	   </questionContent>
+        <number>1</number>
+        <content>Fill in the missing numbers.   425, 	     , 445, 	     , 	        , 	   </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Write 931 using words. </questionContent>
+        <number>2</number>
+        <content>Write 931 using words. </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>What number comes right before 700? </questionContent>
+        <number>3</number>
+        <content>What number comes right before 700? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>78¢ + 35¢ = ? </questionContent>
+        <number>4</number>
+        <content>78¢ + 35¢ = ? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>What time is it? </questionContent>
+        <number>5</number>
+        <content>What time is it? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>29 + ? = 56 </questionContent>
+        <number>6</number>
+        <content>29 + ? = 56 </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>769 − 367 = ? </questionContent>
+        <number>7</number>
+        <content>769 − 367 = ? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Find Pencil A on page 77 of your Hands-On pages.  Measure it to the nearest inch.  </questionContent>
+        <number>8</number>
+        <content>Find Pencil A on page 77 of your Hands-On pages.  Measure it to the nearest inch.  </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>The sum is the answer to a(n) 			 problem. </questionContent>
+        <number>9</number>
+        <content>The sum is the answer to a(n) 			 problem. </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Manny and Tyrell are selling raffle tickets.  Manny sold 15 tickets this week and 14 tickets last week.  Tyrell sold 20 tickets this week and 7 tickets last week.  Who sold more tickets?  Write two number sentences and solve them. </questionContent>
+        <number>10</number>
+        <content>Manny and Tyrell are selling raffle tickets.  Manny sold 15 tickets this week and 14 tickets last week.  Tyrell sold 20 tickets this week and 7 tickets last week.  Who sold more tickets?  Write two number sentences and solve them. </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>558 + 231 = ? </questionContent>
+        <number>11</number>
+        <content>558 + 231 = ? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>If you have five dimes and three quarters, do you have more or less than a dollar? </questionContent>
+        <number>12</number>
+        <content>If you have five dimes and three quarters, do you have more or less than a dollar? </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Which is longer, 9 inches or 1 foot? </questionContent>
+        <number>13</number>
+        <content>Which is longer, 9 inches or 1 foot? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Count the objects in the array.  Write two  addition statements to show the sum. </questionContent>
+        <number>14</number>
+        <content>Count the objects in the array.  Write two  addition statements to show the sum. </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Would a dog be 20 or 60 inches high? </questionContent>
+        <number>15</number>
+        <content>Would a dog be 20 or 60 inches high? </content>
       </question>
     </questions>
     <graphic>
@@ -1612,64 +1611,64 @@
     <pageName>36</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Fourteen students measured their heights.  How many students measured  48 inches or taller?  How many students measured  47 inches or shorter? </questionContent>
+        <number>1</number>
+        <content>Fourteen students measured their heights.  How many students measured  48 inches or taller?  How many students measured  47 inches or shorter? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>What is the name of the shape that has 4 sides and 4 angles? 		           A)  triangle           B)  hexagon         C)  quadrilateral </questionContent>
+        <number>2</number>
+        <content>What is the name of the shape that has 4 sides and 4 angles? 		           A)  triangle           B)  hexagon         C)  quadrilateral </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.     422  326 </questionContent>
+        <number>3</number>
+        <content>Fill in the sign to make this sentence true.     422  326 </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Write the next four odd numbers.  1,          ,          ,          ,  	      </questionContent>
+        <number>4</number>
+        <content>Write the next four odd numbers.  1,          ,          ,          ,  	      </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>624 + 323 = ? </questionContent>
+        <number>5</number>
+        <content>624 + 323 = ? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>27 + 21 + 35 + 42 = ? </questionContent>
+        <number>6</number>
+        <content>27 + 21 + 35 + 42 = ? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Draw a rectangle that has two equal rows and two equal columns.  How many small squares are in the rectangle?  </questionContent>
+        <number>7</number>
+        <content>Draw a rectangle that has two equal rows and two equal columns.  How many small squares are in the rectangle?  </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>90 + 6 + 400 is what number?  </questionContent>
+        <number>8</number>
+        <content>90 + 6 + 400 is what number?  </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Write your answers in centimeters. How long is A?   How long is B?   How much longer is B than A? What is the sum of the two lengths? </questionContent>
+        <number>9</number>
+        <content>Write your answers in centimeters. How long is A?   How long is B?   How much longer is B than A? What is the sum of the two lengths? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Would an umbrella be 6 centimeters or 60 centimeters wide? </questionContent>
+        <number>10</number>
+        <content>Would an umbrella be 6 centimeters or 60 centimeters wide? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Write this as a base-ten numeral.        90 tens and 3 ones </questionContent>
+        <number>11</number>
+        <content>Write this as a base-ten numeral.        90 tens and 3 ones </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>I have four hundreds, two tens, and six ones.  What number am I? </questionContent>
+        <number>12</number>
+        <content>I have four hundreds, two tens, and six ones.  What number am I? </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Rachel cut four pieces of celery.  Each piece was 7 inches long.   How many inches of celery did Rachel have?  Write a number sentence and solve it. </questionContent>
+        <number>13</number>
+        <content>Rachel cut four pieces of celery.  Each piece was 7 inches long.   How many inches of celery did Rachel have?  Write a number sentence and solve it. </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>488 − 236 = ? </questionContent>
+        <number>14</number>
+        <content>488 − 236 = ? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>How long does lunch last? 		Which activity lasts the longest? </questionContent>
+        <number>15</number>
+        <content>How long does lunch last? 		Which activity lasts the longest? </content>
       </question>
     </questions>
     <graphic>
@@ -1694,64 +1693,64 @@
     <pageName>38</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Second and third graders use the playground at recess.  Mrs. Wise counted 17 second graders.  When the bell rang, 29 students lined  up to go inside.  How many of them were third graders? </questionContent>
+        <number>1</number>
+        <content>Second and third graders use the playground at recess.  Mrs. Wise counted 17 second graders.  When the bell rang, 29 students lined  up to go inside.  How many of them were third graders? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>53 + 39 = ? </questionContent>
+        <number>2</number>
+        <content>53 + 39 = ? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>How much money is 9 quarters? </questionContent>
+        <number>3</number>
+        <content>How much money is 9 quarters? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Which is longer, 30 minutes or 1 hour? </questionContent>
+        <number>4</number>
+        <content>Which is longer, 30 minutes or 1 hour? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>825 − 314 = ? </questionContent>
+        <number>5</number>
+        <content>825 − 314 = ? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Put the numbers in order from greatest to least.    153    513     521 </questionContent>
+        <number>6</number>
+        <content>Put the numbers in order from greatest to least.    153    513     521 </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Would a large pizza be closer to 45 centimeters or 75 centimeters across? </questionContent>
+        <number>7</number>
+        <content>Would a large pizza be closer to 45 centimeters or 75 centimeters across? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Trace over the dotted lines in the answer box.  There are 4 rows.  How many columns are there? </questionContent>
+        <number>8</number>
+        <content>Trace over the dotted lines in the answer box.  There are 4 rows.  How many columns are there? </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Is 27 closer to 20 or to 30? </questionContent>
+        <number>9</number>
+        <content>Is 27 closer to 20 or to 30? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Jason left for school at 8:15 a.m. or 8:15 p.m.? </questionContent>
+        <number>10</number>
+        <content>Jason left for school at 8:15 a.m. or 8:15 p.m.? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>What number comes between 265 and 450? 				  A)  145              B)  567              C)  358 </questionContent>
+        <number>11</number>
+        <content>What number comes between 265 and 450? 				  A)  145              B)  567              C)  358 </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Write this as a base-ten numeral.        16 tens and 8 ones </questionContent>
+        <number>12</number>
+        <content>Write this as a base-ten numeral.        16 tens and 8 ones </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Write the name of the shape. </questionContent>
+        <number>13</number>
+        <content>Write the name of the shape. </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>The kitchen will get a new sink that is 22 inches wide.  The countertop is 62 inches wide.  How much longer is the countertop  than the sink?  Write a number sentence and solve it. </questionContent>
+        <number>14</number>
+        <content>The kitchen will get a new sink that is 22 inches wide.  The countertop is 62 inches wide.  How much longer is the countertop  than the sink?  Write a number sentence and solve it. </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Monica bought a tablet for $2.15 and a sticker book for $1.45.   How much money did she spend?</questionContent>
+        <number>15</number>
+        <content>Monica bought a tablet for $2.15 and a sticker book for $1.45.   How much money did she spend?</content>
       </question>
     </questions>
     <graphic>
@@ -1781,64 +1780,64 @@
     <pageName>40</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Which digit is in the ones place in 654? </questionContent>
+        <number>1</number>
+        <content>Which digit is in the ones place in 654? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>664 + 125 = ? </questionContent>
+        <number>2</number>
+        <content>664 + 125 = ? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Would a can of soda be 12 centimeters  or 50 centimeters tall? </questionContent>
+        <number>3</number>
+        <content>Would a can of soda be 12 centimeters  or 50 centimeters tall? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>What tool would you use to find the length of a hallway?       A)  tape measure       B)  timer       C)  thermometer </questionContent>
+        <number>4</number>
+        <content>What tool would you use to find the length of a hallway?       A)  tape measure       B)  timer       C)  thermometer </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Find the fork on page 76 of your Hands-On pages.  Measure it to the nearest inch. </questionContent>
+        <number>5</number>
+        <content>Find the fork on page 76 of your Hands-On pages.  Measure it to the nearest inch. </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Write the name of the figure. </questionContent>
+        <number>6</number>
+        <content>Write the name of the figure. </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>What number does the symbol stand for?       15 −  ☼  = 6  </questionContent>
+        <number>7</number>
+        <content>What number does the symbol stand for?       15 −  ☼  = 6  </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.      796  988 </questionContent>
+        <number>8</number>
+        <content>Fill in the sign to make this sentence true.      796  988 </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>I have 27 tens.  What number am I? </questionContent>
+        <number>9</number>
+        <content>I have 27 tens.  What number am I? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>65¢ − 32¢ = ? </questionContent>
+        <number>10</number>
+        <content>65¢ − 32¢ = ? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>How much time has passed between  the two clocks? </questionContent>
+        <number>11</number>
+        <content>How much time has passed between  the two clocks? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Write the base-ten number for five hundred ninety-six. </questionContent>
+        <number>12</number>
+        <content>Write the base-ten number for five hundred ninety-six. </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Draw a rectangle that has three equal rows and four equal columns.  How many small squares are in the rectangle?  </questionContent>
+        <number>13</number>
+        <content>Draw a rectangle that has three equal rows and four equal columns.  How many small squares are in the rectangle?  </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>899 − 345 = ? </questionContent>
+        <number>14</number>
+        <content>899 − 345 = ? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Charles has 55¢.  His brother gives him 2 dimes and then he buys a piece of gum for 15¢.  How much money does he have now? </questionContent>
+        <number>15</number>
+        <content>Charles has 55¢.  His brother gives him 2 dimes and then he buys a piece of gum for 15¢.  How much money does he have now? </content>
       </question>
     </questions>
     <graphic>
@@ -1868,64 +1867,64 @@
     <pageName>42</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Write this as a base-ten numeral.        900 + 30 + 7  </questionContent>
+        <number>1</number>
+        <content>Write this as a base-ten numeral.        900 + 30 + 7  </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>56 − 28 = ? </questionContent>
+        <number>2</number>
+        <content>56 − 28 = ? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Is 78 closer to 70 or 80? </questionContent>
+        <number>3</number>
+        <content>Is 78 closer to 70 or 80? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Put the numbers in order  from least to greatest.          913     941      655      947 </questionContent>
+        <number>4</number>
+        <content>Put the numbers in order  from least to greatest.          913     941      655      947 </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>361 + 624 = ? </questionContent>
+        <number>5</number>
+        <content>361 + 624 = ? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Is this figure divided into two equal parts? </questionContent>
+        <number>6</number>
+        <content>Is this figure divided into two equal parts? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>If Juan buys a ball for 55¢ and a toy car for 88¢, how much did he spend in all? </questionContent>
+        <number>7</number>
+        <content>If Juan buys a ball for 55¢ and a toy car for 88¢, how much did he spend in all? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Write 294 using words. </questionContent>
+        <number>8</number>
+        <content>Write 294 using words. </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Count the objects in the array.  Write two  addition statements to show the sum. </questionContent>
+        <number>9</number>
+        <content>Count the objects in the array.  Write two  addition statements to show the sum. </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>There are 26 students in Mrs. Vinci’s class, but only 14 students are in class today.  How many students are absent? </questionContent>
+        <number>10</number>
+        <content>There are 26 students in Mrs. Vinci’s class, but only 14 students are in class today.  How many students are absent? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Write this as a base-ten numeral.       3 tens, 8 ones, and 7 hundreds </questionContent>
+        <number>11</number>
+        <content>Write this as a base-ten numeral.       3 tens, 8 ones, and 7 hundreds </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>11 − 6 = ? </questionContent>
+        <number>12</number>
+        <content>11 − 6 = ? </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>What number is 10 less than 55?  </questionContent>
+        <number>13</number>
+        <content>What number is 10 less than 55?  </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>How much money is 5 dimes?	        </questionContent>
+        <number>14</number>
+        <content>How much money is 5 dimes?	        </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>The picture shows how tall the plant was  two weeks ago.  Now, the plant is 18 inches  tall.  How many inches did the plant grow?   Write a number sentence. 	           +            = 18</questionContent>
+        <number>15</number>
+        <content>The picture shows how tall the plant was  two weeks ago.  Now, the plant is 18 inches  tall.  How many inches did the plant grow?   Write a number sentence. 	           +            = 18</content>
       </question>
     </questions>
     <graphic>
@@ -1955,64 +1954,64 @@
     <pageName>44</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>27 + 18 = ? </questionContent>
+        <number>1</number>
+        <content>27 + 18 = ? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Which two are equal?         	A)  ten nickels      B)  one dollar      C)  one quarter 	D)  five dimes      </questionContent>
+        <number>2</number>
+        <content>Which two are equal?         	A)  ten nickels      B)  one dollar      C)  one quarter 	D)  five dimes      </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Would a tube of toothpaste be closer to 20 centimeters or 35 centimeters long? </questionContent>
+        <number>3</number>
+        <content>Would a tube of toothpaste be closer to 20 centimeters or 35 centimeters long? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Draw a circle and divide it into two equal parts. </questionContent>
+        <number>4</number>
+        <content>Draw a circle and divide it into two equal parts. </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>765 − 350 = ? </questionContent>
+        <number>5</number>
+        <content>765 − 350 = ? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Look at the picture.  Is the number  of birds even or odd?   </questionContent>
+        <number>6</number>
+        <content>Look at the picture.  Is the number  of birds even or odd?   </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>I have 2 tens, 5 ones, and 8 hundreds.  What number am I? </questionContent>
+        <number>7</number>
+        <content>I have 2 tens, 5 ones, and 8 hundreds.  What number am I? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>What is the name of this shape? </questionContent>
+        <number>8</number>
+        <content>What is the name of this shape? </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>546 + 153 = ? </questionContent>
+        <number>9</number>
+        <content>546 + 153 = ? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Count the objects in the array.  Write two  addition statements to show the sum.  </questionContent>
+        <number>10</number>
+        <content>Count the objects in the array.  Write two  addition statements to show the sum.  </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Count by tens.        55,   65,            ,           ,              </questionContent>
+        <number>11</number>
+        <content>Count by tens.        55,   65,            ,           ,              </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Write this as a base-ten numeral.      29 tens and 4 ones </questionContent>
+        <number>12</number>
+        <content>Write this as a base-ten numeral.      29 tens and 4 ones </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>What tool would you use to find the width of a skateboard?             A)  ruler            B)  scale           C)  stopwatch    </questionContent>
+        <number>13</number>
+        <content>What tool would you use to find the width of a skateboard?             A)  ruler            B)  scale           C)  stopwatch    </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.     642  624 </questionContent>
+        <number>14</number>
+        <content>Fill in the sign to make this sentence true.     642  624 </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>How long is the paper clip in inches? </questionContent>
+        <number>15</number>
+        <content>How long is the paper clip in inches? </content>
       </question>
     </questions>
     <graphic>
@@ -2040,64 +2039,64 @@
     <pageName>46</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Write this as a base-ten numeral.        four hundred eighty-two </questionContent>
+        <number>1</number>
+        <content>Write this as a base-ten numeral.        four hundred eighty-two </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Is 32 closer to 30 or 40? </questionContent>
+        <number>2</number>
+        <content>Is 32 closer to 30 or 40? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>92 − 57 = ? </questionContent>
+        <number>3</number>
+        <content>92 − 57 = ? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>The merry-go-round can hold 24 people.  When the ride started, 22 people got on.  At the first stop, 16 got off and 11 people got on.  How many were on the merry-go-round then?  </questionContent>
+        <number>4</number>
+        <content>The merry-go-round can hold 24 people.  When the ride started, 22 people got on.  At the first stop, 16 got off and 11 people got on.  How many were on the merry-go-round then?  </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Look at the picture.  Is the  number of tools even or odd?   </questionContent>
+        <number>5</number>
+        <content>Look at the picture.  Is the  number of tools even or odd?   </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>156 + 323 = ? </questionContent>
+        <number>6</number>
+        <content>156 + 323 = ? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Write your answers in centimeters. How long is A?   How long is B?   How much longer is B than A? </questionContent>
+        <number>7</number>
+        <content>Write your answers in centimeters. How long is A?   How long is B?   How much longer is B than A? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>A dollar bill is closer to 15 centimeters or 25 centimeters long? </questionContent>
+        <number>8</number>
+        <content>A dollar bill is closer to 15 centimeters or 25 centimeters long? </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Draw a rectangle that has four equal rows and four equal columns.  How many small squares are in the rectangle?  </questionContent>
+        <number>9</number>
+        <content>Draw a rectangle that has four equal rows and four equal columns.  How many small squares are in the rectangle?  </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Count by fives.             55, 	, 	, 70 </questionContent>
+        <number>10</number>
+        <content>Count by fives.             55, 	, 	, 70 </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.     561  516 </questionContent>
+        <number>11</number>
+        <content>Fill in the sign to make this sentence true.     561  516 </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Sean’s number is 50 less than 80.  What is Sean’s number? </questionContent>
+        <number>12</number>
+        <content>Sean’s number is 50 less than 80.  What is Sean’s number? </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>What time is shown on the clock? </questionContent>
+        <number>13</number>
+        <content>What time is shown on the clock? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Which is greater, 9 dimes or $1.00? </questionContent>
+        <number>14</number>
+        <content>Which is greater, 9 dimes or $1.00? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Mr. Filler’s yard is 63 feet wide.  Ms. Tomlin’s yard is 72 feet wide.  How much wider is Ms. Tomlin’s yard?  Write a number sentence  and solve it.   </questionContent>
+        <number>15</number>
+        <content>Mr. Filler’s yard is 63 feet wide.  Ms. Tomlin’s yard is 72 feet wide.  How much wider is Ms. Tomlin’s yard?  Write a number sentence  and solve it.   </content>
       </question>
     </questions>
     <graphic>
@@ -2127,64 +2126,64 @@
     <pageName>48</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>618 + 251 = ? </questionContent>
+        <number>1</number>
+        <content>618 + 251 = ? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Would most french fries be closer to 10 centimeters  or 30 centimeters long? </questionContent>
+        <number>2</number>
+        <content>Would most french fries be closer to 10 centimeters  or 30 centimeters long? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Is 47 closer to 40 or 50?  </questionContent>
+        <number>3</number>
+        <content>Is 47 closer to 40 or 50?  </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Draw two quadrilaterals. </questionContent>
+        <number>4</number>
+        <content>Draw two quadrilaterals. </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Write the name of the shape. </questionContent>
+        <number>5</number>
+        <content>Write the name of the shape. </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>832 − 511 = ? </questionContent>
+        <number>6</number>
+        <content>832 − 511 = ? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>The difference is the answer to a(n) 				 problem. </questionContent>
+        <number>7</number>
+        <content>The difference is the answer to a(n) 				 problem. </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Count the objects in the array.   Write an addition statement to  show the sum. </questionContent>
+        <number>8</number>
+        <content>Count the objects in the array.   Write an addition statement to  show the sum. </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>8 + 7 = ? </questionContent>
+        <number>9</number>
+        <content>8 + 7 = ? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>How much time has passed from one clock to the next? </questionContent>
+        <number>10</number>
+        <content>How much time has passed from one clock to the next? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Write this as a base-ten numeral.        700 + 70 + 7 </questionContent>
+        <number>11</number>
+        <content>Write this as a base-ten numeral.        700 + 70 + 7 </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>What number is 100 more than 112? </questionContent>
+        <number>12</number>
+        <content>What number is 100 more than 112? </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.      412  831 </questionContent>
+        <number>13</number>
+        <content>Fill in the sign to make this sentence true.      412  831 </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Draw a circle that is divided into four equal parts. </questionContent>
+        <number>14</number>
+        <content>Draw a circle that is divided into four equal parts. </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Write your answers in centimeters.   How long is A?   How long is B?   How much longer is B  than A? </questionContent>
+        <number>15</number>
+        <content>Write your answers in centimeters.   How long is A?   How long is B?   How much longer is B  than A? </content>
       </question>
     </questions>
     <graphic>
@@ -2227,64 +2226,64 @@
     <pageName>50</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Write 462 using words. </questionContent>
+        <number>1</number>
+        <content>Write 462 using words. </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Draw a pentagon. </questionContent>
+        <number>2</number>
+        <content>Draw a pentagon. </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>What time is shown on the clock? </questionContent>
+        <number>3</number>
+        <content>What time is shown on the clock? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>What number does the symbol stand for?       97 − ♥ = 93 </questionContent>
+        <number>4</number>
+        <content>What number does the symbol stand for?       97 − ♥ = 93 </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Write this as a base-ten numeral.         30 + 600 + 4 </questionContent>
+        <number>5</number>
+        <content>Write this as a base-ten numeral.         30 + 600 + 4 </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>How many cents do you have if you have seven dimes and three nickels? </questionContent>
+        <number>6</number>
+        <content>How many cents do you have if you have seven dimes and three nickels? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Look at the picture.  Is the  number of objects even or odd? </questionContent>
+        <number>7</number>
+        <content>Look at the picture.  Is the  number of objects even or odd? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Would a dog’s tail be 25 centimeters or 125 centimeters long? </questionContent>
+        <number>8</number>
+        <content>Would a dog’s tail be 25 centimeters or 125 centimeters long? </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Which is the best tool for measuring the length of your bicycle?        A)  measuring cup	                 	C)  measuring tape	        B)  scale					D)  telescope </questionContent>
+        <number>9</number>
+        <content>Which is the best tool for measuring the length of your bicycle?        A)  measuring cup	                 	C)  measuring tape	        B)  scale					D)  telescope </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.    25  25 = 50  </questionContent>
+        <number>10</number>
+        <content>Fill in the sign to make this sentence true.    25  25 = 50  </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>638 + 251 = ? </questionContent>
+        <number>11</number>
+        <content>638 + 251 = ? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Which shape is divided into  two equal parts?  Draw it.   </questionContent>
+        <number>12</number>
+        <content>Which shape is divided into  two equal parts?  Draw it.   </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>834 − 622 = ? </questionContent>
+        <number>13</number>
+        <content>834 − 622 = ? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>What number is 100 less than 313? </questionContent>
+        <number>14</number>
+        <content>What number is 100 less than 313? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>How many total animals were  in the barnyard? 		How many more chickens than  cows were there? </questionContent>
+        <number>15</number>
+        <content>How many total animals were  in the barnyard? 		How many more chickens than  cows were there? </content>
       </question>
     </questions>
     <graphic>
@@ -2312,64 +2311,64 @@
     <pageName>52</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>I have three hundreds, five tens, and seven ones.  What number am I? </questionContent>
+        <number>1</number>
+        <content>I have three hundreds, five tens, and seven ones.  What number am I? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Write the name of the shape. </questionContent>
+        <number>2</number>
+        <content>Write the name of the shape. </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>45 + 31 + 12 = ? </questionContent>
+        <number>3</number>
+        <content>45 + 31 + 12 = ? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>A stack of four boxes is 64 inches high.  Two boxes are each 16 inches tall and another is 20 inches tall.  How tall is the fourth box? </questionContent>
+        <number>4</number>
+        <content>A stack of four boxes is 64 inches high.  Two boxes are each 16 inches tall and another is 20 inches tall.  How tall is the fourth box? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>The answer to a(n) addition problem is the 	        . </questionContent>
+        <number>5</number>
+        <content>The answer to a(n) addition problem is the 	        . </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>How much time has passed  between the two clocks? </questionContent>
+        <number>6</number>
+        <content>How much time has passed  between the two clocks? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>625 − 313 = ? </questionContent>
+        <number>7</number>
+        <content>625 − 313 = ? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Eight quarters are the same amount of money as two  		. </questionContent>
+        <number>8</number>
+        <content>Eight quarters are the same amount of money as two  		. </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Write two equal addends.	   	  +         = 14 </questionContent>
+        <number>9</number>
+        <content>Write two equal addends.	   	  +         = 14 </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Write this as a base-ten numeral. 	6 ones,  6 hundreds, and 1 ten </questionContent>
+        <number>10</number>
+        <content>Write this as a base-ten numeral. 	6 ones,  6 hundreds, and 1 ten </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Order these numbers from greatest to least.    555    141     783    248 </questionContent>
+        <number>11</number>
+        <content>Order these numbers from greatest to least.    555    141     783    248 </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Is 62 closer to 60 or 70? </questionContent>
+        <number>12</number>
+        <content>Is 62 closer to 60 or 70? </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.          452  524 </questionContent>
+        <number>13</number>
+        <content>Fill in the sign to make this sentence true.          452  524 </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Write 916 using words. </questionContent>
+        <number>14</number>
+        <content>Write 916 using words. </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>The graph shows items that were sold  at the bake sale.  Which item sold the most? 		How many more muffins than cakes  were sold?  Write a number sentence. </questionContent>
+        <number>15</number>
+        <content>The graph shows items that were sold  at the bake sale.  Which item sold the most? 		How many more muffins than cakes  were sold?  Write a number sentence. </content>
       </question>
     </questions>
     <graphic>
@@ -2402,64 +2401,64 @@
     <pageName>54</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>What number is 100 more than 862? </questionContent>
+        <number>1</number>
+        <content>What number is 100 more than 862? </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>853 + 146 = ? </questionContent>
+        <number>2</number>
+        <content>853 + 146 = ? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Draw a rectangle that has three equal rows  and two equal columns.  How many small  squares are in the rectangle?  </questionContent>
+        <number>3</number>
+        <content>Draw a rectangle that has three equal rows  and two equal columns.  How many small  squares are in the rectangle?  </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>Lucy’s number is 12 less than 24.  What is Lucy’s number? </questionContent>
+        <number>4</number>
+        <content>Lucy’s number is 12 less than 24.  What is Lucy’s number? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Cory is making a doghouse.  One side will be 36 inches long, and the back will be 21 inches long.  How much longer is the side than the back of the doghouse?  Write a number sentence and solve it. </questionContent>
+        <number>5</number>
+        <content>Cory is making a doghouse.  One side will be 36 inches long, and the back will be 21 inches long.  How much longer is the side than the back of the doghouse?  Write a number sentence and solve it. </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>What number comes just before 900? </questionContent>
+        <number>6</number>
+        <content>What number comes just before 900? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Draw a circle that is divided into thirds. </questionContent>
+        <number>7</number>
+        <content>Draw a circle that is divided into thirds. </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Write the time shown on the clock. </questionContent>
+        <number>8</number>
+        <content>Write the time shown on the clock. </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>If you have seven nickels, how many cents do you have? </questionContent>
+        <number>9</number>
+        <content>If you have seven nickels, how many cents do you have? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Fill in a sign to make this sentence true.       576  655 </questionContent>
+        <number>10</number>
+        <content>Fill in a sign to make this sentence true.       576  655 </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Order the numbers from least to greatest.   385     279      28      436 </questionContent>
+        <number>11</number>
+        <content>Order the numbers from least to greatest.   385     279      28      436 </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.      92  56 = 36 </questionContent>
+        <number>12</number>
+        <content>Fill in the sign to make this sentence true.      92  56 = 36 </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>32 + 26 + 11 = ? </questionContent>
+        <number>13</number>
+        <content>32 + 26 + 11 = ? </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>854 − 432 = ?	 </questionContent>
+        <number>14</number>
+        <content>854 − 432 = ?	 </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Count the objects in the array.  Write two  addition statements to show the sum. </questionContent>
+        <number>15</number>
+        <content>Count the objects in the array.  Write two  addition statements to show the sum. </content>
       </question>
     </questions>
     <graphic>
@@ -2484,64 +2483,64 @@
     <pageName>56</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>When Tia was born, her parents planted a tree that was 17 inches tall.  Now the tree is 65 inches tall.  How many inches has the tree grown since Tia was born?  Write a number sentence and solve it. </questionContent>
+        <number>1</number>
+        <content>When Tia was born, her parents planted a tree that was 17 inches tall.  Now the tree is 65 inches tall.  How many inches has the tree grown since Tia was born?  Write a number sentence and solve it. </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>943 − 385 = ? </questionContent>
+        <number>2</number>
+        <content>943 − 385 = ? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Draw a shape with six sides and six angles. </questionContent>
+        <number>3</number>
+        <content>Draw a shape with six sides and six angles. </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>A number has 4 hundreds, 5 tens, and 3 ones.  What is the number? </questionContent>
+        <number>4</number>
+        <content>A number has 4 hundreds, 5 tens, and 3 ones.  What is the number? </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>Write your answers in inches. How long is A?   How long is B?   How much longer is B than A? </questionContent>
+        <number>5</number>
+        <content>Write your answers in inches. How long is A?   How long is B?   How much longer is B than A? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.   318  138 </questionContent>
+        <number>6</number>
+        <content>Fill in the sign to make this sentence true.   318  138 </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Would Will’s desk be closer to 20 centimeters or 80 centimeters high? </questionContent>
+        <number>7</number>
+        <content>Would Will’s desk be closer to 20 centimeters or 80 centimeters high? </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Peggy has three quarters and two nickels.  Nicki has a dollar bill.  Who has more money, Peggy or Nicki? </questionContent>
+        <number>8</number>
+        <content>Peggy has three quarters and two nickels.  Nicki has a dollar bill.  Who has more money, Peggy or Nicki? </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>How many hours are in a day? </questionContent>
+        <number>9</number>
+        <content>How many hours are in a day? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>645 + 253 = ? </questionContent>
+        <number>10</number>
+        <content>645 + 253 = ? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Count the objects in the array.  Write an  addition statement to show the sum. </questionContent>
+        <number>11</number>
+        <content>Count the objects in the array.  Write an  addition statement to show the sum. </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>6 + ? = 14 </questionContent>
+        <number>12</number>
+        <content>6 + ? = 14 </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Write two equal addends.	   	  +         = 16 </questionContent>
+        <number>13</number>
+        <content>Write two equal addends.	   	  +         = 16 </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Which shape is divided into four equal parts? </questionContent>
+        <number>14</number>
+        <content>Which shape is divided into four equal parts? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Would the ping pong paddle be closer to 17 centimeters or 34 centimeters wide? </questionContent>
+        <number>15</number>
+        <content>Would the ping pong paddle be closer to 17 centimeters or 34 centimeters wide? </content>
       </question>
     </questions>
     <graphic>
@@ -2566,64 +2565,64 @@
     <pageName>58</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Count by tens.    650, 660, 	, 	   , 	       </questionContent>
+        <number>1</number>
+        <content>Count by tens.    650, 660, 	, 	   , 	       </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>Is this figure a square? </questionContent>
+        <number>2</number>
+        <content>Is this figure a square? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>Which digit is in the tens place in 579? </questionContent>
+        <number>3</number>
+        <content>Which digit is in the tens place in 579? </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>There are 58 students in the school band.  Twenty-six students play a wind instrument.  How many students do not play a wind instrument?  </questionContent>
+        <number>4</number>
+        <content>There are 58 students in the school band.  Twenty-six students play a wind instrument.  How many students do not play a wind instrument?  </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>475 + 323 = ? </questionContent>
+        <number>5</number>
+        <content>475 + 323 = ? </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>$2.65 − $1.53 = ? </questionContent>
+        <number>6</number>
+        <content>$2.65 − $1.53 = ? </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Fill in the sign to make this sentence true.       314  143 </questionContent>
+        <number>7</number>
+        <content>Fill in the sign to make this sentence true.       314  143 </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>If you want to measure how tall your sister is, which is the best tool to use? 				A)  meter stick     		C)  measuring cup      		B)  stopwatch     			D)  spring scale </questionContent>
+        <number>8</number>
+        <content>If you want to measure how tall your sister is, which is the best tool to use? 				A)  meter stick     		C)  measuring cup      		B)  stopwatch     			D)  spring scale </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>Draw a rectangle in your answer box.   Divide the rectangle into thirds.   Color a third of the rectangle. </questionContent>
+        <number>9</number>
+        <content>Draw a rectangle in your answer box.   Divide the rectangle into thirds.   Color a third of the rectangle. </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>What time is it on this clock? </questionContent>
+        <number>10</number>
+        <content>What time is it on this clock? </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>Keesha lined up all her shoes against a wall in the closet.  The wall was 38 inches wide, and the line of shoes was 27 inches long.  How many inches were left at the end of the line of shoes? </questionContent>
+        <number>11</number>
+        <content>Keesha lined up all her shoes against a wall in the closet.  The wall was 38 inches wide, and the line of shoes was 27 inches long.  How many inches were left at the end of the line of shoes? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>Find the credit card on page 76 of your Hands-On pages.  Measure  the length to the nearest inch. </questionContent>
+        <number>12</number>
+        <content>Find the credit card on page 76 of your Hands-On pages.  Measure  the length to the nearest inch. </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Twenty nickels are the same amount of money as one 	                . </questionContent>
+        <number>13</number>
+        <content>Twenty nickels are the same amount of money as one 	                . </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>Write this as a base-ten numeral.       6 ones, 9 hundreds, and 3 tens </questionContent>
+        <number>14</number>
+        <content>Write this as a base-ten numeral.       6 ones, 9 hundreds, and 3 tens </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Is 21 closer to 20 or 30?  </questionContent>
+        <number>15</number>
+        <content>Is 21 closer to 20 or 30?  </content>
       </question>
     </questions>
     <graphic>
@@ -2651,64 +2650,64 @@
     <pageName>60</pageName>
     <questions>
       <question>
-        <questionNumber>1</questionNumber>
-        <questionContent>Write this as a base-ten numeral.       45 tens and 5 ones  </questionContent>
+        <number>1</number>
+        <content>Write this as a base-ten numeral.       45 tens and 5 ones  </content>
       </question>
       <question>
-        <questionNumber>2</questionNumber>
-        <questionContent>What number is 100 more than 334? </questionContent>
+        <number>2</number>
+        <content>What number is 100 more than 334? </content>
       </question>
       <question>
-        <questionNumber>3</questionNumber>
-        <questionContent>814 + 165 = ?  </questionContent>
+        <number>3</number>
+        <content>814 + 165 = ?  </content>
       </question>
       <question>
-        <questionNumber>4</questionNumber>
-        <questionContent>What time is it?   </questionContent>
+        <number>4</number>
+        <content>What time is it?   </content>
       </question>
       <question>
-        <questionNumber>5</questionNumber>
-        <questionContent>What number does the symbol stand for?      75 + ♣ = 100  </questionContent>
+        <number>5</number>
+        <content>What number does the symbol stand for?      75 + ♣ = 100  </content>
       </question>
       <question>
-        <questionNumber>6</questionNumber>
-        <questionContent>If you have three dollar bills, two quarters, and ten pennies, how  much money do you have? 				A)  $3 and 42¢     		C)  $3 and 52¢      				B)  $3 and 60¢     		D)  $3 and 35¢ </questionContent>
+        <number>6</number>
+        <content>If you have three dollar bills, two quarters, and ten pennies, how  much money do you have? 				A)  $3 and 42¢     		C)  $3 and 52¢      				B)  $3 and 60¢     		D)  $3 and 35¢ </content>
       </question>
       <question>
-        <questionNumber>7</questionNumber>
-        <questionContent>Write the missing numbers in the sequence.   25, 35, 	       , 55,  	       </questionContent>
+        <number>7</number>
+        <content>Write the missing numbers in the sequence.   25, 35, 	       , 55,  	       </content>
       </question>
       <question>
-        <questionNumber>8</questionNumber>
-        <questionContent>Is this figure a cube? </questionContent>
+        <number>8</number>
+        <content>Is this figure a cube? </content>
       </question>
       <question>
-        <questionNumber>9</questionNumber>
-        <questionContent>15 + 36 + 24 = ? </questionContent>
+        <number>9</number>
+        <content>15 + 36 + 24 = ? </content>
       </question>
       <question>
-        <questionNumber>10</questionNumber>
-        <questionContent>Write this as a base-ten numeral.       1 + 500 + 80  </questionContent>
+        <number>10</number>
+        <content>Write this as a base-ten numeral.       1 + 500 + 80  </content>
       </question>
       <question>
-        <questionNumber>11</questionNumber>
-        <questionContent>If you have 8 dimes and 4 nickels, how much money do you have? </questionContent>
+        <number>11</number>
+        <content>If you have 8 dimes and 4 nickels, how much money do you have? </content>
       </question>
       <question>
-        <questionNumber>12</questionNumber>
-        <questionContent>The roll of paper towels would be 11 inches or 30 inches tall? </questionContent>
+        <number>12</number>
+        <content>The roll of paper towels would be 11 inches or 30 inches tall? </content>
       </question>
       <question>
-        <questionNumber>13</questionNumber>
-        <questionContent>Count the objects in the array.  Write two  addition statements to show the sum. </questionContent>
+        <number>13</number>
+        <content>Count the objects in the array.  Write two  addition statements to show the sum. </content>
       </question>
       <question>
-        <questionNumber>14</questionNumber>
-        <questionContent>46 − 18 = ? </questionContent>
+        <number>14</number>
+        <content>46 − 18 = ? </content>
       </question>
       <question>
-        <questionNumber>15</questionNumber>
-        <questionContent>Nine students measured the spans of their hands.  Here are the results. How many hands measured 10 cm  or narrower?	 How wide were most students’ hands? </questionContent>
+        <number>15</number>
+        <content>Nine students measured the spans of their hands.  Here are the results. How many hands measured 10 cm  or narrower?	 How wide were most students’ hands? </content>
       </question>
     </questions>
     <graphic>
