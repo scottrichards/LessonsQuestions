@@ -4,29 +4,34 @@
 		 creationComplete="onCreationComplete(event)"
 		 horizontalAlign="center">
 	<fx:Style>
-		.labelStyle { 
+		.labelStyle { 	/* style for the actual symbol */
 			fontSize: 30;
 			fontWeight: bold;
+			horizontalAlign: center;
 		}
 		
-		.buttonStyle { 
-			fontSize: 22;
+		.textStyle { 	/* text for the question around the symbol */
+			fontSize: 20;
+			paddingTop : 6;
 		}
+
 		
 	</fx:Style>
 	
 	<fx:Script>
 		<![CDATA[
+			import spark.components.Label;
 			import mx.collections.ArrayCollection;
 			import mx.events.FlexEvent;
-			
 			
 			import model.EquationData;
 			
 			private var _data:ArrayCollection;
 			private var _numTextLabels:uint;
 			private var _numAnswers:uint;
+			private var _answerLabelElementIndex:int;
 			private var _answer:String = "";
+			private var _response:String = "";
 			
 			private static const FIELD_WIDTH :uint = 50;
 			private static const FIELD_HEIGHT :uint = 35;
@@ -40,15 +45,16 @@
 				{
 					if (item.tag == "text") {
 						var textLabel:Label = new Label();
+						textLabel.styleName = "textStyle";
 						textLabel.text = item.value;
 						textLabel.name = "textLabel" + _numTextLabels.toString();
-						textLabel.setStyle("fontSize",20);
 						_numTextLabels++;
 						questionGroup.addElement(textLabel);
 					}
 					if (item.tag == "answer") {		// Do we only need to support a single Answer?
 						var labelField:Label = new Label();
 						labelField.width = FIELD_WIDTH;
+						labelField.styleName = "labelStyle";
 						labelField.name = "answer" + _numAnswers.toString();
 						trace("add ANSWER: " + labelField.name);
 						labelField.height = FIELD_HEIGHT;
@@ -57,6 +63,7 @@
 						_answer += item.value;
 						_numAnswers++;
 						questionGroup.addElement(labelField);
+						_answerLabelElementIndex = questionGroup.getElementIndex(labelField);
 					}
 				}
 			}
@@ -64,13 +71,14 @@
 			protected function clickHandler(event:MouseEvent):void
 			{
 				var inputCharacter : String = event.currentTarget.label;
-				textLabel.text = inputCharacter;
+				var labelField:Label = questionGroup.getElementAt(_answerLabelElementIndex) as Label;	// get the label for the answer
+				labelField.text = _response = inputCharacter;
 			}
 			
 			// return the response that the user entered
 			public function getText():String
 			{
-				return textLabel.text;
+				return _response;
 			}
 
 			// return the correct answer this is parsed out from <answer> tag within the question <content> node 
@@ -101,7 +109,6 @@
 							if (localName == "answer") {
 								tag = "answer";
 								value = childNode.toString();
-								
 							}
 						} 
 						var eqData:EquationData = new EquationData(tag,value);
@@ -118,7 +125,6 @@
 	<s:HGroup id="questionGroup">
 	</s:HGroup>
 		
-	<s:Label id="textLabel" styleName="labelStyle" paddingBottom="10"  />
 	<s:HGroup gap="30" paddingTop="10">
 		<s:Button label="&lt;" click="clickHandler(event)" width="45"/>
 		<s:Button label=">" click="clickHandler(event)" width="45"/>
