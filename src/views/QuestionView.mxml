@@ -385,7 +385,7 @@
 					}
 					
 					var imageUrlStr : String = String(currentQuestionXML.image);
-					var answers: XMLList = currentQuestionXML.answers.answer;
+					var answers: XMLList = currentQuestionXML.choices.choice;
 					// display the image
 					if (imageUrlStr.length > 0) {
 						questionImage.visible = true;
@@ -397,7 +397,7 @@
 						questionImage.visible = false;
 						questionImage.includeInLayout = false;
 					} 
-					if (answers.length() > 0) {
+					if (answers.length() > 0 && currentQuestionType == "multipleChoice") {
 						multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
 						for (var i : int; i < answers.length(); i++) {							
 							var answerXML : XML = answers[i];

@@ -60,20 +60,20 @@
       <question type="multipleChoice">
         <number>11</number>
         <content>Would Sari’s foot print be 18 meters long or 18 centimeters? </content>
-		<answers>
-			<answer>18 meters</answer>
-			<answer correct="true">18 centimeters</answer>
-		</answers>
+		<choices>
+			<choice>18 meters</choice>
+			<choice correct="true">18 centimeters</choice>
+		</choices>
       </question>
       <question type="multipleChoice">
         <number>12</number>
         <content>If you have two dollar bills, one quarter, and ten pennies, how much money do you have?</content>
-		<answers>
-			<answer>$2 and 42¢</answer>
-			<answer>$2 and 60¢</answer>
-			<answer>$2 and 52¢</answer>
-			<answer correct="true">$2 and 35¢</answer> 
-		</answers>
+		<choices>
+			<choice>$2 and 42¢</choice>
+			<choice>$2 and 60¢</choice>
+			<choice>$2 and 52¢</choice>
+			<choice correct="true">$2 and 35¢</choice> 
+		</choices>
       </question>
       <question type="numeric">
         <number>13</number>
@@ -178,10 +178,10 @@
       <question type="multipleChoice">
         <number>8</number>
         <content>Would the length of a small dog’s tail be 10 centimeters or 10 meters? </content>
-		<answers>
-			<answer correct="true">10 centimeters</answer>
-			<answer>10 meters</answer>
-		</answers>
+		<choices>
+			<choice correct="true">10 centimeters</choice>
+			<choice>10 meters</choice>
+		</choices>
       </question>
       <question type="mathWordsAddSub">
         <number>9</number>
