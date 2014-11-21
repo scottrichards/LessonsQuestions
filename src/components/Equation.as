@@ -41,7 +41,7 @@ package components
 		{
 			_data = new ArrayCollection();
 			
-			var questionContentList : XMLList = question.questionContent;
+			var questionContentList : XMLList = question.content;
 			var numItems:uint = questionContentList.length();
 			if (numItems > 0) {
 				var questionContentNode : XML = questionContentList[0];

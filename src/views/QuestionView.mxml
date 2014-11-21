@@ -311,7 +311,7 @@
 				} else if (question.@type== "mathWordsAddSub") {
 					mathWords = new MathWords();
 					mathWords.addXMLData(currentQuestionXML);
-					var answerList:XMLList = currentQuestionXML.questionContent.answer;
+					var answerList:XMLList = currentQuestionXML.content.answer;
 					mathWords.setAnswer(answerList[0]);
 					addToAnswer(mathWords);
 				} else if (question.@type== "multipleChoice") {
@@ -366,7 +366,7 @@
 					if (currentQuestionType == "equation" || currentQuestionType == "mathWordsAddSub") {
 						questionContentStr = "";
 					} else {
-						questionContentStr = currentQuestionXML.questionContent;
+						questionContentStr = currentQuestionXML.content;
 					}
 					
 					var imageUrlStr : String = String(currentQuestionXML.imageInfo);
