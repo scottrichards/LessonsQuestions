@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import events.CloseTitleWindow;
+			import events.NumberPadEvent;
+			
+			protected function componentInitHandler(event:Event):void {
+				trace("initialize Numeric Keypad");
+			}
+			
+			protected function keyPadClickHandler(event:MouseEvent):void
+			{
+				var inputCharacter : String = event.currentTarget.label;
+				if (inputCharacter == "delete") {
+					var previousStr : String = textInputField.text;
+					textInputField.text = textInputField.text.substr(0,previousStr.length-1);
+				} else 
+					textInputField.text += inputCharacter;
+				var numberPadEvent : NumberPadEvent = new NumberPadEvent(NumberPadEvent.EVENT_UPDATE);
+				numberPadEvent.stringValue = textInputField.text;
+				dispatchEvent(numberPadEvent);
+			}
+			
+		]]>
+	</fx:Script>
+	<s:Rect width="140" height="280" radiusX="10" radiusY="10">
+		<s:fill><s:SolidColor color="#EEEEEE" /></s:fill>
+	</s:Rect>
+	<s:VGroup horizontalAlign="center" verticalAlign="middle" width="100%" height="100%">
+		<s:TextInput id="textInputField" width="120">
+		</s:TextInput>
+		<s:HGroup>	
+			<s:Button label="7" click="keyPadClickHandler(event)"/>
+			<s:Button label="8" click="keyPadClickHandler(event)"/>
+			<s:Button label="9" click="keyPadClickHandler(event)"/>
+		</s:HGroup>
+		<s:HGroup>
+			<s:Button label="4" click="keyPadClickHandler(event)"/>
+			<s:Button label="5" click="keyPadClickHandler(event)"/>
+			<s:Button label="6" click="keyPadClickHandler(event)"/>
+		</s:HGroup>
+		<s:HGroup>
+			<s:Button label="1" click="keyPadClickHandler(event)"/>
+			<s:Button label="2" click="keyPadClickHandler(event)"/>
+			<s:Button label="3" click="keyPadClickHandler(event)"/>
+		</s:HGroup>
+		<s:HGroup>
+			<s:Button label="0" click="keyPadClickHandler(event)" />
+			<s:Button label="." click="keyPadClickHandler(event)"/>
+			<s:Button label="del" click="keyPadClickHandler(event)" />
+		</s:HGroup>
+	</s:VGroup>
+</s:Group>

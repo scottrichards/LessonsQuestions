@@ -27,6 +27,12 @@
 		.questionShowBorderContainer {
 			borderVisible : true;
 		}
+		
+		.checkButtonStyle {
+			cornerRadius : 10;
+			fontSize : 30;
+			color : #FFFFFF;
+		}
 	</fx:Style>
 
 	<fx:Declarations>
@@ -76,15 +82,15 @@
 			import components.MathWords;
 			import components.MultipleChoice;
 			import components.MyAlertPopUp;
-			import components.NumericKeypad;
+			import components.NumericDisplay;
 			import components.OperatorSymbols;
 			import components.RewardImage;
 			import components.ShapeNames;
 			import components.Time;
 			
 			import events.CloseTitleWindow;
+			import events.NumberPadEvent;
 			
-			import model.EquationData;
 			
 			protected var correctAnswerId : String;
 			protected var correctAnswerStr : String;
@@ -94,7 +100,6 @@
 			protected var rewardTimer : Timer;
 			protected var rewardView : RewardImage;
 			
-			protected var numericKeypad : NumericKeypad;	// TO DO inherit from subclass for all answer types
 			protected var operatorSymbols : OperatorSymbols;
 			protected var equalitySymbols : EqualitySymbols;
 			protected var timeInput : Time;
@@ -106,6 +111,7 @@
 			protected var dragDrop : DragDropView;
 			protected var mathWords : MathWords;
 			protected var multipleChoiceImage : ImageMultipleChoice;
+			protected var numericDisplay : NumericDisplay;
 			
 			[Bindable]
 			private var equationData:ArrayCollection = new ArrayCollection([
@@ -278,53 +284,59 @@
 				trace("type: " + question.@type);
 				currentQuestionType = question.@type;
 				
-				if (question.@type== "symbolOperators") {
+				if (currentQuestionType == "symbolOperators") {
 					operatorSymbols = new OperatorSymbols();
 					addToAnswer(operatorSymbols);
-				} else if (question.@type== "equality") {
+				} else if (currentQuestionType == "equality") {
 					equalitySymbols = new EqualitySymbols();
 					equalitySymbols.addXMLData(currentQuestionXML);
 					addToAnswer(equalitySymbols);
-				}  else if (question.@type== "time") {
+				}  else if (currentQuestionType == "time") {
 					timeInput = new Time();
 					addToAnswer(timeInput);
-				}  else if (question.@type== "measurementImperial") {
+				}  else if (currentQuestionType == "measurementImperial") {
 					measurement = new ImperialMeasure();
 					addToAnswer(measurement);
-				}  else if (question.@type== "currency") {
+				}  else if (currentQuestionType == "currency") {
 					currency = new Currency();
 					addToAnswer(currency);
-				}  else if (question.@type== "shapeNames") {
+				}  else if (currentQuestionType == "shapeNames") {
 					shapeNames = new ShapeNames();
 					var answerXMLList:XMLList = currentQuestionXML.answer;
 					var answerContents:String = answerXMLList[0];
 					shapeNames.setAnswer(answerContents);
 					addToAnswer(shapeNames);
-				} else if (question.@type== "equation") {
+				} else if (currentQuestionType == "equation") {
 					equation = new Equation();
 					equation.addXMLData(currentQuestionXML);
 					addToAnswer(equation);
-				}  else if (question.@type== "dragDrop") {
+				}  else if (currentQuestionType == "dragDrop") {
 					dragDrop = new DragDropView();
 					dragDrop.addEventListener(FlexEvent.CONTENT_CREATION_COMPLETE,dragDropContentCreationComplete);
 					addToAnswer(dragDrop);
 					dragDrop.setAnswer(answerContents);
-				} else if (question.@type== "mathWordsAddSub") {
+				} else if (currentQuestionType == "mathWordsAddSub") {
 					mathWords = new MathWords();
 					mathWords.addXMLData(currentQuestionXML);
 					var answerList:XMLList = currentQuestionXML.content.answer;
 					mathWords.setAnswer(answerList[0]);
 					addToAnswer(mathWords);
-				} else if (question.@type== "multipleChoice") {
+				} else if (currentQuestionType == "multipleChoice") {
 					multipleChoice = new MultipleChoice();
 					addToAnswer(multipleChoice);
-				} else if (question.@type== "multipleChoiceImage") {
+				} else if (currentQuestionType == "multipleChoiceImage") {
 					multipleChoiceImage = new ImageMultipleChoice();
 					multipleChoiceImage.choices = currentQuestionXML.choices[0];
 					addToAnswer(multipleChoiceImage);
 				} else {
-					numericKeypad = new NumericKeypad();
-					addToAnswer(numericKeypad);
+					numericDisplay = new NumericDisplay();
+					addToAnswer(numericDisplay);
+					numberPad.addEventListener(NumberPadEvent.EVENT_UPDATE,numericDisplay.onNumberPadUpdate);
+				}
+				if (displayNumericKeypad(currentQuestionType)) {
+					numberPad.visible = true;
+				} else {
+					numberPad.visible = false;
 				}
 			}
 			
@@ -366,6 +378,24 @@
 					case "equation" :
 					case "mathWordsAddSub" :
 					case "equality" :
+						return true;
+					default:
+						return false;
+				}
+				return false;
+			}
+			
+			// returns true if this answer type should display the numeric keypad
+			private function displayNumericKeypad(answerType:String):Boolean 
+			{
+				switch (answerType) {
+					case "equation" :
+					case "numeric" :
+					case "time" :
+						
+					case "measurementImperial" :
+					case "currency" :
+					case "time" :
 						return true;
 					default:
 						return false;
@@ -432,7 +462,7 @@
 				answerNode = currentQuestionXML.answer;
 				answerContents = answerNode[0];
 				if (currentQuestionXML.@type== "numeric") {
-					userAnswer = numericKeypad.textInputField.text;
+					userAnswer = numericDisplay.getText();
 				} else if (currentQuestionXML.@type== "symbolOperators") {
 					userAnswer = operatorSymbols.getText();
 				} else if (currentQuestionXML.@type== "equality") {
@@ -461,7 +491,7 @@
 					userAnswer = multipleChoiceImage.getText();
 					answerContents = multipleChoiceImage.getAnswer();
 				} else {
-					userAnswer = numericKeypad.textInputField.text;
+					trace("ERROR: Don't know how to get ANSWER!!!");
 				}
 				trace("The correct answer is: " + answerContents + " you entered: " + userAnswer);
 				if (answerContents == userAnswer) {
@@ -524,7 +554,7 @@
 				<!-- <s:BorderContainer styleName="questionNoBorderContainer"> -->
 					<s:Label id="questionContent" text="{questionContentStr}"  styleName="questionContentStyle" paddingRight="10" maxWidth="700" />
 				<!-- </s:BorderContainer> -->
-				<s:BitmapImage  id="questionImage" source="" fillMode="scale" scaleMode="stretch" maxWidth="400" maxHeight="300"  />
+				<s:BitmapImage  id="questionImage" source="" fillMode="scale" scaleMode="letterbox" maxWidth="400" maxHeight="300"  />
 			</s:VGroup>
 			<mx:Spacer height="10%"/>
 			<s:HGroup id="answerSection" width="100%" gap="40" horizontalAlign="center">	
@@ -533,21 +563,26 @@
 			</s:HGroup>
 			<mx:Spacer height="10%"/>
 		</s:VGroup>
-		<s:VGroup verticalAlign="bottom" paddingBottom="40" width="500">
-			<s:HGroup paddingBottom="15" width="100%" verticalAlign="bottom">
-				<s:Button label="Previous" id="previousButton" click="previousButton_clickHandler(event)" icon="@Embed('icons/Previous.png')" />
-				<mx:Spacer width="100%"/>
-				<s:Button label="Next" id="nextButton" click="nextButton_clickHandler(event)" icon="@Embed('icons/Next.png')"  />	
+	
+	</s:VGroup>
+	<s:HGroup width="100%" horizontalAlign="center" bottom="20">
+		<s:VGroup width="500" horizontalAlign="center">
+			<s:HGroup>
+				<s:Button label="Check" id="nextButton" click="nextButton_clickHandler(event)" skinClass="skins.CheckButtonSkin" styleName="checkButtonStyle" width="400" height="60"/>
 			</s:HGroup>
-			<s:HGroup width="100%">
-				<s:Button label="&lt; Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
+			<s:HGroup width="100%" paddingTop="20">
+				<s:Button label="Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
+				<s:Button label="&lt; Previous" id="previousButton" click="previousButton_clickHandler(event)" icon="@Embed('icons/Previous.png')" />
+				<s:Button label="Next >" click="passClickHandler(event)" icon="@Embed('icons/Next.png')"  />
 				<mx:Spacer width="100%" />
 				<s:TextInput id="jumpToQuestionTextInput" width="40" />
 				<s:Button id="jumpToQuestionButton" label="Go" click="jumpToQuestionButton_clickHandler(event)" />
 				<mx:Spacer width="100%"/>
-				<s:Button label="Pass >" click="passClickHandler(event)" />
 			</s:HGroup>
-		
+			
 		</s:VGroup>
-	</s:VGroup>
+	</s:HGroup>
+	<components:NumberPad id="numberPad" right="0" visible="false">
+	</components:NumberPad>
+
 </s:View>

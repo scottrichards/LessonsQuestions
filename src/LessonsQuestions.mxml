@@ -3,7 +3,7 @@
 							xmlns:s="library://ns.adobe.com/flex/spark" 
 							firstView="views.LessonsQuestionsHomeView" 
 							firstViewData="{lessonsList}"
-							initialize="application1_initializeHandler(event)"
+							initialize="initializeHandler(event)"
 							applicationDPI="160">
 	<fx:Script>
 		<![CDATA[
@@ -19,7 +19,7 @@
 			[Bindable]
 			public var lessonsList:ArrayList;
 			
-			protected function application1_initializeHandler(event:FlexEvent):void
+			protected function initializeHandler(event:FlexEvent):void
 			{
 				lessonsService.send();
 			}
