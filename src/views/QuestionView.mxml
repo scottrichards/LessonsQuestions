@@ -334,6 +334,7 @@
 					numberPad.addEventListener(NumberPadEvent.EVENT_UPDATE,numericDisplay.onNumberPadUpdate);
 				}
 				if (displayNumericKeypad(currentQuestionType)) {
+					numberPad.clearDisplay();
 					numberPad.visible = true;
 				} else {
 					numberPad.visible = false;
@@ -582,7 +583,7 @@
 			
 		</s:VGroup>
 	</s:HGroup>
-	<components:NumberPad id="numberPad" right="0" visible="false">
+	<components:NumberPad id="numberPad" right="10" visible="false">
 	</components:NumberPad>
 
 </s:View>
