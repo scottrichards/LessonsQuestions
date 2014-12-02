@@ -31,6 +31,8 @@
 				return textInputField.text;
 			}
 			
+			
+			
 		]]>
 	</fx:Script>
 	<s:TextInput id="textInputField">

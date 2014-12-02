@@ -4,6 +4,7 @@
 							firstView="views.LessonsQuestionsHomeView" 
 							firstViewData="{lessonsList}"
 							initialize="initializeHandler(event)"
+							splashScreenImage="views.SplashScreen"
 							applicationDPI="160">
 	<fx:Script>
 		<![CDATA[

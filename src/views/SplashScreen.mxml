@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SplashScreenImage xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					 xmlns:s="library://ns.adobe.com/flex/spark">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+//			override public function getImageClass(aspectRatio:String, dpi:Number, resolution:Number):Class 
+//			{
+//				var x:Number = Capabilities.screenResolutionX;
+//				var y:Number = Capabilities.screenResolutionY;
+//				
+//				trace("x: " + x + " y: " + y);
+//				trace("dpi: " + dpi + " resolution: " + resolution);
+//				
+//				// iPhone 4
+//		/*		if ((x == 960) && (y == 640)) return img960x640.source;
+//				
+//				// iPhone always returns portrait mode
+//				if ((x == 640) && (y == 960)) return img960x640.source;
+//				
+//				// Samsung galaxy s4
+//				if ((x == 1920) && (y == 1080)) return img1920x1080.source;
+//				
+//				return img960x640.source;*/
+//				return iPhone6Landscape.source;
+//			} 
+		]]>
+	</fx:Script>
+<!--	<s:SplashScreenImageSource id="img1920x1080" dpi="320" aspectRatio="landscape" source="@Embed('splashScreens/SmartExSplashScreen1920x1080.png')"/>
+	<s:SplashScreenImageSource id="img960x640" dpi="320" aspectRatio="landscape" source="@Embed('splashScreens/SmartEZSplashScreen960x640.png')"/> -->
+	
+	<!-- Default splashscreen image. -->
+<!--	<s:SplashScreenImageSource id="img1024x768" aspectRatio="landscape" source="@Embed('splashScreens/Default.png')"/>
+	
+	<s:SplashScreenImageSource id="img768x1024" aspectRatio="portrait" source="@Embed('splashScreens/Default-Portrait.png')"/>
+	
+	<s:SplashScreenImageSource id="iPhone6"
+		source="@Embed('splashScreens/Default-568h@2x.png')"
+		dpi="320" 
+		aspectRatio="portrait"/>-->
+	
+	<s:SplashScreenImageSource id="iPhone5"
+							   source="@Embed('splashScreens/Default-568h@2x.png')"/>
+	
+	<s:SplashScreenImageSource id="iPhone6"
+							   source="@Embed('splashScreens/Default-375w-667h@2x.png')"
+							   />
+	
+	<s:SplashScreenImageSource id="iPhone5Landscape"
+							   source="@Embed('splashScreens/iPhone5Landscape.png')"
+							   dpi="320" 
+							   aspectRatio="landscape"/>
+	
+	<s:SplashScreenImageSource id="iPhone6Landscape"
+							   source="@Embed('splashScreens/iPhone6Landscape.png')"
+							   dpi="320" 
+							   aspectRatio="landscape"/>
+	
+
+	
+</s:SplashScreenImage>

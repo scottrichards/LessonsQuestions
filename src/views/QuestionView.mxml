@@ -4,7 +4,8 @@
 		xmlns:mx="library://ns.adobe.com/flex/mx" 
 		xmlns:BIP="components" 
 		title="Lesson #{data.lessonName}"
-		contentCreationComplete="contentCreationCompleted(event)" xmlns:components="components.*"
+		contentCreationComplete="contentCreationCompleted(event)" 
+		xmlns:components="components.*"
 		backgroundColor="0xcccccc"
 		>
 
@@ -153,6 +154,19 @@
 					previousButton.enabled = false;
 				}
 				statusStr = "0  / " + data.questions.length();
+				var x:Number = Capabilities.screenResolutionX;
+				var y:Number = Capabilities.screenResolutionY;
+				
+//				mainSection.width = (x > y) ? x : y;
+//				trace("set width to : " + stage.width);
+				trace("stage.scaleMode: " + stage.scaleMode);
+				stage.scaleMode = StageScaleMode.NO_SCALE;
+				trace("stage.scaleMode: " + stage.scaleMode);
+				trace("stage.width: " + stage.width + " stage.stageWidth: " + stage.stageWidth);
+				stage.stageHeight = 750;
+				stage.stageWidth = 1134;
+				stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGE, 
+					onOrientationChange); 
 			}
 			
 			
@@ -529,6 +543,11 @@
 			}
 			
 			
+			protected function onOrientationChange(event:StageOrientationEvent):void
+			{
+				trace("onOrientationChange: " + event.afterOrientation);
+			}
+			
 		]]>
 	</fx:Script>
 
@@ -536,7 +555,7 @@
 		<s:Button label="Lessons" click="navigator.popToFirstView();"/>
 	</s:navigationContent>
 	
-	<s:VGroup paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" horizontalAlign="center" width="100%">
+	<s:VGroup id="mainSection" paddingTop="15" paddingBottom="15" paddingLeft="15" paddingRight="15" horizontalAlign="center" width="100%">
 		
 
 		<s:HGroup id="statusSection" width="100%">
@@ -569,7 +588,7 @@
 	<s:HGroup width="100%" horizontalAlign="center" bottom="20">
 		<s:VGroup width="500" horizontalAlign="center">
 			<s:HGroup>
-				<s:Button label="Check" id="nextButton" click="nextButton_clickHandler(event)" skinClass="skins.CheckButtonSkin" styleName="checkButtonStyle" width="400" height="60"/>
+				<s:Button label="Check" id="nextButton" click="nextButton_clickHandler(event)" skinClass="skins.CheckButtonSkin" styleName="checkButtonStyle" width="480" height="60"/>
 			</s:HGroup>
 			<s:HGroup width="100%" paddingTop="20">
 				<s:Button label="Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
