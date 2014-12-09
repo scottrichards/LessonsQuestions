@@ -129,7 +129,7 @@
          </question>
       <question>
         <number>12</number>
-        <content>If you have two dollar bills, one quarter, and ten pennies, how much money do you have? 				A)  $2 and 42¢         		C)  $2 and 60¢    				B)  $2 and 52¢          		D)  $2 and 35¢ </content>
+        <content>If you have two dollar bills, one quarter, and ten pennies, how much money do you have?</content>
         <choices>A)
           <choice letter="A">$2 and 42¢</choice>
           C)
@@ -146,7 +146,7 @@
          </question>
       <question>
         <number>13</number>
-        <content>Write the number using base-ten numerals.      15 tens </content>
+        <content>Write the number using base-ten numerals. 15 tens</content>
         Question Type:
         <type>numeric</type>
          Answer:

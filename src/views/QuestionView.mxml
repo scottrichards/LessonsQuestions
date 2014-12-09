@@ -209,18 +209,7 @@
 			{
 				navigator.popView();
 			}
-			
-			// this is currently only called for multiple choice questions
-			protected function wrongSelectionHandler(event:MouseEvent):void
-			{
-				wrongSelection(correctAnswerStr);
-			}
-			
-			protected function rightSelectionHandler(event:MouseEvent):void
-			{
-				rightSelection();
-				goToNextQuestion();
-			}
+		
 			
 			protected function rightSelection():void
 			{
@@ -328,7 +317,7 @@
 					addToAnswer(mathWords);
 				} else if (currentQuestionType == "multipleChoice") {
 					multipleChoice = new MultipleChoice();
-					multipleChoice.setAnswer(currentQuestionXML);
+					multipleChoice.setQuestionXML(currentQuestionXML);
 					addToAnswer(multipleChoice);
 				} else if (currentQuestionType == "multipleChoiceImage") {
 					multipleChoiceImage = new ImageMultipleChoice();
@@ -434,30 +423,6 @@
 						questionImage.visible = false;
 						questionImage.includeInLayout = false;
 					} 
-					if (currentQuestionType == "multipleChoice") {
-						var answers: XMLList = currentQuestionXML.choices.choice;
-						multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
-						for (var i : int; i < answers.length(); i++) {							
-							var answerXML : XML = answers[i];
-							var answerContents : String = answerXML[0];		// to get the contents out of the xml node reference first object
-							var myButton : Button = new Button();
-							myButton.label = answerContents;
-							var isCorrect : String = answerXML.@correct;
-							if (isCorrect == "true") {
-								correctAnswerStr = answerContents;
-								myButton.addEventListener( 'click', rightSelectionHandler );
-							} else {
-								myButton.addEventListener( 'click', wrongSelectionHandler );
-							}
-							trace("answer: " + answerContents + " correct: " + isCorrect);
-							multipleChoiceSection.addElement(myButton);
-							multipleChoiceSection.includeInLayout=true;
-							multipleChoiceSection.visible = true;
-						}
-					} else {
-						multipleChoiceSection.includeInLayout = false;
-						multipleChoiceSection.visible = false;
-					}
 				}
 			}
 			
@@ -485,9 +450,8 @@
 				} else if (currentQuestionType== "shapeNames") {
 					userAnswer = shapeNames.getText();
 				} else if (currentQuestionType== "multipleChoice") {
-					showTitleWindow("Select one of the multiple choices");
-					answerContents = multipleChoice.getAnswer();
-					return false;
+					userAnswer = multipleChoice.response;
+					answerContents = multipleChoice.answer;
 				} else if (currentQuestionType== "equation") {
 					userAnswer = equation.response;
 					answerContents = equation.correctAnswer;
@@ -573,8 +537,7 @@
 			<mx:Spacer height="10%"/>
 			<s:HGroup id="answerSection" width="100%" gap="40" horizontalAlign="center">	
 			</s:HGroup>
-			<s:HGroup id="multipleChoiceSection" width="100%" gap="40" horizontalAlign="center" includeInLayout="false">
-			</s:HGroup>
+
 			<mx:Spacer height="10%"/>
 		</s:VGroup>
 	

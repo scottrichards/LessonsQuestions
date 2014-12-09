@@ -17,31 +17,18 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import spark.components.Button;
+			import spark.components.ToggleButton;
 			protected const NUMBER_OF_ANSWERS:uint = 4;
 			protected var selectedButtonLabel : String;
 			protected var _answer : String;
+			protected var _response : String;
+			private var _buttonArray : Array;
 			
 			protected function componentInitHandler(event:Event):void {
 				trace("initHandler");
 			}
 			
-			protected function addButton(id:String,label:String):void 
-			{
-				var button:Button = new Button();
-				button.id = id;
-				button.label = label;
-				button.addEventListener(MouseEvent.CLICK,clickHandler);
-				buttonGroup.addElement(button);
-			}
-			
-			public function setAnswer(currentQuestionXML:XML):void 
-			{
-				var answerXMLList:XMLList = currentQuestionXML.answer;
-				var answerContents:String = answerXMLList[0];
-				this._answer = answerContents;
-			}
-			
+		
 			protected function clickHandler(event:MouseEvent):void
 			{
 				var buttonId : String = event.currentTarget.id;
@@ -50,15 +37,63 @@
 				selectedButtonLabel = buttonLabel;
 				textLabel.text = selectedButtonLabel;
 			}
+						
+			protected function onClickHandler(event:MouseEvent):void
+			{
+				var buttonId : String = event.currentTarget.id;
+				trace("click on buttonID: " + buttonId);
+				_response = buttonId;
+				resultLabel.text = event.currentTarget.label;
+				disableOtherButtons(buttonId);
+			}
+			
+			// when we click on a toggle button we want to deselect all the other buttons
+			protected function disableOtherButtons(selectedButtonId:String):void
+			{
+				for (var i : int; i < _buttonArray.length; i++) 	
+				{
+					var tb:ToggleButton = _buttonArray[i];
+					if (tb.id != selectedButtonId) { 
+						tb.selected = false;
+					}
+				}
+			}
 			
 			public function getText():String
 			{
 				return selectedButtonLabel;
 			}
 			
-			public function getAnswer():String
+			public function get answer():String
 			{
 				return _answer;	
+			}
+			
+			// return the user's selected Choice returns the letter corresponding to the choice
+			public function get response():String
+			{
+				return _response;	
+			}
+			
+			public function setQuestionXML(questionXML:XML):void
+			{
+				var answerXMLList:XMLList = questionXML.answer;
+				this._answer = answerXMLList[0].toString();
+				var choices: XMLList = questionXML.choices.choice;
+				_buttonArray = new Array();
+				multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
+				for (var i : int; i < choices.length(); i++) {							
+					var choiceXML : XML = choices[i];
+					var choiceContents : String = choiceXML[0];		// to get the contents out of the xml node reference first object
+					var choiceButton : ToggleButton = new ToggleButton();
+					choiceButton.label = choiceContents;
+					var letter : String = choiceXML.@letter;
+					choiceButton.id = letter;	// set the id to the letter associated with the multiple choice option
+					choiceButton.addEventListener( 'click', onClickHandler );
+					trace(letter + ") " + choiceContents);
+					multipleChoiceSection.addElement(choiceButton);
+					_buttonArray.push(choiceButton);
+				}
 			}
 		]]>
 	</fx:Script>
@@ -66,6 +101,9 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:Label id="textLabel" styleName="labelStyle" paddingBottom="10"  />
-	<s:HGroup id="buttonGroup" gap="30" paddingTop="10">
+	<s:HGroup id="multipleChoiceSection" width="100%" gap="40" horizontalAlign="center" >
+	</s:HGroup>
+	<s:HGroup id="responseSection" gap="30" paddingTop="10" horizontalAlign="center">
+		<s:Label id="resultLabel" />
 	</s:HGroup>
 </s:VGroup>
