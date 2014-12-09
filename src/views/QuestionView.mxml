@@ -113,17 +113,6 @@
 			protected var mathWords : MathWords;
 			protected var multipleChoiceImage : ImageMultipleChoice;
 			protected var numericDisplay : NumericDisplay;
-			
-			[Bindable]
-			private var equationData:ArrayCollection = new ArrayCollection([
-				{tag:'text', value:'Count by tens. 50, 60, '},
-				{tag:'answer', value:'70', type:'numeric'},
-				{tag:'text', value:', '},
-				{tag:'answer', value:'80', type:'numeric'},
-				{tag:'text', value:', '},
-				{tag:'answer', value:'90', type:'numeric'},
-				{tag:'text', value:', 100'},
-			]);
 
 			
 			public var alertPopUp:MyAlertPopUp = new MyAlertPopUp();
@@ -295,8 +284,10 @@
 			
 			protected function updateQuestionType(question:XML):void
 			{
-				trace("type: " + question.@type);
-				currentQuestionType = question.@type;
+				
+				//currentQuestionType = question.@type;
+				currentQuestionType = question.type;
+				trace("type: " + currentQuestionType);
 				
 				if (currentQuestionType == "symbolOperators") {
 					operatorSymbols = new OperatorSymbols();
@@ -337,10 +328,11 @@
 					addToAnswer(mathWords);
 				} else if (currentQuestionType == "multipleChoice") {
 					multipleChoice = new MultipleChoice();
+					multipleChoice.setAnswer(currentQuestionXML);
 					addToAnswer(multipleChoice);
 				} else if (currentQuestionType == "multipleChoiceImage") {
 					multipleChoiceImage = new ImageMultipleChoice();
-					multipleChoiceImage.choices = currentQuestionXML.choices[0];
+					multipleChoiceImage.questionXML = currentQuestionXML;
 					addToAnswer(multipleChoiceImage);
 				} else {
 					numericDisplay = new NumericDisplay();
@@ -429,12 +421,12 @@
 						questionContentStr = currentQuestionXML.content;
 					}
 					
-					var imageUrlStr : String = String(currentQuestionXML.image);
-					var answers: XMLList = currentQuestionXML.choices.choice;
+					var imageUrlStr : String = String(currentQuestionXML.image.imagePath);
+					trace("image URL: " + imageUrlStr);
 					// display the image
 					if (imageUrlStr.length > 0) {
 						questionImage.visible = true;
-						loadImage(currentQuestionXML.image);
+						loadImage(imageUrlStr);
 						questionImage.maxHeight=300;
 						questionImage.includeInLayout = true;
 					} else {	// make the text take up all of the space
@@ -442,7 +434,8 @@
 						questionImage.visible = false;
 						questionImage.includeInLayout = false;
 					} 
-					if (answers.length() > 0 && currentQuestionType == "multipleChoice") {
+					if (currentQuestionType == "multipleChoice") {
+						var answers: XMLList = currentQuestionXML.choices.choice;
 						multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
 						for (var i : int; i < answers.length(); i++) {							
 							var answerXML : XML = answers[i];
@@ -476,33 +469,34 @@
 				var userAnswer:String;
 				answerNode = currentQuestionXML.answer;
 				answerContents = answerNode[0];
-				if (currentQuestionXML.@type== "numeric") {
+				if (currentQuestionType== "numeric") {
 					userAnswer = numericDisplay.getText();
-				} else if (currentQuestionXML.@type== "symbolOperators") {
+				} else if (currentQuestionType== "symbolOperators") {
 					userAnswer = operatorSymbols.getText();
-				} else if (currentQuestionXML.@type== "equality") {
+				} else if (currentQuestionType== "equality") {
 					userAnswer = equalitySymbols.getText();
 					answerContents = equalitySymbols.getAnswer();
-				} else if (currentQuestionXML.@type== "time") {
+				} else if (currentQuestionType== "time") {
 					userAnswer = timeInput.getText();
-				} else if (currentQuestionXML.@type== "measurementImperial") {
+				} else if (currentQuestionType== "measurementImperial") {
 					userAnswer = timeInput.getText();
-				} else if (currentQuestionXML.@type== "currency") {
+				} else if (currentQuestionType== "currency") {
 					userAnswer = currency.getText();
-				} else if (currentQuestionXML.@type== "shapeNames") {
+				} else if (currentQuestionType== "shapeNames") {
 					userAnswer = shapeNames.getText();
-				} else if (currentQuestionXML.@type== "multipleChoice") {
+				} else if (currentQuestionType== "multipleChoice") {
 					showTitleWindow("Select one of the multiple choices");
+					answerContents = multipleChoice.getAnswer();
 					return false;
-				} else if (currentQuestionXML.@type== "equation") {
+				} else if (currentQuestionType== "equation") {
 					userAnswer = equation.response;
 					answerContents = equation.correctAnswer;
-				} else if (currentQuestionXML.@type== "dragDrop") {
+				} else if (currentQuestionType== "dragDrop") {
 					userAnswer = dragDrop.getAnswer();
-				}  else if (currentQuestionXML.@type == "mathWordsAddSub") {
+				}  else if (currentQuestionType == "mathWordsAddSub") {
 					userAnswer = mathWords.getText();
 					answerContents = mathWords.getAnswer();
-				}  else if (currentQuestionXML.@type == "multipleChoiceImage") {
+				}  else if (currentQuestionType == "multipleChoiceImage") {
 					userAnswer = multipleChoiceImage.getText();
 					answerContents = multipleChoiceImage.getAnswer();
 				} else {

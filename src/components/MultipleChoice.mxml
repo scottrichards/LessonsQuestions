@@ -20,7 +20,7 @@
 			import spark.components.Button;
 			protected const NUMBER_OF_ANSWERS:uint = 4;
 			protected var selectedButtonLabel : String;
-			protected var answer : String;
+			protected var _answer : String;
 			
 			protected function componentInitHandler(event:Event):void {
 				trace("initHandler");
@@ -35,16 +35,11 @@
 				buttonGroup.addElement(button);
 			}
 			
-			public function setAnswer(answerList:XMLList):void 
+			public function setAnswer(currentQuestionXML:XML):void 
 			{
-				trace("answerList.length: " + answerList.length);
-				for each (var prop:XML in answerList) 
-				{ 
-					trace("node: " + prop.answer);
-					if (prop.@correct == "true") {
-						trace("CORRECT");
-					}
-				}
+				var answerXMLList:XMLList = currentQuestionXML.answer;
+				var answerContents:String = answerXMLList[0];
+				this._answer = answerContents;
 			}
 			
 			protected function clickHandler(event:MouseEvent):void
@@ -59,6 +54,11 @@
 			public function getText():String
 			{
 				return selectedButtonLabel;
+			}
+			
+			public function getAnswer():String
+			{
+				return _answer;	
 			}
 		]]>
 	</fx:Script>
