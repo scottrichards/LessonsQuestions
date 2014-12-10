@@ -124,6 +124,7 @@
 					}
 					if (item.tag == "answer") {		// we can only have one answer for Math Words
 						_answerLabel = new Label();
+						_answerLabel.setStyle("textAlign","center");	// center the text 
 						_answerLabel.styleName = "answerStyle";
 						_answerLabel.width = LABEL_FIELD_WIDTH;
 						_answerLabel.name = "answer" + _numAnswers.toString();

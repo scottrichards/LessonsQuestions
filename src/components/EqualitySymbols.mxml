@@ -54,6 +54,7 @@
 					if (item.tag == "answer") {		// Do we only need to support a single Answer?
 						var labelField:Label = new Label();
 						labelField.width = FIELD_WIDTH;
+						labelField.setStyle("textAlign","center");
 						labelField.styleName = "labelStyle";
 						labelField.name = "answer" + _numAnswers.toString();
 						trace("add ANSWER: " + labelField.name);

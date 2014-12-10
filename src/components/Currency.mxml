@@ -106,9 +106,9 @@
 	</fx:Declarations>
 	<s:HGroup>
 		<s:Label styleName="labelStyle">$</s:Label>
-		<s:TextInput id="dollars" width="60" />
+		<s:TextInput id="dollars" width="100" />
 		<s:Label styleName="labelStyle">.</s:Label>
-		<s:TextInput id="cents" width="60"/>	
+		<s:TextInput id="cents" width="80"/>	
 	</s:HGroup>
 		
 	<s:HGroup>	

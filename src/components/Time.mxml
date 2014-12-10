@@ -65,9 +65,9 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:HGroup>
-		<s:TextInput id="hours" width="60" />
+		<s:TextInput id="hours" width="80" />
 		<s:Label styleName="labelStyle">:</s:Label>
-		<s:TextInput id="minutes" width="60"/>	
+		<s:TextInput id="minutes" width="80"/>	
 	</s:HGroup>
 		
 	<s:HGroup>	

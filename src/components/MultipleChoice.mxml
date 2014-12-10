@@ -31,21 +31,21 @@
 			}
 			
 		
-			protected function clickHandler(event:MouseEvent):void
-			{
-				var buttonId : String = event.currentTarget.id;
-				trace("click on buttonID: " + buttonId);
-				var buttonLabel : String = event.currentTarget.label;
-				selectedButtonLabel = buttonLabel;
-				textLabel.text = selectedButtonLabel;
-			}
-						
+//			protected function clickHandler(event:MouseEvent):void
+//			{
+//				var buttonId : String = event.currentTarget.id;
+//				trace("click on buttonID: " + buttonId);
+//				var buttonLabel : String = event.currentTarget.label;
+//				selectedButtonLabel = buttonLabel;
+//				textLabel.text = selectedButtonLabel;
+//			}
+//						
 			protected function onClickHandler(event:MouseEvent):void
 			{
 				var buttonId : String = event.currentTarget.id;
 				trace("click on buttonID: " + buttonId);
 				_response = buttonId;
-				resultLabel.text = event.currentTarget.label;
+				responseLabel.text = event.currentTarget.label;
 				disableOtherButtons(buttonId);
 			}
 			
@@ -103,10 +103,7 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:Label id="textLabel" styleName="labelStyle" paddingBottom="10"  />
+	<s:Label id="responseLabel" styleName="labelStyle" paddingBottom="20"  />
 	<s:HGroup id="multipleChoiceSection" width="100%" gap="40" horizontalAlign="center" >
-	</s:HGroup>
-	<s:HGroup id="responseSection" gap="30" paddingTop="10" horizontalAlign="center">
-		<s:Label id="resultLabel" />
 	</s:HGroup>
 </s:VGroup>
