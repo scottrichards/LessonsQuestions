@@ -24,7 +24,7 @@
 			protected const NUMBER_OF_ANSWERS:uint = 4;
 			public var distractors :Array = new Array("Cube", "Cone", "Cylinder", "Sphere", "Square", "Rectangle", "Triangle", "Pentagon", "Hexagon");
 			protected var selectedButtonLabel : String;
-			protected var answer : String;
+			protected var _answer : String;
 			protected var randomCorrectNumber : uint;
 			private var buttonArray : Array;
 			
@@ -35,11 +35,11 @@
 				do {
 					if (randomCorrectNumber == numDistractors) {
 						numDistractors++;
-						addButton("button" + numDistractors.toString(),answer);
+						addButton("button" + numDistractors.toString(),_answer);
 					} else {
 						var randomInt:uint = uint(Math.random() * distractors.length);
 						var newDistractor:String = distractors[randomInt];
-						if (newDistractor != answer && distractorList[newDistractor] == null) {
+						if (newDistractor != _answer && distractorList[newDistractor] == null) {
 							distractorList[newDistractor] = newDistractor;
 							numDistractors++;
 							addButton("button" + numDistractors.toString(),newDistractor);
@@ -59,11 +59,12 @@
 				buttonGroup.addElement(button);
 			}
 			
-			public function setAnswer(answerStr:String):void 
+			public function setQuestionXML(questionXML:XML):void 
 			{
-				this.answer = answerStr;
+				var answerXMLList:XMLList = questionXML._answer;
+				this._answer = answerXMLList[0].toString();
 				randomCorrectNumber = uint(Math.random() * NUMBER_OF_ANSWERS);
-				trace("correct answer #: " + randomCorrectNumber + " answer = " + answerStr);
+				trace("correct answer #: " + randomCorrectNumber + " answer = " + this._answer);
 			}
 			
 			protected function clickHandler(event:MouseEvent):void
@@ -87,9 +88,14 @@
 				}
 			}
 			
-			public function getText():String
+			public function get response():String
 			{
 				return selectedButtonLabel;
+			}
+			
+			public function get answer():String
+			{
+				return _answer;
 			}
 		]]>
 	</fx:Script>

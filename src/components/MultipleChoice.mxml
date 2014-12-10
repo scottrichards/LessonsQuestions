@@ -18,6 +18,8 @@
 	<fx:Script>
 		<![CDATA[
 			import spark.components.ToggleButton;
+			import skins.ToggleButtonSkin;
+			
 			protected const NUMBER_OF_ANSWERS:uint = 4;
 			protected var selectedButtonLabel : String;
 			protected var _answer : String;
@@ -93,6 +95,7 @@
 					trace(letter + ") " + choiceContents);
 					multipleChoiceSection.addElement(choiceButton);
 					_buttonArray.push(choiceButton);
+					choiceButton.setStyle('skinClass', skins.ToggleButtonSkin);  
 				}
 			}
 		]]>

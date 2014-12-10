@@ -75,10 +75,12 @@
       </question>
       <question>
         <number>7</number>
-        <content>434 <answer>&lt;</answer> 443 </content>
+        <content>434
+          <answer>&lt;</answer>
+          443 </content>
         Question Type:
-        <type>equality</type>   
-      </question>
+        <type>equality</type>
+         </question>
       <question>
         <number>8</number>
         <content>14 + 12 + 15 =  </content>
@@ -112,6 +114,8 @@
            </choices>
         Answer:
         <answer>A</answer>
+         
+        
       </question>
       <question>
         <number>11</number>
@@ -146,7 +150,7 @@
          </question>
       <question>
         <number>13</number>
-        <content>Write the number using base-ten numerals. 15 tens</content>
+        <content>Write the number using base-ten numerals.      15 tens </content>
         Question Type:
         <type>numeric</type>
          Answer:
@@ -176,7 +180,9 @@
            Image Type:
           <imageType>question</imageType>
            </image>
-      </question>
+        Answer:
+        <answer>5"</answer>
+         </question>
       <imageBorder href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/ruler.ai.png"></imageBorder>
       <imageBorder href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/102%20Pencil.eps.png"></imageBorder>
       <imageBorder href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/Clock%20220.ai.png"></imageBorder>
@@ -225,23 +231,53 @@
       <question>
         <number>1</number>
         <content>What time is shown on the clock? </content>
+        Question Type:
+        <type>time</type>
+         Answer:
+        <answer>9:35</answer>
+         
+        <image>Image Path:
+          <imagePath>images/Clock 935.ai.png</imagePath>
+           Image Type:
+          <imageType>question</imageType>
+           </image>
       </question>
       <question>
         <number>2</number>
-        <content>77 + 35 = ? </content>
-      </question>
+        <content>77 + 35 =  </content>
+        Question Type:
+        <type>numeric</type>
+         Answer:
+        <answer>112</answer>
+         </question>
       <question>
         <number>3</number>
         <content>Of the 59 students in the second grade, 26 are in Room 2A.   How many students are in Room 2B? </content>
-      </question>
+        Question Type:
+        <type>numeric</type>
+         Answer:
+        <answer>33</answer>
+         </question>
       <question>
         <number>4</number>
-        <content>Count by fives.  70, 75,           ,           ,           , 95 </content>
-      </question>
+        <content>Count by fives.  70, 75,
+          <answer>80</answer>
+          ,
+          <answer>85</answer>
+          ,
+          <answer>90</answer>
+          , 95 </content>
+        Question Type:
+        <type>equation</type>
+         </question>
       <question>
         <number>5</number>
         <content>What number is 100 more than 629? </content>
-      </question>
+        Question Type:
+        <type>numeric</type>
+         Answer:
+        <answer>729</answer>
+         </question>
       <question>
         <number>6</number>
         <content>What is the name of the shape? </content>
@@ -249,39 +285,106 @@
       <question>
         <number>7</number>
         <content>Write 341 using words. </content>
+        Question Type:
+        <type>dragDrop</type>
+         Answer:
+        <answer>three hundred forty - one</answer>
+         
+        <choices>Choice: A)
+          <choice letter="A">one</choice>
+           Choice: B)
+          <choice letter="B">forty</choice>
+           Choice: C)
+          <choice letter="C">hundred</choice>
+           Choice: D)
+          <choice letter="D">-</choice>
+           Choice: E)
+          <choice letter="E">three</choice>
+           </choices>
       </question>
       <question>
         <number>8</number>
         <content>Would the length of a small dog’s tail be 10 centimeters or 10 meters? </content>
-      </question>
+        Question Type:
+        <type>multipleChoice</type>
+         
+        <choices>Choice: A)
+          <choice letter="A">10 centimeters</choice>
+           Choice: B)
+          <choice letter="B">10 meters</choice>
+           </choices>
+        Answer:
+        <answer>A</answer>
+         </question>
       <question>
         <number>9</number>
-        <content>The difference is the answer to a(n) 	                      problem. </content>
-      </question>
+        <content>The difference is the answer to a(n) <answer>subtraction</answer> problem.</content>
+        Question Type:
+        <type>mathWordsAddSub</type>
+         </question>
       <question>
         <number>10</number>
         <content>How many cents do you have if you have two quarters, three dimes, and three pennies? </content>
-      </question>
+        Question Type:
+        <type>numeric</type>
+		<answer>83</answer>
+         </question>
       <question>
         <number>11</number>
-        <content>42 +            = 86 </content>
-      </question>
+        <content>42 +
+          <answer>44</answer>
+          = 86 </content>
+        Question Type:
+        <type>equation</type>
+         </question>
       <question>
         <number>12</number>
-        <content>964 − 533 = ? </content>
-      </question>
+        <content>964 − 533 =  </content>
+        Question Type:
+        <type>numeric</type>
+         Answer:
+        <answer>431</answer>
+         </question>
       <question>
         <number>13</number>
-        <content>Count the objects in the array.  Write an addition  statement to show the sum. </content>
-      </question>
+        <content>Count the objects in the array.  Write an addition statement to show the sum.
+          <answer>3</answer>
+          +
+          <answer>3</answer>
+          =
+          <answer>6</answer>
+           </content>
+        <image>Image Path:
+          <imagePath>images/3 x 2.ai.png</imagePath>
+           Image Type:
+          <imageType>question</imageType>
+           </image>
+        Question Type:
+        <type>equation</type>
+         </question>
       <question>
         <number>14</number>
         <content>Write this as a base-ten numeral.  2 tens, 1 one, and 6 hundreds </content>
-      </question>
+        Question Type:
+        <type>numeric</type>
+         Answer:
+        <answer>621</answer>
+         </question>
       <question>
         <number>15</number>
-        <content>Write your answers in inches. How long is Y?   How long is Z?   How much longer is  Y than Z?  </content>
+        <content>Write your answers in inches. How much longer is  Y than Z?  </content>
+        Question Type:
+        <type>measurementImperial</type>
+        <answer>2"</answer> 
+        <image>Image Path:
+          <imagePath>images/L24 Ruler.ai.png</imagePath>
+           Image Type:
+          <imageType>question</imageType>
+           </image>
       </question>
+      <imageBorder href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/L24%20Ruler.ai.png"></imageBorder>
+      <imageBorder href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/3%20x%202.ai.png"></imageBorder>
+      <imageBorder href="file:///Users/scottrichards/Documents/BIP/2%20Lessons%20Sum%20CCMath%202/images/Clock%20935.ai.png"></imageBorder>
     </questions>
     <graphic>
       <graphicName>L24 Ruler.ai</graphicName>

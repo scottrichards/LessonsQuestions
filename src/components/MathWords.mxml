@@ -30,7 +30,7 @@
 			protected const NUMBER_OF_ANSWERS:uint = 4;
 			public var addSubtractDistractors :Array = new Array("addition", "subtraction", "sum", "difference");
 			protected var selectedButtonLabel : String;
-			protected var answer : String;
+			protected var _answer : String;
 			protected var randomCorrectNumber : uint;
 			private var buttonArray : Array;
 			private var _data:ArrayCollection;	// array of the question content and answers
@@ -42,16 +42,28 @@
 			private static const LABEL_FIELD_HEIGHT :uint = 35;
 			
 			// From the question node it finds questionContent and traverses all subnodes looking for <answer> tags
-			public function addXMLData(question:XML):void
+			public function setQuestionXML(question:XML):void
 			{
 				_data = new ArrayCollection();
+				
+				var answerList:XMLList = question.content.answer;	// check if the answer is within the question content response should appear inline
+				if (answerList[0] != null) {
+					this._answer = answerList[0].toString();
+				} else {	// let's also handle finding it if it is a direct descendant of the question node.
+					answerList = question.answer;
+					if (answerList[0] != null) {
+						this._answer = answerList[0].toString();
+					}
+				}
+				randomCorrectNumber = uint(Math.random() * NUMBER_OF_ANSWERS);
+				trace("correct answer #: " + randomCorrectNumber + " answer = " + this._answer);
 				
 				var questionContentList : XMLList = question.content;
 				var numItems:uint = questionContentList.length();
 				if (numItems > 0) {
 					var questionContentNode : XML = questionContentList[0];
 					var childrenList : XMLList = questionContentNode.children();
-					for each (var childNode:XML in childrenList) {
+					for each (var childNode:XML in childrenList) {	// iterate through nodes looking for text or answer sub nodes
 						var tag:String = "text";
 						var type:String="";
 						var value:String ="";
@@ -78,11 +90,11 @@
 				do {
 					if (randomCorrectNumber == numDistractors) {
 						numDistractors++;
-						addButton("button" + numDistractors.toString(),answer);
+						addButton("button" + numDistractors.toString(),_answer);
 					} else {
 						var randomInt:uint = uint(Math.random() * addSubtractDistractors.length);
 						var newDistractor:String = addSubtractDistractors[randomInt];
-						if (newDistractor != answer && addSubtractDistractors[newDistractor] == null) {
+						if (newDistractor != _answer && addSubtractDistractors[newDistractor] == null) {
 							addSubtractDistractors[newDistractor] = newDistractor;
 							numDistractors++;
 							addButton("button" + numDistractors.toString(),newDistractor);
@@ -134,16 +146,16 @@
 				buttonGroup.addElement(button);
 			}
 			
-			public function setAnswer(answerStr:String):void 
-			{
-				this.answer = answerStr;
-				randomCorrectNumber = uint(Math.random() * NUMBER_OF_ANSWERS);
-				trace("correct answer #: " + randomCorrectNumber + " answer = " + answerStr);
-			}
+//			public function setAnswer(answerStr:String):void 
+//			{
+//				this.answer = answerStr;
+//				randomCorrectNumber = uint(Math.random() * NUMBER_OF_ANSWERS);
+//				trace("correct answer #: " + randomCorrectNumber + " answer = " + answerStr);
+//			}
 			
-			public function getAnswer():String
+			public function get answer():String
 			{
-				return this.answer;	
+				return this._answer;	
 			}
 			
 			protected function clickHandler(event:MouseEvent):void
@@ -152,7 +164,8 @@
 				trace("click on buttonID: " + buttonId);
 				var buttonLabel : String = event.currentTarget.label;
 				selectedButtonLabel = buttonLabel;
-				_answerLabel.text = selectedButtonLabel;
+				if (_answerLabel)
+					_answerLabel.text = selectedButtonLabel;
 				disableOtherButtons(buttonId);
 			}
 			

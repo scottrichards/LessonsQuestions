@@ -139,9 +139,6 @@
 				currentQuestion = 0;
 				trace("lessonName: " + data.lessonName);
 				updateQuestionInfo();
-				if (currentQuestion == 0) {
-					previousButton.enabled = false;
-				}
 				statusStr = "0  / " + data.questions.length();
 				var x:Number = Capabilities.screenResolutionX;
 				var y:Number = Capabilities.screenResolutionY;
@@ -159,14 +156,14 @@
 			}
 			
 			
-			protected function nextButton_clickHandler(event:MouseEvent):void
+			protected function checkButtonHandler(event:MouseEvent):void
 			{
 				if (checkAnswer()) {
 					goToNextQuestion(true);
 				}
 			}
 			
-			protected function passClickHandler(event:MouseEvent):void
+			protected function nextButtonHandler(event:MouseEvent):void
 			{
 				goToNextQuestion(false);
 			}
@@ -180,28 +177,21 @@
 					currentState = "default";
 			}
 			
-			protected function previousButton_clickHandler(event:MouseEvent):void
-			{
-				goToQuestion(--currentQuestion);
+			protected function previousButtonHandler(event:MouseEvent):void
+			{ 	
+				if (currentQuestion == 0) {		// go back to lessons if they click Previous when we are at the first question
+					navigator.popToFirstView();
+				} else 
+					goToQuestion(--currentQuestion);
 			}
 			
 			protected function goToQuestion(questionNumber:uint):void
 			{
 				if (questionNumber < data.questions.length()) {
 					currentQuestion = questionNumber;
-					if (currentQuestion == 0) {
-						previousButton.enabled = false;
-					} else {
-						previousButton.enabled = true;
-					}
-					if (currentQuestion + 1 >= data.questions.length()) {
-						nextButton.enabled = false;
-					} else {
-						nextButton.enabled = true;
-					}
 					updateQuestionInfo();
-				} else {
-					playSound("sounds/error1.mp3");
+				} else {	// go back to the list of lessons
+					navigator.popToFirstView();
 				}
 			}
 			
@@ -277,55 +267,54 @@
 				//currentQuestionType = question.@type;
 				currentQuestionType = question.type;
 				trace("type: " + currentQuestionType);
+				var answerXMLList:XMLList = currentQuestionXML.answer;
+				var answerContents:String = answerXMLList[0];
 				
 				if (currentQuestionType == "symbolOperators") {
 					operatorSymbols = new OperatorSymbols();
-					addToAnswer(operatorSymbols);
+					addToView(operatorSymbols);
 				} else if (currentQuestionType == "equality") {
 					equalitySymbols = new EqualitySymbols();
 					equalitySymbols.addXMLData(currentQuestionXML);
-					addToAnswer(equalitySymbols);
+					addToView(equalitySymbols);
 				}  else if (currentQuestionType == "time") {
 					timeInput = new Time();
-					addToAnswer(timeInput);
+					addToView(timeInput);
 				}  else if (currentQuestionType == "measurementImperial") {
 					measurement = new ImperialMeasure();
-					addToAnswer(measurement);
+					measurement.questionXML = currentQuestionXML;
+					addToView(measurement);
 				}  else if (currentQuestionType == "currency") {
 					currency = new Currency();
-					addToAnswer(currency);
+					addToView(currency);
 				}  else if (currentQuestionType == "shapeNames") {
 					shapeNames = new ShapeNames();
-					var answerXMLList:XMLList = currentQuestionXML.answer;
-					var answerContents:String = answerXMLList[0];
-					shapeNames.setAnswer(answerContents);
-					addToAnswer(shapeNames);
+					shapeNames.setQuestionXML(currentQuestionXML);
+					addToView(shapeNames);
 				} else if (currentQuestionType == "equation") {
 					equation = new Equation();
 					equation.addXMLData(currentQuestionXML);
-					addToAnswer(equation);
+					addToView(equation);
 				}  else if (currentQuestionType == "dragDrop") {
 					dragDrop = new DragDropView();
 					dragDrop.addEventListener(FlexEvent.CONTENT_CREATION_COMPLETE,dragDropContentCreationComplete);
-					addToAnswer(dragDrop);
+					addToView(dragDrop);
 					dragDrop.setAnswer(answerContents);
 				} else if (currentQuestionType == "mathWordsAddSub") {
 					mathWords = new MathWords();
-					mathWords.addXMLData(currentQuestionXML);
-					var answerList:XMLList = currentQuestionXML.content.answer;
-					mathWords.setAnswer(answerList[0]);
-					addToAnswer(mathWords);
+					mathWords.setQuestionXML(currentQuestionXML);
+					addToView(mathWords);
 				} else if (currentQuestionType == "multipleChoice") {
 					multipleChoice = new MultipleChoice();
 					multipleChoice.setQuestionXML(currentQuestionXML);
-					addToAnswer(multipleChoice);
+					addToView(multipleChoice);
 				} else if (currentQuestionType == "multipleChoiceImage") {
 					multipleChoiceImage = new ImageMultipleChoice();
 					multipleChoiceImage.questionXML = currentQuestionXML;
-					addToAnswer(multipleChoiceImage);
+					addToView(multipleChoiceImage);
 				} else {
 					numericDisplay = new NumericDisplay();
-					addToAnswer(numericDisplay);
+					addToView(numericDisplay);
 					numberPad.addEventListener(NumberPadEvent.EVENT_UPDATE,numericDisplay.onNumberPadUpdate);
 				}
 				if (displayNumericKeypad(currentQuestionType)) {
@@ -336,7 +325,7 @@
 				}
 			}
 			
-			protected function addToAnswer(answerToAdd:*,removeQuestionContents:Boolean=false):void
+			protected function addToView(answerToAdd:*,removeQuestionContents:Boolean=false):void
 			{
 				answerSection.removeAllElements();	// remove any items that had been previously added
 				answerSection.addElement(answerToAdd);
@@ -409,8 +398,18 @@
 					} else {
 						questionContentStr = currentQuestionXML.content;
 					}
-					
-					var imageUrlStr : String = String(currentQuestionXML.image.imagePath);
+					displayImage();
+				}
+			}
+			
+			// If there is an <image><imagePath>images/image.png</imagePath></image> node then display the image 
+			
+			// TO DO Only handles displaying a single image
+			private function displayImage():void
+			{
+				var imagePathList : XMLList = currentQuestionXML.image.imagePath;
+				if (imagePathList.length()) {
+					var imageUrlStr : String = imagePathList[0].toString();
 					trace("image URL: " + imageUrlStr);
 					// display the image
 					if (imageUrlStr.length > 0) {
@@ -418,12 +417,13 @@
 						loadImage(imageUrlStr);
 						questionImage.maxHeight=300;
 						questionImage.includeInLayout = true;
-					} else {	// make the text take up all of the space
-						questionImage.maxHeight=0;
-						questionImage.visible = false;
-						questionImage.includeInLayout = false;
-					} 
-				}
+						return;
+					}
+				} 
+				// found no image, make the text take up all of the space
+				questionImage.maxHeight=0;
+				questionImage.visible = false;
+				questionImage.includeInLayout = false;
 			}
 			
 			private function checkAnswer():Boolean
@@ -444,11 +444,13 @@
 				} else if (currentQuestionType== "time") {
 					userAnswer = timeInput.getText();
 				} else if (currentQuestionType== "measurementImperial") {
-					userAnswer = timeInput.getText();
+					userAnswer = measurement.response;
+					answerContents = measurement.answer;
 				} else if (currentQuestionType== "currency") {
 					userAnswer = currency.getText();
 				} else if (currentQuestionType== "shapeNames") {
-					userAnswer = shapeNames.getText();
+					userAnswer = shapeNames.response;
+					answerContents = shapeNames.answer;
 				} else if (currentQuestionType== "multipleChoice") {
 					userAnswer = multipleChoice.response;
 					answerContents = multipleChoice.answer;
@@ -459,7 +461,7 @@
 					userAnswer = dragDrop.getAnswer();
 				}  else if (currentQuestionType == "mathWordsAddSub") {
 					userAnswer = mathWords.getText();
-					answerContents = mathWords.getAnswer();
+					answerContents = mathWords.answer;
 				}  else if (currentQuestionType == "multipleChoiceImage") {
 					userAnswer = multipleChoiceImage.getText();
 					answerContents = multipleChoiceImage.getAnswer();
@@ -545,12 +547,12 @@
 	<s:HGroup width="100%" horizontalAlign="center" bottom="20">
 		<s:VGroup width="500" horizontalAlign="center">
 			<s:HGroup>
-				<s:Button label="Check" id="nextButton" click="nextButton_clickHandler(event)" skinClass="skins.CheckButtonSkin" styleName="checkButtonStyle" width="480" height="60"/>
+				<s:Button label="Check" id="checkButton" click="checkButtonHandler(event)" skinClass="skins.CheckButtonSkin" styleName="checkButtonStyle" width="480" height="60"/>
 			</s:HGroup>
-			<s:HGroup width="100%" paddingTop="20">
-				<s:Button label="Back to Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
-				<s:Button label="&lt; Previous" id="previousButton" click="previousButton_clickHandler(event)" icon="@Embed('icons/Previous.png')" />
-				<s:Button label="Next >" click="passClickHandler(event)" icon="@Embed('icons/Next.png')"  />
+			<s:HGroup width="100%" paddingTop="20" verticalAlign="middle">
+				<s:Button label="Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
+				<s:Button label="&lt; Previous" id="previousButton" click="previousButtonHandler(event)" icon="@Embed('icons/Previous.png')" />
+				<s:Button label="Next >" click="nextButtonHandler(event)" icon="@Embed('icons/Next.png')"  />
 				<mx:Spacer width="100%" />
 				<s:TextInput id="jumpToQuestionTextInput" width="40" />
 				<s:Button id="jumpToQuestionButton" label="Go" click="jumpToQuestionButton_clickHandler(event)" />

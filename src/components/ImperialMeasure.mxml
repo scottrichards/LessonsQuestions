@@ -7,6 +7,7 @@
 		<![CDATA[
 			protected var feetHasFocus : Boolean;
 			protected var inchesHasFocus : Boolean;
+			private var _answer : String;
 			
 			protected function componentInitHandler(event:Event):void {
 				trace("initialize Numeric Keypad");
@@ -41,7 +42,7 @@
 
 			}
 
-			public function getText():String
+			public function get response():String
 			{
 				var lengthString:String = "";
 				if (feet.text.length) {
@@ -51,6 +52,18 @@
 					lengthString += inches.text + '"';
 				}
 				return lengthString;
+			}
+			
+			public function set questionXML(questionXML:XML):void
+			{
+				var answerXMLList:XMLList = questionXML.answer;
+				if (answerXMLList && answerXMLList.length() > 0)
+					_answer = answerXMLList[0].toString();
+			}
+			
+			public function get answer():String
+			{
+				return _answer;
 			}
 			
 		]]>
