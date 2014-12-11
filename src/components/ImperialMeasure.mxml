@@ -72,7 +72,7 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:HGroup>
-		<s:TextInput id="feet" width="80" />
+		<s:TextInput id="feet" width="80" textAlign="right" />
 		<s:Label>'</s:Label>
 		<s:TextInput id="inches" width="80"/>
 		<s:Label>"</s:Label>

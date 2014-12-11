@@ -8,11 +8,18 @@
 							applicationDPI="160">
 	<fx:Script>
 		<![CDATA[
-			import mx.collections.ArrayCollection;
 			import mx.collections.ArrayList;
 			import mx.events.FlexEvent;
 			import mx.managers.CursorManager;
+			import mx.managers.PopUpManager;
+			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
+			
+			import components.BIPTitleWindow;
+			
+			import events.CloseTitleWindow;
+			
+			import model.PreferenceSettings;
 			
 			[Bindable]
 			public var lessonsXML:XML;
@@ -20,9 +27,13 @@
 			[Bindable]
 			public var lessonsList:ArrayList;
 			
+			[Bindable]
+			public var preferences:PreferenceSettings;
+			
 			protected function initializeHandler(event:FlexEvent):void
 			{
-				lessonsService.send();
+				preferences = new PreferenceSettings();
+				reloadData();
 			}
 			
 			protected function lessonService_resultHandler(event:ResultEvent):void
@@ -39,7 +50,6 @@
 				for each (var lesson:XML in lessonsXML.lesson) 
 				{ 			
 					if (lesson.lessonName) {
-//							trace("lessonName: " + lesson.lessonName);
 						var lessonObject:Object = new Object();
 						lessonObject.data = i++;
 						lessonObject.label = String(lesson.lessonName);
@@ -48,14 +58,32 @@
 				} 
 			}
 			
+			public function reloadData():void {
+				lessonsService.url = preferences.lessonsURL + "/lessons.xml";
+				lessonsService.send();
+			}
+			
+			protected function handleFault(event:FaultEvent):void
+			{
+				var errorMessage : String = "Error could not load url: " + lessonsService.url; 
+				trace(errorMessage);
+				
+//				titleWindow = PopUpManager.createPopUp(this, BIPTitleWindow, true) as BIPTitleWindow;
+//				//				titleWindow.addEventListener(CloseEvent.CLOSE,closeTitleWindowHandler);
+//				titleWindow.addEventListener(CloseTitleWindow.EVENT_NAME, closeTitleWindowHandler);
+//				titleWindow.title = "Error";
+//				titleWindow.setMessage(message);
+//				PopUpManager.centerPopUp(titleWindow);
+			}
+			
 		]]>
 	</fx:Script>
 	<fx:Declarations>
 		<s:HTTPService id="lessonsService"
-					   url="data/MathGrade2.xml"
 					   resultFormat="e4x"
 					   showBusyCursor="true"
 					   result="lessonService_resultHandler(event)"
+					   fault="handleFault(event)"
 					   />
 	</fx:Declarations>
 	

@@ -10,10 +10,10 @@
 			import spark.events.IndexChangeEvent;
 		
 			
-			protected function button1_clickHandler(event:MouseEvent):void
-			{
-				navigator.pushView(views.QuestionView);
-			}
+//			protected function button1_clickHandler(event:MouseEvent):void
+//			{
+//				navigator.pushView(views.QuestionView);
+//			}
 			
 			protected function contentCreationCompleted(event:Event):void
 			{
@@ -41,10 +41,13 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 
-	<s:Button x="100" y="350" label="Browse Images" click="navigator.pushView(views.ImageBrowser)" />
+	<s:VGroup  x="100" y="350">
+		<s:Button label="Browse Images" click="navigator.pushView(views.ImageBrowser)" />
+		<s:Button label="Preferences" click="navigator.pushView(views.Preferences)" />
+	</s:VGroup>
+	
 	<s:Group id="borderContainer" left="40" top="50" bottom="40" right="40" width="100%" > 
 		
-
 		<s:VGroup horizontalAlign="center" width="100%">
 			<s:Label text="Select a Lesson:" paddingBottom="10" />
 			<s:List id="list" 

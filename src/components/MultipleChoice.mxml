@@ -29,17 +29,7 @@
 			protected function componentInitHandler(event:Event):void {
 				trace("initHandler");
 			}
-			
-		
-//			protected function clickHandler(event:MouseEvent):void
-//			{
-//				var buttonId : String = event.currentTarget.id;
-//				trace("click on buttonID: " + buttonId);
-//				var buttonLabel : String = event.currentTarget.label;
-//				selectedButtonLabel = buttonLabel;
-//				textLabel.text = selectedButtonLabel;
-//			}
-//						
+								
 			protected function onClickHandler(event:MouseEvent):void
 			{
 				var buttonId : String = event.currentTarget.id;

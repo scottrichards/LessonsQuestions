@@ -69,7 +69,6 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import mx.collections.ArrayCollection;
 			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
 			
@@ -82,7 +81,6 @@
 			import components.ImperialMeasure;
 			import components.MathWords;
 			import components.MultipleChoice;
-			import components.MyAlertPopUp;
 			import components.NumericDisplay;
 			import components.OperatorSymbols;
 			import components.RewardImage;
@@ -115,7 +113,6 @@
 			protected var numericDisplay : NumericDisplay;
 
 			
-			public var alertPopUp:MyAlertPopUp = new MyAlertPopUp();
 			public var numberCorrectAnswers : uint;
 
 			
