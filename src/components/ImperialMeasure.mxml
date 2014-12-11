@@ -74,7 +74,7 @@
 	<s:HGroup>
 		<s:TextInput id="feet" width="80" textAlign="right" />
 		<s:Label>'</s:Label>
-		<s:TextInput id="inches" width="80"/>
+		<s:TextInput id="inches" width="80" maxChars="2"/>
 		<s:Label>"</s:Label>
 	</s:HGroup>
 		

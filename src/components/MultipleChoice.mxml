@@ -23,6 +23,7 @@
 			protected const NUMBER_OF_ANSWERS:uint = 4;
 			private var _responseValue : String;
 			protected var _answer : String;
+			protected var _answerValue : String;
 			protected var _response : String;
 			protected var _buttonArray : Array;
 			
@@ -57,9 +58,16 @@
 				return _responseValue;
 			}
 			
+			// return the the letter corresponding to the correct choice
 			public function get answer():String
 			{
 				return _answer;	
+			}
+			
+			// returns the full label corresponding to the answer instead of the letter correspoding to the choice
+			public function get answerValue():String
+			{
+				return _answerValue;	
 			}
 			
 			// return the user's selected Choice returns the letter corresponding to the choice
@@ -68,10 +76,16 @@
 				return _response;	
 			}
 			
+			protected function setAnswer(questionXML:XML):void {
+				var answerXMLList:XMLList = questionXML.answer;
+				if (answerXMLList.length()) {
+					this._answer = answerXMLList[0].toString();
+				}
+			}
+			
 			public function setQuestionXML(questionXML:XML):void
 			{
-				var answerXMLList:XMLList = questionXML.answer;
-				this._answer = answerXMLList[0].toString();
+				setAnswer(questionXML);
 				var choices: XMLList = questionXML.choices.choice;
 				_buttonArray = new Array();
 				multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
@@ -81,6 +95,9 @@
 					var choiceButton : ToggleButton = new ToggleButton();
 					choiceButton.label = choiceContents;
 					var letter : String = choiceXML.@letter;
+					if (letter == _answer) {	// flag the text contents as being the correct answer
+						_answerValue = choiceContents;
+					}
 					choiceButton.id = letter;	// set the id to the letter associated with the multiple choice option
 					choiceButton.addEventListener( 'click', onClickHandler );
 					trace(letter + ") " + choiceContents);

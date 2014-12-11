@@ -67,7 +67,7 @@
 	<s:HGroup>
 		<s:TextInput id="hours" width="80" textAlign="right" />
 		<s:Label styleName="labelStyle">:</s:Label>
-		<s:TextInput id="minutes" width="80"/>	
+		<s:TextInput id="minutes" width="80" maxChars="2"/>	
 	</s:HGroup>
 		
 	<s:HGroup>	

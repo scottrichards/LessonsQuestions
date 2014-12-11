@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<components:MultipleChoice xmlns:fx="http://ns.adobe.com/mxml/2009" 
+						   xmlns:s="library://ns.adobe.com/flex/spark" xmlns:components="components.*">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import spark.components.ToggleButton;
+			
+			import skins.ToggleButtonSkin;
+			
+			private static var choicesArray = ["Even", "Odd"];
+			
+			public override function setQuestionXML(questionXML:XML):void
+			{
+				var answerXMLList:XMLList = questionXML.answer;
+				this._answer = answerXMLList[0].toString();
+				this._answer = this.answer.toLowerCase();
+				var choices: XMLList = questionXML.choices.choice;
+				_buttonArray = new Array();
+				multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
+//				for (var i : int =0;i<choicesArray.length();i++) {
+//					
+//				}
+				var choiceButton : ToggleButton = new ToggleButton();
+				choiceButton.label = "Even";
+				choiceButton.id = "even";
+				choiceButton.addEventListener( 'click', onClickHandler );
+				choiceButton.setStyle('skinClass', skins.ToggleButtonSkin);  
+				_buttonArray.push(choiceButton);
+				multipleChoiceSection.addElement(choiceButton);
+				
+				var choiceButtonNo : ToggleButton = new ToggleButton();
+				choiceButtonNo.label = "Odd";
+				choiceButtonNo.id = "odd";
+				choiceButtonNo.addEventListener( 'click', onClickHandler );
+				choiceButtonNo.setStyle('skinClass', skins.ToggleButtonSkin);  
+				_buttonArray.push(choiceButtonNo);
+				multipleChoiceSection.addElement(choiceButtonNo);
+			}
+		]]>
+	</fx:Script>
+</components:MultipleChoice>
