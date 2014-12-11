@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		title="Preferences"
+		viewActivate="onActivate(event)">
+	<s:layout>
+		<s:BasicLayout/>
+	</s:layout>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import spark.events.ViewNavigatorEvent;
+			
+			private var thisApp : LessonsQuestions;
+			[Bindable]
+			private var resolutionX : String;
+			[Bindable]
+			private var resolutionY : String;
+			
+			// invoked when the View is Activated put initialization code in here
+			protected function onActivate(event:ViewNavigatorEvent):void
+			{
+				thisApp = this.parentApplication as LessonsQuestions;
+				lessonsUrl.text = thisApp._preferences.lessonsURL;
+				appVersion.text = thisApp._preferences.appVersion;
+				screenDPI.text = Capabilities.screenDPI.toString();
+				resolutionX = Capabilities.screenResolutionX.toString();
+				resolutionY = Capabilities.screenResolutionY.toString();
+				soundEnabled.selected = thisApp._preferences.soundEnabled;
+			}
+			
+			// Called when closing the preferences go to Main View
+			protected function onDone(event:MouseEvent):void
+			{
+				navigator.popToFirstView();
+				
+				thisApp._preferences.lessonsURL = lessonsUrl.text;
+				thisApp.reloadData();
+				var string : String = thisApp.prefsSharedObject.flush();
+			}
+			
+			
+			
+			protected function soundEnabledClick(event:MouseEvent):void
+			{
+				thisApp._preferences.soundEnabled = event.currentTarget.selected;
+			}
+			
+		]]>
+	</fx:Script>
+	<s:Group id="borderContainer" left="40" top="50" bottom="40" right="40" width="100%" > 
+		
+		<s:VGroup horizontalAlign="center">
+			<!-- <s:HGroup paddingBottom="20" verticalAlign="middle">
+				<s:Label text="Lessons URL:" />
+					
+			</s:HGroup> -->		
+			<s:Form id="information" width="100%"  >
+				<s:FormItem label="Lessons URL:"  >
+					<s:TextInput id="lessonsUrl" width="550"/>
+				</s:FormItem>
+				<s:FormItem label="Enable Sound:" >
+					<s:CheckBox id="soundEnabled" click="soundEnabledClick(event)"/>
+				</s:FormItem>
+				<s:FormItem label="App Version:">
+					<s:Label id="appVersion" />
+				</s:FormItem>
+				<s:FormItem label="DPI:">
+					<s:Label id="screenDPI" />
+				</s:FormItem>
+				<s:FormItem label="Resolution:">
+					<s:Label id="resolution" text="{resolutionX} x {resolutionY}" />
+				</s:FormItem>
+			</s:Form>
+			<s:Button label="OK" click="onDone(event)" />
+		</s:VGroup>
+	</s:Group>
+</s:View>

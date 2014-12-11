@@ -69,6 +69,7 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import components.EvenOrOdd;
 			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
 			
@@ -107,6 +108,7 @@
 			protected var shapeNames : ShapeNames;
 			protected var multipleChoice : MultipleChoice;
 			protected var equation : Equation;
+			protected var evenOrOdd : EvenOrOdd;
 			protected var dragDrop : DragDropView;
 			protected var mathWords : MathWords;
 			protected var multipleChoiceImage : ImageMultipleChoice;
@@ -117,6 +119,7 @@
 
 			
 			private var titleWindow:BIPTitleWindow;
+			private var thisApp : LessonsQuestions;
 			
 			[Bindable]
 			public var currentQuestion:Number;
@@ -133,6 +136,7 @@
 			
 			protected function contentCreationCompleted(event:FlexEvent):void
 			{
+				thisApp = this.parentApplication as LessonsQuestions;
 				currentQuestion = 0;
 				trace("lessonName: " + data.lessonName);
 				updateQuestionInfo();
@@ -234,17 +238,22 @@
 				playWrongSound();
 			}
 			
-			protected function playCorrectSound():void{
-				playSound("sounds/cityrocker__thats-correct.mp3"); 
+			protected function playCorrectSound():void
+			{
+				if (thisApp._preferences.soundEnabled)
+					playSound("sounds/cityrocker__thats-correct.mp3"); 
 			}
 			
 			
-			protected function playWrongSound():void{
-				var length:uint = wrongAnswerSounds.length;
-				var randomUint:uint = uint(Math.random() * length);
-				var randomSound:String = "sounds/" + wrongAnswerSounds[randomUint];
-				trace("Error Sound: " + randomSound);
-				playSound(randomSound); 
+			protected function playWrongSound():void
+			{
+				if (thisApp._preferences.soundEnabled) {
+					var length:uint = wrongAnswerSounds.length;
+					var randomUint:uint = uint(Math.random() * length);
+					var randomSound:String = "sounds/" + wrongAnswerSounds[randomUint];
+					trace("Error Sound: " + randomSound);
+					playSound(randomSound); 
+				}
 			}
 			
 			protected function playSound(url:String):void{
@@ -305,9 +314,13 @@
 					multipleChoice = new MultipleChoice();
 					multipleChoice.setQuestionXML(currentQuestionXML);
 					addToView(multipleChoice);
+				} else if (currentQuestionType == "evenOrOdd") {
+					evenOrOdd = new EvenOrOdd();
+					evenOrOdd.setQuestionXML(currentQuestionXML);
+					addToView(evenOrOdd);
 				} else if (currentQuestionType == "multipleChoiceImage") {
 					multipleChoiceImage = new ImageMultipleChoice();
-					multipleChoiceImage.questionXML = currentQuestionXML;
+					multipleChoiceImage.setQuestionXML(currentQuestionXML);
 					addToView(multipleChoiceImage);
 				} else {
 					numericDisplay = new NumericDisplay();
@@ -430,11 +443,12 @@
 				var answerContents:String;
 				var userAnswer:String;
 				answerNode = currentQuestionXML.answer;
-				answerContents = answerNode[0];
+				if (answerNode.length())
+					answerContents = answerNode[0];
 				if (currentQuestionType== "numeric") {
 					userAnswer = numericDisplay.getText();
 				} else if (currentQuestionType== "symbolOperators") {
-					userAnswer = operatorSymbols.getText();
+					userAnswer = operatorSymbols.response;
 				} else if (currentQuestionType== "equality") {
 					userAnswer = equalitySymbols.getText();
 					answerContents = equalitySymbols.getAnswer();
@@ -451,6 +465,9 @@
 				} else if (currentQuestionType== "multipleChoice") {
 					userAnswer = multipleChoice.response;
 					answerContents = multipleChoice.answer;
+				} else if (currentQuestionType== "evenOrOdd") {
+					userAnswer = evenOrOdd.response;
+					answerContents = evenOrOdd.answer;
 				} else if (currentQuestionType== "equation") {
 					userAnswer = equation.response;
 					answerContents = equation.correctAnswer;

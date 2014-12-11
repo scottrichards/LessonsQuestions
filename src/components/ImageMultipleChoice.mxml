@@ -38,31 +38,41 @@
 			}
 			
 			protected function creationCompleteHandler(event:Event):void {
-				var choiceList : XMLList = _choices.choice;
-				var numItems:uint = choiceList.length();
-				trace("# items: " + numItems);
-				var maxWidth : Number;
-				_buttonArray = new Array();
-				var uniqueId:uint=0;
-				for each (var choiceNode:XML in choiceList) {
-					var letter : String = choiceNode.attribute("letter");
-					var isCorrect : Boolean = letter == _answer;
-					if (choiceNode && choiceNode.length() > 0) {
-						addButton(choiceNode.toString(),letter,isCorrect);
+				if (_choices) {
+					var choiceList : XMLList = _choices.choice;
+					var numItems:uint = choiceList.length();
+					trace("# items: " + numItems);
+					var maxWidth : Number;
+					_buttonArray = new Array();
+					var uniqueId:uint=0;
+					for each (var choiceNode:XML in choiceList) {
+						var letter : String = choiceNode.attribute("letter");
+						var isCorrect : Boolean = letter == _answer;
+						if (choiceNode && choiceNode.length() > 0) {
+							addButton(choiceNode.toString(),letter,isCorrect);
+						}
+						uniqueId++;
 					}
-					uniqueId++;
-				}			
+				}
 			}
 			
 			
-			public function set choices(choices:XML):void{
-				_choices = choices;
-			}
+////			public function set choices(choices:XML):void{
+////				_choices = choices;
+////			}
+//			
+//			public function set questionXML(questionXML:XML):void{
+//				_choices = questionXML.choices[0];
+//				_answer = questionXML.answer[0];
+//				if (_answer)
+//					trace("answer: " + _answer.toString());
+//			}
 			
-			public function set questionXML(questionXML:XML):void{
+			public function setQuestionXML(questionXML:XML):void{
 				_choices = questionXML.choices[0];
 				_answer = questionXML.answer[0];
-				trace("answer: " + _answer.toString());
+				if (_answer)
+					trace("answer: " + _answer.toString());
 			}
 			
 			// -----------------

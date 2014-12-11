@@ -5,7 +5,8 @@
 							firstViewData="{lessonsList}"
 							initialize="initializeHandler(event)"
 							splashScreenImage="views.SplashScreen"
-							applicationDPI="160">
+							applicationDPI="160"
+							>
 	<fx:Script>
 		<![CDATA[
 			import mx.collections.ArrayList;
@@ -21,6 +22,8 @@
 			
 			import model.PreferenceSettings;
 			
+			import views.Preferences;
+			
 			[Bindable]
 			public var lessonsXML:XML;
 			
@@ -28,11 +31,24 @@
 			public var lessonsList:ArrayList;
 			
 			[Bindable]
-			public var preferences:PreferenceSettings;
+			public var _preferences:PreferenceSettings;
+			
+			public var prefsSharedObject : SharedObject;
 			
 			protected function initializeHandler(event:FlexEvent):void
 			{
-				preferences = new PreferenceSettings();
+				// Map "model.Preferences" to the PreferenceSettings class
+				registerClassAlias( "model.PrefenceSettings", PreferenceSettings);
+
+				// Create a shared object and store Preferences in it
+				prefsSharedObject = SharedObject.getLocal( "PreferenceSettings" );
+				var example:SharedObject = SharedObject.getLocal("example");					
+				if (prefsSharedObject.data.preferences == undefined) {
+					trace ("first time, saving preferences instace");
+					prefsSharedObject.data.preferences = new PreferenceSettings();
+				} else {	// we loaded them from disk
+					_preferences = prefsSharedObject.data.preferences;
+				}
 				reloadData();
 			}
 			
@@ -59,7 +75,7 @@
 			}
 			
 			public function reloadData():void {
-				lessonsService.url = preferences.lessonsURL + "/lessons.xml";
+				lessonsService.url = _preferences.lessonsURL + "/lessons.xml";
 				lessonsService.send();
 			}
 			

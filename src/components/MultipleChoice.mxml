@@ -21,10 +21,10 @@
 			import skins.ToggleButtonSkin;
 			
 			protected const NUMBER_OF_ANSWERS:uint = 4;
-			protected var selectedButtonLabel : String;
+			private var _responseValue : String;
 			protected var _answer : String;
 			protected var _response : String;
-			private var _buttonArray : Array;
+			protected var _buttonArray : Array;
 			
 			protected function componentInitHandler(event:Event):void {
 				trace("initHandler");
@@ -35,6 +35,7 @@
 				var buttonId : String = event.currentTarget.id;
 				trace("click on buttonID: " + buttonId);
 				_response = buttonId;
+				_responseValue = event.currentTarget.label;
 				responseLabel.text = event.currentTarget.label;
 				disableOtherButtons(buttonId);
 			}
@@ -51,9 +52,9 @@
 				}
 			}
 			
-			public function getText():String
+			public function get responseValue():String
 			{
-				return selectedButtonLabel;
+				return _responseValue;
 			}
 			
 			public function get answer():String

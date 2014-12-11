@@ -23,7 +23,7 @@
 				textLabel.text = inputCharacter;
 			}
 			
-			public function getText():String
+			public function get response():String
 			{
 				return textLabel.text;
 			}
@@ -35,8 +35,8 @@
 	<s:Label id="textLabel" styleName="labelStyle" paddingBottom="10"  />
 	<s:HGroup gap="30" paddingTop="10">
 		<s:Button label="+" click="clickHandler(event)" width="45"/>
-		<s:Button label="-" click="clickHandler(event)" width="45"/>
-		<s:Button label="*" click="clickHandler(event)" width="45"/>
-		<s:Button label="/" click="clickHandler(event)" width="45"/>
+		<s:Button label="−" click="clickHandler(event)" width="45"/>
+		<s:Button label="×" click="clickHandler(event)" width="45"/>
+		<s:Button label="÷" click="clickHandler(event)" width="45"/>
 	</s:HGroup>
 </s:VGroup>
