@@ -10,8 +10,18 @@
 			
 			import skins.ToggleButtonSkin;
 			
-			private static var _choicesArray : Array = ["Even", "Odd"];
+			private var _choicesArray;	// Default choices are provided like this
 			
+			public function set choicesArray(choices:Array):void 
+			{
+				_choicesArray = choices;
+			}
+			
+			// Override this method in the derived classes
+			public function getChoices():Array
+			{
+				return null;	// 
+			}
 			
 			public override function setQuestionXML(questionXML:XML):void
 			{
@@ -20,6 +30,7 @@
 				var choices: XMLList = questionXML.choices.choice;
 				_buttonArray = new Array();
 				multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
+				_choicesArray = getChoices();
 				for (var i : int =0;i<_choicesArray.length;i++) {
 					var choiceButton : ToggleButton = new ToggleButton();
 					choiceButton.label = _choicesArray[i];
