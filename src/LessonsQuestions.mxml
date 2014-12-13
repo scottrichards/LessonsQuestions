@@ -46,6 +46,7 @@
 				if (prefsSharedObject.data.preferences == undefined) {
 					trace ("first time, saving preferences instace");
 					prefsSharedObject.data.preferences = new PreferenceSettings();
+					_preferences = prefsSharedObject.data.preferences;
 				} else {	// we loaded them from disk
 					_preferences = prefsSharedObject.data.preferences;
 				}

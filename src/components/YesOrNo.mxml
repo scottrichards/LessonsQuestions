@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<components:MultipleChoice xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<components:PresetChoices xmlns:fx="http://ns.adobe.com/mxml/2009" 
 						   xmlns:s="library://ns.adobe.com/flex/spark" xmlns:components="components.*">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
@@ -7,34 +7,11 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import spark.components.ToggleButton;
-			
-			import skins.ToggleButtonSkin;
-			
-			private static var choicesArray = ["Yes", "No"];
-			
-			public function setQuestionXML(questionXML:XML):void
+			override public function getChoices():Array
 			{
-				setAnswer(questionXML);
-				var choices: XMLList = questionXML.choices.choice;
-				_buttonArray = new Array();
-				multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
-				var choiceButton : ToggleButton = new ToggleButton();
-				choiceButton.label = "Yes";
-				choiceButton.id = "Y";
-				choiceButton.addEventListener( 'click', onClickHandler );
-				choiceButton.setStyle('skinClass', skins.ToggleButtonSkin);  
-				_buttonArray.push(choiceButton);
-				multipleChoiceSection.addElement(choiceButton);
-				
-				var choiceButtonNo : ToggleButton = new ToggleButton();
-				choiceButtonNo.label = "No";
-				choiceButtonNo.id = "N";
-				choiceButtonNo.addEventListener( 'click', onClickHandler );
-				choiceButtonNo.setStyle('skinClass', skins.ToggleButtonSkin);  
-				_buttonArray.push(choiceButtonNo);
-				multipleChoiceSection.addElement(choiceButtonNo);
+				var choicesArray :Array = ["Yes", "No"];
+				return choicesArray;
 			}
 		]]>
 	</fx:Script>
-</components:MultipleChoice>
+</components:PresetChoices>

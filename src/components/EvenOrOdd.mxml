@@ -6,10 +6,6 @@
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
-//			import spark.components.ToggleButton;
-//			
-//			import skins.ToggleButtonSkin;
-			
 			
 			override public function getChoices():Array
 			{
@@ -17,26 +13,6 @@
 				return choicesArray;
 			}
 			
-//			private static var _choicesArray : Array = ["Even", "Odd"];
-//			
-//			
-//			public override function setQuestionXML(questionXML:XML):void
-//			{
-//				setAnswer(questionXML);
-//				this._answer = this.answer.toLowerCase();
-//				var choices: XMLList = questionXML.choices.choice;
-//				_buttonArray = new Array();
-//				multipleChoiceSection.removeAllElements();	// remove any items that had been previously added
-//				for (var i : int =0;i<_choicesArray.length;i++) {
-//					var choiceButton : ToggleButton = new ToggleButton();
-//					choiceButton.label = _choicesArray[i];
-//					choiceButton.id = choiceButton.label.toLowerCase();
-//					choiceButton.addEventListener( 'click', onClickHandler );
-//					choiceButton.setStyle('skinClass', skins.ToggleButtonSkin);  
-//					_buttonArray.push(choiceButton);
-//					multipleChoiceSection.addElement(choiceButton);
-//				}				
-//			}
 		]]>
 	</fx:Script>
 </components:PresetChoices>

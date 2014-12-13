@@ -29,6 +29,7 @@
 				resolutionX = Capabilities.screenResolutionX.toString();
 				resolutionY = Capabilities.screenResolutionY.toString();
 				soundEnabled.selected = thisApp._preferences.soundEnabled;
+				debug.selected = thisApp._preferences.debug;
 			}
 			
 			// Called when closing the preferences go to Main View
@@ -39,13 +40,16 @@
 				thisApp._preferences.lessonsURL = lessonsUrl.text;
 				thisApp.reloadData();
 				var string : String = thisApp.prefsSharedObject.flush();
-			}
-			
-			
+			}	
 			
 			protected function soundEnabledClick(event:MouseEvent):void
 			{
 				thisApp._preferences.soundEnabled = event.currentTarget.selected;
+			}
+			
+			protected function debugClickHandler(event:MouseEvent):void
+			{
+				thisApp._preferences.debug = event.currentTarget.selected;
 			}
 			
 		]]>
@@ -63,6 +67,9 @@
 				</s:FormItem>
 				<s:FormItem label="Enable Sound:" >
 					<s:CheckBox id="soundEnabled" click="soundEnabledClick(event)"/>
+				</s:FormItem>
+				<s:FormItem label="Debug:">
+					<s:CheckBox id="debug" click="debugClickHandler(event)" />
 				</s:FormItem>
 				<s:FormItem label="App Version:">
 					<s:Label id="appVersion" />

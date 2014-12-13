@@ -69,6 +69,8 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import components.MoreOrLess;
+			import mx.core.UIComponent;
 			import components.EvenOrOdd;
 			import mx.events.FlexEvent;
 			import mx.managers.PopUpManager;
@@ -113,6 +115,7 @@
 			protected var mathWords : MathWords;
 			protected var multipleChoiceImage : ImageMultipleChoice;
 			protected var numericDisplay : NumericDisplay;
+			protected var component : MultipleChoice;	// trying to make this be generic version
 
 			
 			public var numberCorrectAnswers : uint;
@@ -141,19 +144,26 @@
 				trace("lessonName: " + data.lessonName);
 				updateQuestionInfo();
 				statusStr = "0  / " + data.questions.length();
-				var x:Number = Capabilities.screenResolutionX;
-				var y:Number = Capabilities.screenResolutionY;
+//				var x:Number = Capabilities.screenResolutionX;
+//				var y:Number = Capabilities.screenResolutionY;
 				
 //				mainSection.width = (x > y) ? x : y;
 //				trace("set width to : " + stage.width);
-				trace("stage.scaleMode: " + stage.scaleMode);
-				stage.scaleMode = StageScaleMode.NO_SCALE;
-				trace("stage.scaleMode: " + stage.scaleMode);
-				trace("stage.width: " + stage.width + " stage.stageWidth: " + stage.stageWidth);
-				stage.stageHeight = 750;
-				stage.stageWidth = 1134;
-				stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGE, 
-					onOrientationChange); 
+//				trace("stage.scaleMode: " + stage.scaleMode);
+//				stage.scaleMode = StageScaleMode.NO_SCALE;
+//				trace("stage.scaleMode: " + stage.scaleMode);
+//				trace("stage.width: " + stage.width + " stage.stageWidth: " + stage.stageWidth);
+//				stage.stageHeight = 750;
+//				stage.stageWidth = 1134;
+				
+				if (thisApp._preferences.debug) {
+					debugGroup.visible = true;
+					debugGroup.includeInLayout = true;
+				} else {
+					debugGroup.visible = false;
+					debugGroup.includeInLayout = false;
+				}
+				stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGE, onOrientationChange); 
 			}
 			
 			
@@ -234,8 +244,11 @@
 			{
 				trace("Bummer you missed the question...");
 				var message:String = "The correct answer is: " + correctAnswer;
-				showTitleWindow(message);
 				playWrongSound();
+				if (thisApp._preferences.debug)
+					showTitleWindow(message);	// user has to click ok
+				else
+					goToNextQuestion(true);
 			}
 			
 			protected function playCorrectSound():void
@@ -314,7 +327,12 @@
 					multipleChoice = new MultipleChoice();
 					multipleChoice.setQuestionXML(currentQuestionXML);
 					addToView(multipleChoice);
-				} else if (currentQuestionType == "evenOrOdd") {
+				} else if (currentQuestionType == "moreOrLess") {
+					multipleChoice = new MoreOrLess();
+					multipleChoice.setQuestionXML(currentQuestionXML);
+					addToView(multipleChoice);
+				} 
+				else if (currentQuestionType == "evenOrOdd") {
 					evenOrOdd = new EvenOrOdd();
 					evenOrOdd.setQuestionXML(currentQuestionXML);
 					addToView(evenOrOdd);
@@ -350,9 +368,8 @@
 				fadeOut.end();
 				fadeOut.play();
 				titleWindow = PopUpManager.createPopUp(this, BIPTitleWindow, true) as BIPTitleWindow;
-//				titleWindow.addEventListener(CloseEvent.CLOSE,closeTitleWindowHandler);
 				titleWindow.addEventListener(CloseTitleWindow.EVENT_NAME, closeTitleWindowHandler);
-				titleWindow.title = "Error";
+				titleWindow.title = "Incorrect";
 				titleWindow.setMessage(message);
 				PopUpManager.centerPopUp(titleWindow);
 			}
@@ -462,7 +479,7 @@
 				} else if (currentQuestionType== "shapeNames") {
 					userAnswer = shapeNames.response;
 					answerContents = shapeNames.answer;
-				} else if (currentQuestionType== "multipleChoice") {
+				} else if (currentQuestionType== "multipleChoice" || currentQuestionType== "moreOrLess") {
 					userAnswer = multipleChoice.response;
 					answerContents = multipleChoice.answer;
 				} else if (currentQuestionType== "evenOrOdd") {
@@ -487,7 +504,14 @@
 					rightSelection();
 					return true;
 				} else {
-					wrongSelection(answerContents);
+					var answerToDisplay : String;
+					switch (currentQuestionType) {
+						case "multipleChoice" : 	answerToDisplay = multipleChoice.answerValue;
+													break;
+						default : answerToDisplay = answerContents;
+								break;
+					}
+					wrongSelection(answerToDisplay);
 					return false;
 				}
 			}
@@ -563,7 +587,7 @@
 			<s:HGroup>
 				<s:Button label="Check" id="checkButton" click="checkButtonHandler(event)" skinClass="skins.CheckButtonSkin" styleName="checkButtonStyle" width="480" height="60"/>
 			</s:HGroup>
-			<s:HGroup width="100%" paddingTop="20" verticalAlign="middle">
+			<s:HGroup id="debugGroup" width="100%" paddingTop="20" verticalAlign="middle" includeInLayout="false" visible="false">
 				<s:Button label="Lessons" id="backToLessonsButton" click="lessonsButton_clickHandler(event)" />
 				<s:Button label="&lt; Previous" id="previousButton" click="previousButtonHandler(event)" icon="@Embed('icons/Previous.png')" />
 				<s:Button label="Next >" click="nextButtonHandler(event)" icon="@Embed('icons/Next.png')"  />
@@ -572,7 +596,6 @@
 				<s:Button id="jumpToQuestionButton" label="Go" click="jumpToQuestionButton_clickHandler(event)" />
 				<mx:Spacer width="100%"/>
 			</s:HGroup>
-			
 		</s:VGroup>
 	</s:HGroup>
 	<components:NumberPad id="numberPad" right="10" visible="false">
